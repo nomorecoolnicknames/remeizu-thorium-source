@@ -1,0 +1,240 @@
+{
+  "family": "meizu_mt675x",
+  "runtime_detect_props": [
+    "sys.forge.meizu.codename",
+    "sys.forge.meizu.panel",
+    "sys.forge.meizu.touch",
+    "sys.forge.meizu.charger",
+    "sys.forge.meizu.detect"
+  ],
+  "recovery": {
+    "orangefox": {
+      "state": "no-successful-boot-on-tested-m6-m681-l681-paths",
+      "notes": [
+        "Treat OrangeFox as separate packaging/ramdisk problem until a kernel-current recovery log proves otherwise"
+      ]
+    }
+  },
+  "devices": {
+    "meizu_m6": {
+      "soc": "mt6750/mt6755",
+      "kernel_tracks": [
+        "3.18.140 (ACTIVE)"
+      ],
+      "state": "los16.0-pie-close: boot_completed=1 on 2026-08-03 lanes; HWC/mbackd/camera-enum/audio working; camera-open/wifi-install/bt-kernel/mback-human/fp-enroll remaining",
+      "panel": "ili9881c_hd_dsi_txd (unit REDACTED_UNIT; earlier units were ili9881p — panel is UNIT-DEPENDENT, see M6_LIVE_STOCK_CAPTURE_2026-07-25)",
+      "touch": "ft5x0x",
+      "sensors": [
+        "BMA253",
+        "ltr578",
+        "st480"
+      ],
+      "camera": [
+        "imx278mipiraw",
+        "ov8856jslmipiraw"
+      ],
+      "charger": "bq24157",
+      "power": [
+        "mt6311",
+        "tps65132"
+      ],
+      "other": [
+        "mt6605",
+        "sunwave-fp",
+        "leds-AW3643"
+      ]
+    },
+    "m681": {
+      "soc": "mt6755",
+      "kernel_tracks": [
+        "3.10.72-stocktruth (frozen oracle)",
+        "3.18.140-m6-graft (superseded)",
+        "4.4.15 (ACTIVE daily since 2026-08)",
+        "4.9 (build-only, G1 bootloop)"
+      ],
+      "state": "los16-4.4.15-DAILY: boot_completed=1, display/touch/wifi/bt/voice-2g3g/lte+data/gpu/vibrator WORKING; mic/camera NOT-WORKING; canonical tracker m681/docs/M681_DAILY_DRIVER_STATUS.md",
+      "panel": "ili9885_fhd_dsi_vdo_txd1",
+      "touch": "gt9xx (GT915L, device-confirmed on 4.4 daily)",
+      "charger": "stocktruth SM5414 primary",
+      "notes": [
+        "PMIC = MT6351 (stock flyme7 strings); m6-graft trees ship MT6353 driver — known graft skew, do not 'fix' without a capture",
+        "4.9 G1 reached only past-pre-MMU forge markers — treat 4.9 as build-only until LK handoff is solved",
+        "Touch Kconfig symbol in the graft tree = CONFIG_TOUCHSCREEN_MTK_GT9XX_MZ (device-verified driver port v257, commits 4f064166/4a930366); GT9XX_hotknot dir in that tree is pruned (no goodix_tool.c) — do not enable it there"
+      ]
+    },
+    "l681": {
+      "soc": "mt6755",
+      "kernel_tracks": [
+        "3.10.72-stocktruth",
+        "3.18 99degree (build-only, never flashed)"
+      ],
+      "state": "runtime STALE since 2026-06-06; bring-up lane paused; needs fresh boot-identity capture before any new claim",
+      "panel": "l681-stocktruth (nt35695 family; NOT ili9885)",
+      "touch": "gt9xx (same family as m681)",
+      "charger": "stocktruth",
+      "notes": [
+        "Use as known-good family comparator for m681/m6 display and ramdisk plumbing",
+        "Builds in the 99degree tree with the native l681_318_defconfig body (thorium l681_defconfig = native body + header); graft tree lacks wt6755_66_n project + l681_318.dts"
+      ]
+    },
+    "m6t": {
+      "soc": "mt6750",
+      "kernel_tracks": [
+        "3.18.140 (los16 zip 73bb4663 built 2026-07-25, NEVER FLASHED)"
+      ],
+      "state": "hardware CONFIRMED to exist with owner since 2026-09 (was assumed absent); never connected",
+      "panel": "720x1440 18:9, multivendor hx83102b/ft8613/nt36525 (M6T_DUMP_ANALYSIS_2026-07-22)",
+      "touch": "unknown",
+      "camera": [
+        "dual rear: camera_main@1a + camera_main2@36 + camera_sub@2d (sensor IDs UNVERIFIED)"
+      ],
+      "fp": [
+        "fp_server + libgf_hal/ca"
+      ],
+      "notes": [
+        "NOT an M6 clone: different panel, dual cam, different fp stack",
+        "PMIC UNVERIFIED"
+      ]
+    },
+    "m5": {
+      "soc": "mt6750",
+      "kernel_tracks": [
+        "3.18.140 (planned clone of meizu_m6)"
+      ],
+      "state": "never connected by owner; no stock dump; thin stub only",
+      "panel": "unknown",
+      "touch": "unknown",
+      "notes": [
+        "Meizu M5, 5.2\" 720p class; bring up on meizu_m6 base once connected"
+      ]
+    },
+    "m5note": {
+      "soc": "mt6755",
+      "kernel_tracks": [
+        "3.18.140 (planned clone of m681)"
+      ],
+      "state": "never connected by owner; no stock dump; thin stub only",
+      "panel": "5.5\" 1080p (module UNKNOWN)",
+      "touch": "unknown",
+      "camera": [
+        "OV13853 or S5K3L8 (dual supplier, research 2026-09-04)",
+        "front: OV5675 or S5K5E8"
+      ],
+      "notes": [
+        "Marketing M5 Note / Meilan Note 5; possible stock codename m1621 — verify ro.product.device on first dump (UNIFIED_TREE_PLAN §1)"
+      ]
+    },
+    "u10": {
+      "soc": "mt6750",
+      "kernel_tracks": [
+        "stock 3.18.22+ (Flyme 6.3.0.0G, U15 branch, ODM Wind Z170)",
+        "3.18.140 (u10_defconfig = meizu_m6 clone; U10/Z170 project port pending)"
+      ],
+      "state": "stock RE complete 2026-09-04 (flyme_fw/u10/unpacked/STOCK_TRUTH.md): device=U10 Android 6.0; never connected",
+      "panel": "5x hd720 pool: hx8392b_boe_ys / hx8394f_auo_by / otm1285a_by / otm1285a_yj / otm1287a_by (stock; ili9881p REJECTED)",
+      "touch": "DUAL FT5X26 @0x38 + GT9xx @0x5d, i2c0 (stock)",
+      "camera": [
+        "pool of 5: imx258 / s5k5e8yx / s5k3l8 / ov13853 / hi553 (main/sub binding needs kdSensorList RE)"
+      ],
+      "power": [
+        "PMIC MT6351(DTS)/MT6353(driver), NOT MT6350",
+        "charger switching@0x6b + fan5405@0x6a"
+      ],
+      "notes": [
+        "Stock ro.product.device UNVERIFIED — u10/U680 alias resolution needs first dump",
+        "Stock OTA assert: U10 (uppercase) — BoardConfig uses 'u10 U10'"
+      ],
+      "sensors": [
+        "N2DM accel",
+        "qmcX983 mag",
+        "mpu6515g gyro",
+        "bmp280new baro",
+        "ALS/PS: stk3x1x/epl259x/pa22x",
+        "LM3644 flash",
+        "Goodix FP SPI",
+        "MT6605 NFC",
+        "aw8736 PA"
+      ],
+      "board_project": "U10 (preloader_U10.bin, ODM Wind Z170; NOT in 3.18 tree yet)",
+      "hal_suffix": "mt6750"
+    },
+    "u20": {
+      "soc": "mt6755",
+      "kernel_tracks": [
+        "stock 3.18.22+ (Flyme 6.3.0.0G, U15 branch, Huaqin hq6755_66_1ma_m)",
+        "3.18.140 (u20_defconfig = m681 clone; 1ma project port pending)"
+      ],
+      "state": "stock RE complete 2026-09-04 (flyme_fw/u20/unpacked/STOCK_TRUTH.md): device=U20 Android 6.0; never connected",
+      "panel": "13 kernel / 11 LK FHD vdo pool: ili9885a/b, hx8399 AUO/BOE, nt35596, nt35532_boe_al1519",
+      "touch": "Goodix GT9xx @0x5D (1080x1920x5, stock)",
+      "camera": [
+        "main OV13853 (_ofg/_sy modules, OTP+PDAF cal) — web claim CONFIRMED",
+        "front Hi-553 — web claim CONFIRMED"
+      ],
+      "power": [
+        "PMIC MT6351 CONFIRMED (stock)",
+        "charger BQ24196 @0x6B"
+      ],
+      "notes": [
+        "Helio P10 1.8GHz x4 + 1.0GHz x4 (Meizu spec; some sources claim 2.0 — resolve on dump)",
+        "Stock OTA assert: U20 (uppercase) — BoardConfig uses 'u20 U20'",
+        "atag nt35695 in stock DTB = template garbage — ignore"
+      ],
+      "sensors": [
+        "LSM6DS3|MPU6050 6-axis",
+        "APDS9921|STK3x1x ALS/PS",
+        "AKM09911 mag",
+        "BMP280 baro",
+        "Goodix FP SPI",
+        "MT6605 NFC"
+      ],
+      "board_project": "hq6755_66_1ma_m (Huaqin 1MA, cf. l681=wt6755_66_n family pattern; NOT in 3.18 tree yet)",
+      "hal_suffix": "mt6755 (NOT mt6750)"
+    },
+    "m3s": {
+      "soc": "mt6750",
+      "kernel_tracks": [
+        "stock 3.10.72+ (Flyme 6.3.0.0G, Y15 project)",
+        "3.18.140 (m3s_defconfig = meizu_m6 clone; Y15 project port pending)"
+      ],
+      "state": "stock RE complete 2026-09-04 (flyme_fw/m3s/unpacked/STOCK_TRUTH.md): device=M3s Android 5.1; never connected",
+      "panel": "hd720 pool: hx8392b_boe_ys / hx8394f_auo_by / ili9881c* / otm1285a_* (stock; ili9881p REJECTED)",
+      "touch": "FocalTech fts @0x5D eint1 (+ gt9xx backup in stock)",
+      "camera": [
+        "main IMX258 PDAF+EEPROM (stock; web S5K3L8 claim REJECTED)",
+        "sub OV5675"
+      ],
+      "power": [
+        "PMIC MT6353 (stock)",
+        "charger fan5405@0x6b",
+        "ext_buck mt6311"
+      ],
+      "notes": [
+        "Stock Flyme 5.1 / Android 5.1.1 era; public trees: ElXreno/twrp_device_meizu_m3s, washinston/android_device_meizu_m3s + vendor + m3_m3s-common",
+        "Stock OTA assert: M3s (uppercase) — BoardConfig uses 'm3s M3s'"
+      ],
+      "sensors": [
+        "STK3x1x ALS/PS",
+        "mmc3524x/qmc6983 mag",
+        "Goodix gf516m FP"
+      ],
+      "board_project": "Y15 (preloader_Y15.bin; NOT in 3.18 tree yet)",
+      "hal_suffix": "mt6750"
+    },
+    "m1note": {
+      "soc": "mt6752",
+      "kernel_tracks": [
+        "NONE in this tree — standalone platform (Mali-T760, own 3.10 stock / meizuosc m463)"
+      ],
+      "state": "never connected; deliberately README-only stub (device/meizu/m1note/README.md) — mt6755-common kernel is UNSUITABLE",
+      "panel": "5.5\" 1080x1920 Sharp IGZO/AUO",
+      "touch": "unknown",
+      "camera": [
+        "front OV5670 (CONFIRMED, official spec)"
+      ],
+      "notes": [
+        "Needs its own kernel first (meizuosc/m463, dellwin7ttl/MT6752_m1note_kernel_source); do NOT create an mt675x thin dir for it"
+      ]
+    }
+  }
+}

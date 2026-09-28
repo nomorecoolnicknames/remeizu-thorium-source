@@ -1,0 +1,210 @@
+type mtk_ccci_fsd, domain;
+type mtk_ccci_fsd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_ccci_fsd)
+
+type mtk_ccci_mdinit, domain;
+type mtk_ccci_mdinit_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_ccci_mdinit)
+
+type mtk_gsm0710muxd, domain;
+type mtk_gsm0710muxd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_gsm0710muxd)
+
+type mtk_muxreport, domain;
+type mtk_muxreport_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_muxreport)
+
+type mtk_emdlogger, domain;
+type mtk_emdlogger_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_emdlogger)
+
+type mtk_mobile_log_d, domain;
+type mtk_mobile_log_d_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mobile_log_d)
+
+type mtk_netdiag, domain;
+type mtk_netdiag_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_netdiag)
+
+type mtk_agpsd, domain;
+type mtk_agpsd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_agpsd)
+
+type mtk_mnld, domain;
+type mtk_mnld_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mnld)
+
+type mtk_thermal_loadalgod, domain;
+type mtk_thermal_loadalgod_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_thermal_loadalgod)
+
+type mtk_epdg_wod, domain;
+type mtk_epdg_wod_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_epdg_wod)
+
+type mtk_wmt_loader, domain;
+type mtk_wmt_loader_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wmt_loader)
+
+type mtk_wmt_launcher, domain;
+type mtk_wmt_launcher_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wmt_launcher)
+
+type mtk_wifi2agps, domain;
+type mtk_wifi2agps_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wifi2agps)
+
+type mtk_terservice, domain;
+type mtk_terservice_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_terservice)
+
+type mtk_msensord, domain;
+type mtk_msensord_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_msensord)
+
+type mtk_nvram_agent, domain;
+type mtk_nvram_agent_exec, exec_type, vendor_file_type, file_type;
+type mtk_nvram_agent_service, service_manager_type;
+init_daemon_domain(mtk_nvram_agent)
+
+type mtk_sn, domain;
+type mtk_sn_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_sn)
+
+type mtk_aee_core_forwarder, domain;
+type mtk_aee_core_forwarder_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_aee_core_forwarder)
+type mtk_spm_loader, domain;
+type mtk_spm_loader_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_spm_loader)
+
+type mtk_atci, domain;
+type mtk_atci_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_atci)
+
+type mtk_atcid, domain;
+type mtk_atcid_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_atcid)
+
+
+allow mtk_wmt_loader { mtk_wmt_device mtk_stp_device }:chr_file rw_file_perms;
+allow mtk_wmt_loader self:capability { chown dac_override };
+allow mtk_wmt_loader mtk_wmt_proc:file { getattr open read setattr write };
+set_prop(mtk_wmt_loader, system_prop)
+allow mtk_wmt_launcher { mtk_wmt_device mtk_stp_device }:chr_file rw_file_perms;
+allow mtk_wifi2agps self:netlink_socket create_socket_perms_no_ioctl;
+
+allow mtk_mobile_log_d self:capability { setgid setuid };
+allow mtk_mobile_log_d mtk_mblog_data_file:dir create_dir_perms;
+allow mtk_mobile_log_d mtk_mblog_data_file:file create_file_perms;
+allow mtk_mobile_log_d sysfs:file r_file_perms;
+set_prop(mtk_mobile_log_d, system_prop)
+
+allow mtk_netdiag self:capability { setgid setuid };
+allow mtk_netdiag pmsg_device:chr_file rw_file_perms;
+allow mtk_netdiag mtk_netdiag_socket:sock_file { getattr read write open };
+
+net_domain(mtk_agpsd)
+allow mtk_agpsd self:udp_socket create_socket_perms;
+allow mtk_agpsd mtk_agpsd_socket:sock_file { getattr read write open };
+allow mtk_agpsd mtk_agps_data_file:dir create_dir_perms;
+allow mtk_agpsd mtk_agps_data_file:sock_file create_file_perms;
+allow mtk_agpsd mtk_ccci_device:chr_file rw_file_perms;
+
+allow mtk_mnld mtk_mnld_socket:sock_file { getattr read write open };
+allow mtk_mnld mtk_agps_data_file:dir create_dir_perms;
+allow mtk_mnld mtk_agps_data_file:sock_file create_file_perms;
+
+allow mtk_thermal_loadalgod self:netlink_socket create_socket_perms_no_ioctl;
+allow mtk_thermal_loadalgod pmsg_device:chr_file rw_file_perms;
+
+net_domain(mtk_epdg_wod)
+allow mtk_epdg_wod mtk_wod_socket:sock_file { getattr read write open };
+
+allow mtk_ccci_mdinit mtk_ccci_device:chr_file rw_file_perms;
+allow mtk_ccci_mdinit radio_data_file:dir create_dir_perms;
+allow mtk_ccci_mdinit radio_data_file:file create_file_perms;
+allow mtk_ccci_mdinit mtk_devinfo_sysfs:dir search;
+allow mtk_ccci_mdinit mtk_devinfo_sysfs:file r_file_perms;
+set_prop(mtk_ccci_mdinit, radio_prop)
+set_prop(mtk_ccci_mdinit, ctl_default_prop)
+
+allow mtk_gsm0710muxd self:capability { chown dac_override fowner };
+allow mtk_gsm0710muxd mtk_ccci_device:chr_file rw_file_perms;
+allow mtk_gsm0710muxd pmsg_device:chr_file rw_file_perms;
+allow mtk_gsm0710muxd ptmx_device:chr_file rw_file_perms;
+allow mtk_gsm0710muxd devpts:chr_file rw_file_perms;
+allow mtk_gsm0710muxd radio_device:dir create_dir_perms;
+allow mtk_gsm0710muxd radio_device:lnk_file create_file_perms;
+set_prop(mtk_gsm0710muxd, radio_prop)
+
+allow mtk_muxreport mtk_ccci_device:chr_file rw_file_perms;
+allow mtk_muxreport pmsg_device:chr_file rw_file_perms;
+set_prop(mtk_muxreport, radio_prop)
+
+allow mtk_ccci_fsd { radio_data_file protect_f_data_file protect_s_data_file }:dir create_dir_perms;
+allow mtk_ccci_fsd radio_data_file:file create_file_perms;
+allow mtk_ccci_fsd mtk_ccci_device:chr_file rw_file_perms;
+allow mtk_ccci_fsd sysfs:file r_file_perms;
+wakelock_use(mtk_ccci_fsd)
+
+allow mtk_emdlogger radio_data_file:dir create_dir_perms;
+allow mtk_emdlogger radio_data_file:file create_file_perms;
+allow mtk_emdlogger sysfs:file r_file_perms;
+allow mtk_emdlogger file_contexts_file:file r_file_perms;
+allow mtk_emdlogger mtk_ccci_device:chr_file rw_file_perms;
+set_prop(mtk_emdlogger, radio_prop)
+set_prop(mtk_emdlogger, ctl_default_prop)
+
+set_prop(mtk_msensord, system_prop)
+
+binder_use(mtk_nvram_agent)
+add_service(mtk_nvram_agent, mtk_nvram_agent_service)
+allow { audioserver hal_audio_default rild radio system_server } mtk_nvram_agent_service:service_manager find;
+allow mtk_nvram_agent radio_data_file:dir create_dir_perms;
+allow mtk_nvram_agent radio_data_file:file create_file_perms;
+allow mtk_nvram_agent { protect_f_data_file protect_s_data_file custom_file }:dir r_dir_perms;
+allow mtk_nvram_agent { protect_f_data_file protect_s_data_file custom_file }:file r_file_perms;
+
+allow mtk_sn storage_file:lnk_file r_file_perms;
+allow mtk_sn { storage_file mnt_user_file }:dir search;
+allow mtk_sn { radio_data_file protect_f_data_file protect_s_data_file custom_file }:dir r_dir_perms;
+allow mtk_sn { radio_data_file protect_f_data_file protect_s_data_file custom_file }:file r_file_perms;
+
+allow rild mtk_ccci_device:chr_file rw_file_perms;
+allow rild radio_device:dir search;
+allow rild radio_device:lnk_file r_file_perms;
+allow rild radio_device:sock_file rw_file_perms;
+allow rild devpts:chr_file rw_file_perms;
+allow rild { radio_data_file protect_f_data_file protect_s_data_file custom_file }:dir r_dir_perms;
+allow rild { radio_data_file protect_f_data_file protect_s_data_file custom_file }:file rw_file_perms;
+
+allow mtk_terservice pmsg_device:chr_file rw_file_perms;
+allow mtk_aee_core_forwarder self:capability dac_override;
+wakelock_use(mtk_aee_core_forwarder)
+allow mtk_aee_core_forwarder audioserver:dir search;
+allow mtk_aee_core_forwarder audioserver:file r_file_perms;
+domain_auto_trans(kernel, mtk_aee_core_forwarder_exec, mtk_aee_core_forwarder)
+
+allow mtk_spm_loader mtk_spm_device:chr_file rw_file_perms;
+allow mtk_spm_loader sysfs:file r_file_perms;
+
+allow mtk_atci mtk_atci_socket:sock_file { getattr read write open };
+allow mtk_atci radio_device:dir search;
+allow mtk_atci radio_device:sock_file rw_file_perms;
+allow mtk_atcid radio_device:dir search;
+allow mtk_atcid radio_device:sock_file rw_file_perms;
+allow init mtk_atci_socket:sock_file { create setattr unlink };
+
+allow mtk_ccci_mdinit sysfs:file r_file_perms;
+allow mtk_ccci_mdinit radio_data_file:file rw_file_perms;
+allow mtk_ccci_mdinit mtk_mdlog_data_file:dir r_dir_perms;
+allow mtk_ccci_mdinit mtk_mdlog_data_file:file r_file_perms;
+allow mtk_emdlogger mtk_mdlog_data_file:dir create_dir_perms;
+allow mtk_emdlogger mtk_mdlog_data_file:file create_file_perms;
+allow mtk_emdlogger mtk_mdlog_data_file:fifo_file create_file_perms;
+
+allow mtk_aee_core_forwarder mtk_aee_core_data_file:dir create_dir_perms;
+allow mtk_aee_core_forwarder mtk_aee_core_data_file:file create_file_perms;
+allow mtk_aee_core_forwarder hal_audio_default:dir search;
+allow mtk_aee_core_forwarder hal_audio_default:file r_file_perms;

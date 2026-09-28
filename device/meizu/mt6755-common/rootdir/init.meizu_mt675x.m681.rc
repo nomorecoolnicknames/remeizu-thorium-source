@@ -1,0 +1,6 @@
+on property:sys.forge.meizu.codename=m681
+    setprop sys.forge.meizu.panel ili9885_fhd_dsi_vdo_txd1
+    setprop sys.forge.meizu.touch gt9xx
+    setprop sys.forge.meizu.charger stocktruth
+    setprop sys.forge.meizu.kernel_track 3.10.72-stocktruth
+    setprop sys.forge.meizu.bringup_state userspace-boots-display-black

@@ -1,0 +1,4 @@
+# DIAGNOSTIC core mount from M3s init.mt6755.rc:110-113.
+# Other actions/services need separate ABI/policy review.
+on fs
+    mount_all /fstab.mt6755

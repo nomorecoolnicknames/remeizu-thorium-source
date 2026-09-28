@@ -1,0 +1,2 @@
+# Intentionally empty additive policy for the M6 pure64 OMX service.
+# The base allowlist is /system/etc/seccomp_policy/mediacodec.policy.

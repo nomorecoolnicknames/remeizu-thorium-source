@@ -1,0 +1,6 @@
+# MTK audio.primary.mt6750 reads and repairs audio custom params through libnvram.
+allow audioserver radio_data_file:dir rw_dir_perms;
+allow audioserver radio_data_file:file create_file_perms;
+allow audioserver radio_data_file:lnk_file r_file_perms;
+allow audioserver mtk_ccci_aud_device:chr_file rw_file_perms;
+allow audioserver sysfs:file r_file_perms;

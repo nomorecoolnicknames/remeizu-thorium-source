@@ -1,0 +1,32 @@
+# Meizu M6 (meizu_m6) — MT6750 bin of the P10 platform. WORKING (LOS 15.1).
+LOCAL_PATH := device/meizu/meizu_m6
+TARGET_MEIZU_MT675X_DEVICE := meizu_m6
+
+-include vendor/meizu/meizu_m6/BoardConfigVendor.mk
+include device/meizu/mt6755-common/BoardConfigCommon.mk
+
+# MT6750 bin (override the mt6755 default)
+TARGET_BOARD_PLATFORM := mt6750
+TARGET_BOOTLOADER_BOARD_NAME := mt6750
+BOARD_NAME := meizu_m6
+TARGET_OTA_ASSERT_DEVICE := meizu_m6
+
+# Kernel — Phase 1: 3.18.140 (current working tree: kernel-meizu_M6-N-ex6-linux-3.18.140)
+TARGET_NO_KERNEL := false
+TARGET_KERNEL_SOURCE := kernel/meizu/mt6755
+TARGET_KERNEL_CONFIG := meizu_m6_defconfig
+# stock M6 boot.img identity
+BOARD_MKBOOTIMG_ARGS += --board 1554686824
+
+# eMMC layout (M6)
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 22020096
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 2684354560
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11683216896
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 452984832
+
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_PROVIDES_RILD := true
+ADD_RADIO_FILES := true

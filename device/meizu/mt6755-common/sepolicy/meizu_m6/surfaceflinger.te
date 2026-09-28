@@ -1,0 +1,5 @@
+allow surfaceflinger mtk_m4u_proc:file r_file_perms;
+allow surfaceflinger { mtk_ged_proc mtk_gpufreq_proc mtk_cmdq_proc }:file r_file_perms;
+allow surfaceflinger mtk_ged_proc:file ioctl;
+allow surfaceflinger mtk_cmdq_proc:file ioctl;
+allow surfaceflinger { mtk_disp_mgr_device mtk_sw_sync_device }:chr_file rw_file_perms;

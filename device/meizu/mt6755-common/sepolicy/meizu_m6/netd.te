@@ -1,0 +1,2 @@
+allow netd mtk_wmt_device:file rw_file_perms;
+allow netd mtk_wmt_device:chr_file rw_file_perms;

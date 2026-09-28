@@ -1,0 +1,4 @@
+# DIAGNOSTIC core mount skeleton from U10 init.mt6755.rc:103-106.
+# Other services and init actions require separate ABI/policy review.
+on fs
+    mount_all /fstab.mt6755

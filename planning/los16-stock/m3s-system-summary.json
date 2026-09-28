@@ -1,0 +1,17 @@
+{
+  "boot_sha256": "f0b4f31d205a2ce052bb8f0118ee89e5bca322fce5bcf2f638f04e4936205e9a",
+  "device": "m3s",
+  "expected_file_listing_sha256": "39f8a4fc2ddb6ad1523097c9eefdae4a013e9b4c1f1a3a62a04c817f4c82dbfc",
+  "inventory_sha256": "62f37a913d28e1f6af52e0471ed252ed77dea0b49d2ba77bef078660635e70eb",
+  "native_counts": {
+    "ELF32-machine40": 766,
+    "ELF64-machine183": 639
+  },
+  "native_files": 1405,
+  "native_inventory_sha256": "016c6b5a07d7ee6792a169fe45b423408cc4cf63a6521569b253bb9e470984b6",
+  "regular_files_verified": 2555,
+  "runtime_verified": false,
+  "schema_version": "remeizu.full-stock-summary.v1",
+  "symlinks": 94,
+  "vendor_ready": false
+}

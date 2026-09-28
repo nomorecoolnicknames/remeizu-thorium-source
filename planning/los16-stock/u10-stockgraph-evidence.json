@@ -1,0 +1,5075 @@
+{
+  "boot_sha256": "03bde51ce54248ac380d47adf8f37bc8a3de374b480a5bc9ef2d536682538188",
+  "ikconfig_available": false,
+  "kernel_arch": "arm64",
+  "kernel_sha256": "4631f9ba2ace6e3134eff743814d6ac58855fba1d1670eabf1359eda39628d85",
+  "kernel_string_presence": {
+    "binder.devices": false,
+    "binder_ioctl": true,
+    "binder_transaction": true,
+    "hwbinder": false,
+    "vndbinder": false
+  },
+  "native_files": {
+    "lib/egl/libGLES_mali.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_egl_libGLES_mali",
+      "sha256": "7f6136b22a107c352cb53e095ace7a65d09f2a244cb9aadf14ed0a93f229b864",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+        "libm",
+        "libui",
+        "libutils",
+        "libz",
+        "u10_stock_lib_libged",
+        "u10_stock_lib_libgpu_aux",
+        "u10_stock_lib_libgralloc_extra"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libui.so",
+          "source_candidates": [
+            {
+              "line": 16,
+              "path": "frameworks/native/libs/ui/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libz.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "external/zlib/Android.bp"
+            },
+            {
+              "line": 107,
+              "path": "external/zlib/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/hw/gralloc.mt6750.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_hw_gralloc_mt6750",
+      "sha256": "b7e81f7844cb4e227674830f1de56e88583b02a5a8d05f7b358c0bc2ef3bb1ae",
+      "shared_libraries": [
+        "libGLESv1_CM",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libion",
+        "liblog",
+        "libm",
+        "libutils",
+        "u10_stock_lib_libgralloc_extra",
+        "u10_stock_lib_libion_mtk"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libGLESv1_CM.so",
+          "source_candidates": [
+            {
+              "line": 34,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 197,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 62,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/hw/hwcomposer.mt6750.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_hw_hwcomposer_mt6750",
+      "sha256": "e963d2a72175603d3c851fc07136885da2264e897446bb3bea25449ac9d09961",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libion",
+        "libm",
+        "libsync",
+        "libutils",
+        "u10_stock_lib_libbwc",
+        "u10_stock_lib_libdpframework",
+        "u10_stock_lib_libgas",
+        "u10_stock_lib_libged",
+        "u10_stock_lib_libgem",
+        "u10_stock_lib_libgralloc_extra",
+        "u10_stock_lib_libion_mtk",
+        "u10_stock_lib_libm4u",
+        "u10_stock_lib_libperfservicenative"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/hw/lights.mt6750.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_hw_lights_mt6750",
+      "sha256": "c7c35b2cdc8e6ed1ab723096b749c21c31dd79bc366abc48b51007c9d06fd4ba",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libdl",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libbwc.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libbwc",
+      "sha256": "e465129880c672a805212fff9096c336e4b674bb352c11601daa7b91183f4770",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "libnetutils",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libnetutils.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libnetutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libdpframework.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libdpframework",
+      "sha256": "f347a5e956d9d217ba930656ef66e78d474080d206c80a49ee437bea0a245ad2",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libion",
+        "libm",
+        "libsync",
+        "libutils",
+        "u10_stock_lib_libion_mtk",
+        "u10_stock_lib_libm4u",
+        "u10_stock_lib_libpq_prot",
+        "u10_stock_lib_libpqservice",
+        "u10_stock_lib_libvcodecdrv"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libgas.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libgas",
+      "sha256": "39f17855854e5bbd23cb66f781adb38551c297c0dc0be269f5473e89f2c89385",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils",
+        "u10_stock_lib_libged",
+        "u10_stock_lib_libperfservicenative"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libged.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libged",
+      "sha256": "c6bfeb4fb9b5543673f34b15770d122ac5ef3e99aff3eab24b6727435a1c33da",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libsync",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libgem.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libgem",
+      "sha256": "ae5122d9babf7fc668d267e209dfc3e0577ccae8dc9b244a8ad0a46b6c5f73fa",
+      "shared_libraries": [
+        "libEGL",
+        "libGLESv2",
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libhardware_legacy",
+        "libion",
+        "liblog",
+        "libm",
+        "libpng",
+        "libsync",
+        "libutils",
+        "u10_stock_lib_libgralloc_extra",
+        "u10_stock_lib_libion_mtk"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libEGL.so",
+          "source_candidates": [
+            {
+              "line": 27,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 143,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 56,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libGLESv2.so",
+          "source_candidates": [
+            {
+              "line": 41,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 207,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 68,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware_legacy.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "hardware/libhardware_legacy/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libpng.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libpng/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libgpu_aux.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libgpu_aux",
+      "sha256": "cd95326255bdab3ab00e8dfa1f6ca813f190aed45acfce91e3785e95edb891bc",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+        "libm",
+        "libutils",
+        "u10_stock_lib_libdpframework",
+        "u10_stock_lib_libgralloc_extra"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libgralloc_extra.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libgralloc_extra",
+      "sha256": "f6991b5b3f2ef4e7ce4068e1534956b4925e08ddbbea0146cc71f64256aa3f1f",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libion_mtk.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libion_mtk",
+      "sha256": "e4b22e5d3a8aa49167f5c9bd918194330ad292a7e994fa8ba5422924971026c7",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libdl",
+        "libion",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libm4u.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libm4u",
+      "sha256": "92f92bdc0607982ec67249d0884afd3baa365fd30515baadf5cd12d9fddcc5a9",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libmp4enc_sa.ca7.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libmp4enc_sa_ca7",
+      "sha256": "2e7f3e11a62087f8fb17a0880d46397036a744359ffc6c0c0cd56fb64ba2ef29",
+      "shared_libraries": [
+        "libc",
+        "libcutils",
+        "liblog",
+        "libm",
+        "libstdc++",
+        "u10_stock_lib_libvcodec_oal",
+        "u10_stock_lib_libvcodec_utility"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libstdc++.so",
+          "source_candidates": [
+            {
+              "line": 1867,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2212,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libmtk_drvb.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libmtk_drvb",
+      "sha256": "617cc2546c9206f0850d6f27993c5d712a1a7064801859bab6e920a502d69e29",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libperfservicenative.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libperfservicenative",
+      "sha256": "d2998924be2334bda3c09a0c30b524b9d15c45814d10d90e1b8dbe4a66e3fbd3",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "libnativehelper",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libnativehelper.so",
+          "source_candidates": [
+            {
+              "line": 35,
+              "path": "libnativehelper/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libpq_prot.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libpq_prot",
+      "sha256": "0958812c0a8795cb751b8eb421dd58b36cb748ef420548d7a2e890a037fcae6c",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libpqservice.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libpqservice",
+      "sha256": "73bec0e0f4008d9f1f8418a3f0c649e7c6c3f19cd92b01df759ac8fc749787ba",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils",
+        "u10_stock_lib_libpq_prot"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvc1dec_sa.ca7.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvc1dec_sa_ca7",
+      "sha256": "352fb12cbe24b5f04342850d2c8066d6a432e0f51e3a9fcc0e7bdaa580b6765b",
+      "shared_libraries": [
+        "libc",
+        "libcutils",
+        "liblog",
+        "libm",
+        "libstdc++",
+        "u10_stock_lib_libvcodec_oal",
+        "u10_stock_lib_libvcodec_utility"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libstdc++.so",
+          "source_candidates": [
+            {
+              "line": 1867,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2212,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvcodec_oal.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvcodec_oal",
+      "sha256": "59a16508e1bbd0672a688be2725feb19b5aeccaa4ae5bedb13b6d7faf681d197",
+      "shared_libraries": [
+        "libc",
+        "libm",
+        "libstdc++"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libstdc++.so",
+          "source_candidates": [
+            {
+              "line": 1867,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2212,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvcodec_utility.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvcodec_utility",
+      "sha256": "0782225d8f39b23a4d1fc574efb3ee8fe7bfd7594af7b4298820778d84a2f19e",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libion",
+        "libm",
+        "u10_stock_lib_libbwc",
+        "u10_stock_lib_libion_mtk",
+        "u10_stock_lib_libm4u",
+        "u10_stock_lib_libmtk_drvb"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvcodecdrv.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvcodecdrv",
+      "sha256": "f384a9f7723fdee5d145513ed62573975b062d4403928138bba71db81d2f15bd",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "u10_stock_lib_libmp4enc_sa_ca7",
+        "u10_stock_lib_libmtk_drvb",
+        "u10_stock_lib_libvc1dec_sa_ca7",
+        "u10_stock_lib_libvcodec_oal",
+        "u10_stock_lib_libvcodec_utility",
+        "u10_stock_lib_libvp8dec_sa_ca7",
+        "u10_stock_lib_libvp8enc_sa_ca7"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvp8dec_sa.ca7.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvp8dec_sa_ca7",
+      "sha256": "08b43055ab43a6a865b9f83fef6fe123a035b9d48d16534bae517042ecb971c8",
+      "shared_libraries": [
+        "libc",
+        "libcutils",
+        "liblog",
+        "libm",
+        "libstdc++",
+        "u10_stock_lib_libvcodec_oal"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libstdc++.so",
+          "source_candidates": [
+            {
+              "line": 1867,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2212,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib/libvp8enc_sa.ca7.so": {
+      "elf_class": 32,
+      "module": "u10_stock_lib_libvp8enc_sa_ca7",
+      "sha256": "6ec7d62a69ce0d65670545553cd50b9d8a2ef8d60eac75001b5ba63131768696",
+      "shared_libraries": [
+        "libc",
+        "libcutils",
+        "liblog",
+        "libm",
+        "libstdc++",
+        "u10_stock_lib_libvcodec_oal",
+        "u10_stock_lib_libvcodec_utility"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libstdc++.so",
+          "source_candidates": [
+            {
+              "line": 1867,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2212,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/egl/libGLES_mali.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_egl_libGLES_mali",
+      "sha256": "4e74d71a63b9047d18b4a3dddf7d6d39fbe0c285b7879d2758d84e38d8ac0311",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+        "libm",
+        "libui",
+        "libutils",
+        "libz",
+        "u10_stock_lib64_libged",
+        "u10_stock_lib64_libgpu_aux",
+        "u10_stock_lib64_libgralloc_extra"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libui.so",
+          "source_candidates": [
+            {
+              "line": 16,
+              "path": "frameworks/native/libs/ui/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libz.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "external/zlib/Android.bp"
+            },
+            {
+              "line": 107,
+              "path": "external/zlib/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/hw/gralloc.mt6750.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_hw_gralloc_mt6750",
+      "sha256": "36c74e40e08dd9ad255e3a52802830684718b755ddef74fb023447ff4250c6bd",
+      "shared_libraries": [
+        "libGLESv1_CM",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libion",
+        "liblog",
+        "libm",
+        "libutils",
+        "u10_stock_lib64_libgralloc_extra",
+        "u10_stock_lib64_libion_mtk"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libGLESv1_CM.so",
+          "source_candidates": [
+            {
+              "line": 34,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 197,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 62,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/hw/hwcomposer.mt6750.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_hw_hwcomposer_mt6750",
+      "sha256": "72a689e290dc8dbb7d849cd440049edb9d8a0abd32cd03a96a8896dcd76f20e1",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libion",
+        "libm",
+        "libsync",
+        "libutils",
+        "u10_stock_lib64_libbwc",
+        "u10_stock_lib64_libdpframework",
+        "u10_stock_lib64_libgas",
+        "u10_stock_lib64_libged",
+        "u10_stock_lib64_libgem",
+        "u10_stock_lib64_libgralloc_extra",
+        "u10_stock_lib64_libion_mtk",
+        "u10_stock_lib64_libm4u",
+        "u10_stock_lib64_libperfservicenative"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/hw/lights.mt6750.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_hw_lights_mt6750",
+      "sha256": "7d26d44d746778239ead4c5535a621a0d846c7cd50861870cc96fa0eb41d3512",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libdl",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libbwc.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libbwc",
+      "sha256": "caab2799a0b0e4f8b8d37114b86686ff79acd2413c57b91e31626e9d8b1a676d",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "libnetutils",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libnetutils.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libnetutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libdpframework.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libdpframework",
+      "sha256": "5f9b5a3a8f2c26451d3d6f3354f9396b01d001b99c0809b73038f78515305d60",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libion",
+        "libm",
+        "libsync",
+        "libutils",
+        "u10_stock_lib64_libion_mtk",
+        "u10_stock_lib64_libm4u",
+        "u10_stock_lib64_libpq_prot",
+        "u10_stock_lib64_libpqservice",
+        "u10_stock_lib64_libvcodecdrv"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libgas.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libgas",
+      "sha256": "42de1b464ff33646446f70c4003fa925d0a3b6b3b3f599b4fb87b6d19f6b71d6",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils",
+        "u10_stock_lib64_libged",
+        "u10_stock_lib64_libperfservicenative"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libged.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libged",
+      "sha256": "003268b315cc80263088a35f24819a7f14d2ca9b9093df646c2ce79f12f7e00a",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libsync",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libgem.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libgem",
+      "sha256": "9e0f6d70bcce1e95bee0319f156fa8750109fa15eb4d4ce15e73447f78cc7455",
+      "shared_libraries": [
+        "libEGL",
+        "libGLESv2",
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libhardware_legacy",
+        "libion",
+        "liblog",
+        "libm",
+        "libpng",
+        "libsync",
+        "libutils",
+        "u10_stock_lib64_libgralloc_extra",
+        "u10_stock_lib64_libion_mtk"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libEGL.so",
+          "source_candidates": [
+            {
+              "line": 27,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 143,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 56,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libGLESv2.so",
+          "source_candidates": [
+            {
+              "line": 41,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 207,
+              "path": "frameworks/native/opengl/libs/Android.bp"
+            },
+            {
+              "line": 68,
+              "path": "frameworks/native/opengl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware_legacy.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "hardware/libhardware_legacy/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libpng.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libpng/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libsync.so",
+          "source_candidates": [
+            {
+              "line": 10,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 24,
+              "path": "system/core/libsync/Android.bp"
+            },
+            {
+              "line": 29,
+              "path": "system/core/libsync/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libgpu_aux.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libgpu_aux",
+      "sha256": "08e616a941234c4e76970000cec82b490d4888944a9ffe3aa5b04f93eded9d4c",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+        "libm",
+        "libutils",
+        "u10_stock_lib64_libdpframework",
+        "u10_stock_lib64_libgralloc_extra"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libgralloc_extra.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libgralloc_extra",
+      "sha256": "7e744db2fa0c9232e9530ab2597c1652824fc6a24fbfe194fca25fdd9bf44bfc",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libhardware.so",
+          "source_candidates": [
+            {
+              "line": 23,
+              "path": "hardware/libhardware/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libion_mtk.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libion_mtk",
+      "sha256": "eff63d36650bc1cb5e5ff0cc736057c9cf50e1c77375f09b923c99a499522658",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libdl",
+        "libion",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libm4u.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libm4u",
+      "sha256": "bdd43e950891e1d7f1fe99c4dff87116d3742f501d25f1734e5df682450f7f49",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libmtk_drvb.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libmtk_drvb",
+      "sha256": "25804f781eb643055663a6714e5d4dd42e716c0aa8c9c35b27fbd6fa4655110d",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libperfservicenative.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libperfservicenative",
+      "sha256": "26e62d1b944d37a8b876560e0521be5ace15a17e388df610103f9e73f9c5c097",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "libnativehelper",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libnativehelper.so",
+          "source_candidates": [
+            {
+              "line": 35,
+              "path": "libnativehelper/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libpq_prot.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libpq_prot",
+      "sha256": "d12f4403206700f084c444cca34abd39b7c7245bd27d9026fe139fde125f5eaf",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libpqservice.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libpqservice",
+      "sha256": "4260e7d6a83f205e1cf68af8037c5329618dd9e3aaaedef93482272d133d7327",
+      "shared_libraries": [
+        "libbinder",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libm",
+        "libutils",
+        "u10_stock_lib64_libpq_prot"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libbinder.so",
+          "source_candidates": [
+            {
+              "line": 32,
+              "path": "frameworks/native/libs/binder/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libutils.so",
+          "source_candidates": [
+            {
+              "line": 121,
+              "path": "system/core/libutils/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libvcodec_utility.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libvcodec_utility",
+      "sha256": "092a15505f84db9081afc8f9082ebabc1e5493b71c16bb12863f5a0987c1d66b",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "libion",
+        "libm",
+        "u10_stock_lib64_libbwc",
+        "u10_stock_lib64_libion_mtk",
+        "u10_stock_lib64_libm4u",
+        "u10_stock_lib64_libmtk_drvb"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libion.so",
+          "source_candidates": [
+            {
+              "line": 2,
+              "path": "system/core/libion/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    },
+    "lib64/libvcodecdrv.so": {
+      "elf_class": 64,
+      "module": "u10_stock_lib64_libvcodecdrv",
+      "sha256": "4a1cbaf7e2dd3aa9140e277754d265ca9bd268b936924ab2e12d862f4401b731",
+      "shared_libraries": [
+        "libc",
+        "libc++",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libm",
+        "u10_stock_lib64_libmtk_drvb",
+        "u10_stock_lib64_libvcodec_utility"
+      ],
+      "unverified_platform_abi": [
+        {
+          "needed": "libc++.so",
+          "source_candidates": [
+            {
+              "line": 77,
+              "path": "external/libcxx/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libc.so",
+          "source_candidates": [
+            {
+              "line": 1751,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2155,
+              "path": "bionic/libc/Android.bp"
+            },
+            {
+              "line": 2161,
+              "path": "bionic/libc/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libcutils.so",
+          "source_candidates": [
+            {
+              "line": 51,
+              "path": "system/core/libcutils/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libdl.so",
+          "source_candidates": [
+            {
+              "line": 30,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 100,
+              "path": "bionic/libdl/Android.bp"
+            },
+            {
+              "line": 106,
+              "path": "bionic/libdl/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "liblog.so",
+          "source_candidates": [
+            {
+              "line": 66,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 127,
+              "path": "system/core/liblog/Android.bp"
+            },
+            {
+              "line": 134,
+              "path": "system/core/liblog/Android.bp"
+            }
+          ]
+        },
+        {
+          "needed": "libm.so",
+          "source_candidates": [
+            {
+              "line": 7,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 539,
+              "path": "bionic/libm/Android.bp"
+            },
+            {
+              "line": 545,
+              "path": "bionic/libm/Android.bp"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ramdisk_sha256": "d425477326e8c202506725ddb8f1db3cd3ad90f432a77a0c3b5d338102697912",
+  "runtime_verified": false,
+  "schema_version": "remeizu.u10.stockgraph.v1",
+  "soong_providers": {
+    "lib/libnvram.so": {
+      "elf_class": 32,
+      "installed_by_diagnostic_product": false,
+      "module": "libnvram",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libcustom_nvram.so",
+        "libcutils.so",
+        "libdl.so",
+        "libm.so",
+        "libnvram_platform.so",
+        "libnvram_sec.so"
+      ],
+      "runtime_abi_verified": false,
+      "sha256": "4c6b19193c85d12318e4c8e5d14fe3d46fa3fc7d5bcee737f66c8718c3d27e11"
+    },
+    "lib64/libnvram.so": {
+      "elf_class": 64,
+      "installed_by_diagnostic_product": false,
+      "module": "libnvram",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libcustom_nvram.so",
+        "libcutils.so",
+        "libdl.so",
+        "libm.so",
+        "libnvram_platform.so",
+        "libnvram_sec.so"
+      ],
+      "runtime_abi_verified": false,
+      "sha256": "7d299d8b4f5a1d47340d4ec43b4ea245fe5724e13f7a683c45e23ca2a80f5b52"
+    }
+  },
+  "stock_binder_abi_verified": false,
+  "stock_fstab_sha256": "e1e9c8c6e49b9d9c14781d159c334bf985cbf1828e5aaea7c0314f6e6de883d4",
+  "stock_init_sha256": "78d90ee38268535ff094dd0e28bb2697a64ff3439308ed9634b20b0e05ac4a4a",
+  "stock_ueventd_sha256": "e47bf1e820e3c9d689a85770fd5e88b51d10f4c526ef4a793fb5927b30e40e76"
+}

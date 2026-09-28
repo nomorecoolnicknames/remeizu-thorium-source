@@ -1,0 +1,3 @@
+# DIAGNOSTIC board fragment from M3s stock ueventd.rc:209.
+# Stock has no ueventd.mt6755.rc and no /dev/ion rule; do not copy U10 rules.
+/dev/mali 0666 system graphics

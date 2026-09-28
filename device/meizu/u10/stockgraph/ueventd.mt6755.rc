@@ -1,0 +1,3 @@
+# U10 stock ueventd.mt6755.rc:107/110, paired with its own kernel/graphics.
+/dev/mali 0666 system graphics
+/dev/ion 0666 system graphics

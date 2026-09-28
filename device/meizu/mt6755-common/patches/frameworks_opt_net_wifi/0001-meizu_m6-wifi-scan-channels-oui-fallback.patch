@@ -1,0 +1,126 @@
+diff --git a/service/java/com/android/server/wifi/WifiApConfigStore.java b/service/java/com/android/server/wifi/WifiApConfigStore.java
+index 98a5932..e5f9aff 100644
+--- a/service/java/com/android/server/wifi/WifiApConfigStore.java
++++ b/service/java/com/android/server/wifi/WifiApConfigStore.java
+@@ -86,11 +86,18 @@ public class WifiApConfigStore {
+                 R.string.config_wifi_framework_sap_2G_channel_list);
+         Log.d(TAG, "2G band allowed channels are:" + ap2GChannelListStr);
+ 
+-        if (ap2GChannelListStr != null) {
++        if (!TextUtils.isEmpty(ap2GChannelListStr)) {
+             mAllowed2GChannel = new ArrayList<Integer>();
+             String channelList[] = ap2GChannelListStr.split(",");
+             for (String tmp : channelList) {
+-                mAllowed2GChannel.add(Integer.parseInt(tmp));
++                try {
++                    mAllowed2GChannel.add(Integer.parseInt(tmp.trim()));
++                } catch (NumberFormatException e) {
++                    Log.w(TAG, "Ignoring invalid 2G band channel: " + tmp);
++                }
++            }
++            if (mAllowed2GChannel.isEmpty()) {
++                mAllowed2GChannel = null;
+             }
+         }
+ 
+diff --git a/service/java/com/android/server/wifi/WifiStateMachine.java b/service/java/com/android/server/wifi/WifiStateMachine.java
+index 44e7e02..baf1ca7 100644
+--- a/service/java/com/android/server/wifi/WifiStateMachine.java
++++ b/service/java/com/android/server/wifi/WifiStateMachine.java
+@@ -1295,16 +1295,43 @@ public class WifiStateMachine extends StateMachine implements WifiNative.WifiRss
+         if (TextUtils.isEmpty(oui)) {
+             oui = GOOGLE_OUI;
+         }
+-        String[] ouiParts = oui.split("-");
+         byte[] ouiBytes = new byte[3];
+-        ouiBytes[0] = (byte) (Integer.parseInt(ouiParts[0], 16) & 0xFF);
+-        ouiBytes[1] = (byte) (Integer.parseInt(ouiParts[1], 16) & 0xFF);
+-        ouiBytes[2] = (byte) (Integer.parseInt(ouiParts[2], 16) & 0xFF);
++        oui = oui.trim();
++        if (!parseMacOui(oui, ouiBytes)) {
++            loge("Invalid config_wifi_random_mac_oui '" + oui + "', using " + GOOGLE_OUI);
++            oui = GOOGLE_OUI;
++            if (!parseMacOui(oui, ouiBytes)) {
++                loge("Invalid fallback OUI " + GOOGLE_OUI);
++                return false;
++            }
++        }
+ 
+         logd("Setting OUI to " + oui);
+         return mWifiNative.setScanningMacOui(ouiBytes);
+     }
+ 
++    private boolean parseMacOui(String oui, byte[] ouiBytes) {
++        if (TextUtils.isEmpty(oui)) {
++            return false;
++        }
++        String[] ouiParts = oui.split("-");
++        if (ouiParts.length != 3) {
++            return false;
++        }
++        try {
++            for (int i = 0; i < ouiParts.length; i++) {
++                int ouiPart = Integer.parseInt(ouiParts[i], 16);
++                if (ouiPart < 0 || ouiPart > 0xFF) {
++                    return false;
++                }
++                ouiBytes[i] = (byte) ouiPart;
++            }
++            return true;
++        } catch (NumberFormatException e) {
++            return false;
++        }
++    }
++
+     /**
+      * Helper method to lookup the framework network ID of the network currently configured in
+      * wpa_supplicant using the provided supplicant network ID. This is needed for translating the
+diff --git a/service/java/com/android/server/wifi/WifiVendorHal.java b/service/java/com/android/server/wifi/WifiVendorHal.java
+index 12674aa..5c2db71 100644
+--- a/service/java/com/android/server/wifi/WifiVendorHal.java
++++ b/service/java/com/android/server/wifi/WifiVendorHal.java
+@@ -1488,7 +1488,15 @@ public class WifiVendorHal {
+                         box.value = intArrayFromArrayList(frequencies);
+                     });
+                 }
+-                return box.value;
++                if (box.value != null && box.value.length > 0) {
++                    return box.value;
++                }
++                // Build Station 2026-06-22: the MT6755 vendor HAL returns ERROR_NOT_SUPPORTED for
++                // getValidFrequenciesForBand, so wificond logs "no available channel to scan" and the
++                // Settings WiFi list stays empty even though the connsys driver scans fine via nl80211
++                // (wpa_cli scan finds APs). Fall back to a default channel list per band so the
++                // framework scanner has channels. (BRINGUP_STATE 2026-06-21 open issue.)
++                return getDefaultChannelsForBand(band);
+             } catch (RemoteException e) {
+                 handleRemoteException(e);
+                 return null;
+@@ -1496,6 +1504,27 @@ public class WifiVendorHal {
+         }
+     }
+ 
++    /**
++     * Default channel list when the vendor HAL cannot enumerate channels
++     * (getValidFrequenciesForBand -> ERROR_NOT_SUPPORTED on this MTK driver).
++     * band is a WifiScanner.WIFI_BAND_* bitmask (bit0=2.4GHz, bit1=5GHz, bit2=5GHz-DFS).
++     */
++    private int[] getDefaultChannelsForBand(int band) {
++        ArrayList<Integer> f = new ArrayList<>();
++        if ((band & 0x1) != 0) {                       // 2.4 GHz ch 1-13
++            for (int ch = 1; ch <= 13; ch++) f.add(2407 + ch * 5);
++        }
++        if ((band & 0x2) != 0) {                       // 5 GHz non-DFS
++            int[] c = {5180, 5200, 5220, 5240, 5745, 5765, 5785, 5805, 5825};
++            for (int x : c) f.add(x);
++        }
++        if ((band & 0x4) != 0) {                       // 5 GHz DFS
++            int[] c = {5260, 5280, 5300, 5320, 5500, 5520, 5540, 5560, 5580, 5660, 5680, 5700};
++            for (int x : c) f.add(x);
++        }
++        return intArrayFromArrayList(f);
++    }
++
+     private int[] intArrayFromArrayList(ArrayList<Integer> in) {
+         int[] ans = new int[in.size()];
+         int i = 0;

@@ -1,0 +1,5 @@
+# DIAGNOSTIC core mount skeleton, derived from U20 stock init.mt6755.rc:83-89.
+# Remaining stock services/init actions await separate ABI and policy review.
+# This is not a claim that the stock kernel supports Android 9 userspace.
+on fs
+    mount_all /fstab.mt6755

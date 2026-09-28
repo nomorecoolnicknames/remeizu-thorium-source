@@ -1,0 +1,30 @@
+#
+# XLOG service configuration
+#
+service xlogboot /system/bin/xlog boot
+    user root
+    oneshot
+    disabled
+
+service xlogdebugchanged /system/bin/xlog debug-changed
+    user root
+    oneshot
+    disabled
+
+# on property:persist.mtk.aee.mode=1
+#    # forge: xlog binary absent in M6 dump
+
+# on property:persist.mtk.aee.mode=2
+#    # forge: xlog binary absent in M6 dump
+
+# on property:persist.mtk.aee.mode=3
+#    # forge: xlog binary absent in M6 dump
+
+# on property:persist.mtk.aee.mode=4
+#    # forge: xlog binary absent in M6 dump
+
+# on property:init.svc.adbd=running
+#    # forge: xlog binary absent in M6 dump
+
+# on property:init.svc.adbd=stopped
+#    # forge: xlog binary absent in M6 dump

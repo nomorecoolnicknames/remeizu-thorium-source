@@ -1,0 +1,6 @@
+genfscon proc /gpufreq u:object_r:mtk_gpufreq_proc:s0
+genfscon proc /mtk_cmdq u:object_r:mtk_cmdq_proc:s0
+genfscon sysfs /devices/virtual/misc/hwmsensor u:object_r:mtk_sensor_sysfs:s0
+genfscon sysfs /devices/virtual/misc/m_acc_misc u:object_r:mtk_sensor_sysfs:s0
+genfscon sysfs /bus/platform/drivers/dev_info u:object_r:mtk_devinfo_sysfs:s0
+genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight u:object_r:mtk_backlight_sysfs:s0

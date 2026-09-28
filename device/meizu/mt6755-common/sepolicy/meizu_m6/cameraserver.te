@@ -1,0 +1,2 @@
+allow cameraserver mtk_camera_device:chr_file rw_file_perms;
+allow cameraserver sysfs:file r_file_perms;

@@ -1,0 +1,6 @@
+on property:sys.forge.meizu.codename=l681
+    setprop sys.forge.meizu.panel l681-stocktruth
+    setprop sys.forge.meizu.touch l681-stocktruth
+    setprop sys.forge.meizu.charger stocktruth
+    setprop sys.forge.meizu.kernel_track 3.10.72-stocktruth
+    setprop sys.forge.meizu.bringup_state near-working

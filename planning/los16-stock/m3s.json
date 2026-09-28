@@ -1,0 +1,3223 @@
+{
+  "blobs": [
+    {
+      "path": "etc/firmware/ROMv2_lm_patch_1_0_hdr.bin",
+      "sha256": "3124f1f8b2e5ad4d78d3454d712ebb4b7177cf4b67b31f44197d9b3a792d181d",
+      "size": 123416
+    },
+    {
+      "path": "etc/firmware/ROMv2_lm_patch_1_1_hdr.bin",
+      "sha256": "48ee5c13fcd53aef85a5fd2b6793055ec480631e9cea41804dfd7eaef52a79f0",
+      "size": 50312
+    },
+    {
+      "path": "etc/firmware/WIFI_RAM_CODE_6755",
+      "sha256": "559aa5f26e221ad3901b4fc3f9ac3b34bee5ba149b79425bcea244794bc57a8b",
+      "size": 410384
+    },
+    {
+      "path": "etc/firmware/WMT_SOC.cfg",
+      "sha256": "f4a59b622a4e0c1470e475ce33f3edae43b27f1fbdeba54dc7cf07503d132880",
+      "size": 80
+    },
+    {
+      "path": "etc/firmware/catcher_filter_1_ulwctg_n.bin",
+      "sha256": "bc76ad44dee9f7b160d5bcf54943e1c2560680c2c154f9db0d9eb95ca36b64f3",
+      "size": 8732
+    },
+    {
+      "path": "etc/firmware/catcher_filter_3_3g_n.bin",
+      "sha256": "367a18803e6aa1476ed27069687e98d1d95390cee357614206ab78d24ceb5b8d",
+      "size": 7254
+    },
+    {
+      "path": "etc/firmware/dsp_1_ulwctg_n.bin",
+      "sha256": "2ddc97c099326bff9201c18fd933a787a0a9279c7c66b85309c86ff8a58d7cce",
+      "size": 986336
+    },
+    {
+      "path": "etc/firmware/em_filter_1_ulwctg_n.bin",
+      "sha256": "dfd5454b651df285635dc29be7dd5c35f37d7214c9f6603eede9aa1d11090ddd",
+      "size": 2136
+    },
+    {
+      "path": "etc/firmware/modem_1_ulwctg_n.img",
+      "sha256": "eb345b4f55869bfb7ee786b1d54eda8bd8f0f73bbdbcefb0878719771ceefc78",
+      "size": 16335888
+    },
+    {
+      "path": "etc/firmware/modem_3_3g_n.img",
+      "sha256": "ac938abf3b940e3139e41f85cdaaca322773a8ab8f82aedbe3c6f92b4dda4015",
+      "size": 4646832
+    },
+    {
+      "path": "etc/firmware/pcm_deepidle_by_mp1_m.bin",
+      "sha256": "eb7aea3697e4c6f8936d7cb4af3a4bc23f1f23e3dc518ce6cfde1259312bdabd",
+      "size": 5320
+    },
+    {
+      "path": "etc/firmware/pcm_deepidle_m.bin",
+      "sha256": "4b82ee76f6ddeb91cdcf444ee02222cd6c19a40d0872b8b7fcfa50770847c846",
+      "size": 5313
+    },
+    {
+      "path": "etc/firmware/pcm_mcdi_ddrdfs_m.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "etc/firmware/pcm_sodi_ddrdfs_by_mp1_m.bin",
+      "sha256": "7c3fd18117145e1e4f139f635e59e56464ae17148370df49ce0006444fca31be",
+      "size": 7751
+    },
+    {
+      "path": "etc/firmware/pcm_sodi_ddrdfs_m.bin",
+      "sha256": "d8ce6bebeb89ae3fc1eeafcb6e5083ebb33888ab3b312ece8d894a8ea59b3c00",
+      "size": 7744
+    },
+    {
+      "path": "etc/firmware/pcm_suspend_by_mp1_m.bin",
+      "sha256": "24b994f1e11f580c6f592cdef680b0e290495bf10b7cbb7af432daa4e59be253",
+      "size": 5319
+    },
+    {
+      "path": "etc/firmware/pcm_suspend_m.bin",
+      "sha256": "706a7be966bb6c02b0e01258eae488e827e3ab3e427090a1f75a0ccf4a1bc6c4",
+      "size": 5312
+    },
+    {
+      "path": "etc/permissions/android.hardware.bluetooth.xml",
+      "sha256": "08305a972411f4f0068c23e77e00154826f5335a3e12fc1d6042ca130e1db3fd",
+      "size": 820
+    },
+    {
+      "path": "etc/permissions/android.hardware.bluetooth_le.xml",
+      "sha256": "845f59a4e13fbdda3b48c30a3a0510db45a261af15f31d4925c939dc48d8e3e0",
+      "size": 830
+    },
+    {
+      "path": "etc/permissions/android.hardware.camera.xml",
+      "sha256": "db2cdea9d95db016fc619187f4bc05de46fe1311a3bb388bfc05bbc7b5f08796",
+      "size": 1096
+    },
+    {
+      "path": "etc/permissions/android.hardware.consumerir.xml",
+      "sha256": "58f05ae39fc2eb54141c72497c17ffa54b4678a51b6a4dba5f91c7c54d2d350a",
+      "size": 880
+    },
+    {
+      "path": "etc/permissions/android.hardware.faketouch.xml",
+      "sha256": "3ffa39df204c4897d21faaf280dff7e011018b64a0e8aa84874c9a690200f807",
+      "size": 927
+    },
+    {
+      "path": "etc/permissions/android.hardware.location.gps.xml",
+      "sha256": "1b6a9066eb058e5a44132efd5c71a557b53688a74a3c14835b1ecd70c69ebeb2",
+      "size": 885
+    },
+    {
+      "path": "etc/permissions/android.hardware.microphone.xml",
+      "sha256": "f63957b7d1dc3c7a94ebe7408c11b977339698130d1c2a58858250fd17ae1d8f",
+      "size": 841
+    },
+    {
+      "path": "etc/permissions/android.hardware.sensor.accelerometer.xml",
+      "sha256": "03a2f333ebc3f5441647091b5a116086208202488cf2a12090544e3d548a619b",
+      "size": 824
+    },
+    {
+      "path": "etc/permissions/android.hardware.sensor.compass.xml",
+      "sha256": "164e93e847646f073519302f6bf255e1f49fbea670220440dfc2350e6cd61fb1",
+      "size": 804
+    },
+    {
+      "path": "etc/permissions/android.hardware.sensor.gyroscope.xml",
+      "sha256": "d5a02589eb5e38dfb4b899f66daf42da496e64580cb8c72501c43e107699728a",
+      "size": 806
+    },
+    {
+      "path": "etc/permissions/android.hardware.sensor.light.xml",
+      "sha256": "548fe200278a6c9ba393066b3eb1a4151c8ea452efe5c7acaa4aee1f17046ce3",
+      "size": 816
+    },
+    {
+      "path": "etc/permissions/android.hardware.sensor.proximity.xml",
+      "sha256": "0881f1838f0aceeb9d0af8598c2a4205c36367659786f63ce017567d86f99614",
+      "size": 815
+    },
+    {
+      "path": "etc/permissions/android.hardware.telephony.cdma.xml",
+      "sha256": "ad1c7b4b0a64fab4c2b644ae3a443f31bd47cc28e91e61d3d3c589862086ab33",
+      "size": 883
+    },
+    {
+      "path": "etc/permissions/android.hardware.telephony.gsm.xml",
+      "sha256": "1e93627316d371ebaf1e5aad14b247530587780f3034b1ba136cbd66fc42dd48",
+      "size": 881
+    },
+    {
+      "path": "etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml",
+      "sha256": "affe9bb9be9e0bf57c0f59524c11a7eb8672d4cbea60ea9895ac8c78f96b9de5",
+      "size": 1076
+    },
+    {
+      "path": "etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml",
+      "sha256": "9fb2b20e77f0104e5b1d01630f8af69e1d6b24baae47a1a5ca91e9c0f0aee30c",
+      "size": 1144
+    },
+    {
+      "path": "etc/permissions/android.hardware.touchscreen.multitouch.xml",
+      "sha256": "a97185f87f4438188267a0cf004e17f60ee7483555d8ab3c11d093767585fc5a",
+      "size": 1035
+    },
+    {
+      "path": "etc/permissions/android.hardware.touchscreen.xml",
+      "sha256": "883aa2f7c65d080edd25f367c416c8875e6eff1bf3e3ef397fc7deb08b3b3b6e",
+      "size": 909
+    },
+    {
+      "path": "etc/permissions/android.hardware.usb.accessory.xml",
+      "sha256": "67049dcdf068875bb6525966b854764c2c539965768fb02007ca9339c29ebf19",
+      "size": 975
+    },
+    {
+      "path": "etc/permissions/android.hardware.usb.host.xml",
+      "sha256": "a1e7f5a1014066e65bd674967bfcd84f9228e1d549af063a8d4874fa113a2c8c",
+      "size": 868
+    },
+    {
+      "path": "etc/permissions/android.hardware.wifi.direct.xml",
+      "sha256": "88816300cf08cae66fb8346550d3a8cb27b7ac679827ca86ef5840aedc472cd5",
+      "size": 843
+    },
+    {
+      "path": "etc/permissions/android.hardware.wifi.xml",
+      "sha256": "c1315743359a2c41344582074fd6238ce22600c0b28183e2901d9075585ff0a2",
+      "size": 829
+    },
+    {
+      "path": "etc/permissions/android.software.device_admin.xml",
+      "sha256": "d6ed4f27ddecc19a8e8092886aa9a0713f9b2c69519f3405fbb773b9675fe880",
+      "size": 753
+    },
+    {
+      "path": "etc/permissions/android.software.live_wallpaper.xml",
+      "sha256": "055df9cecfb48a0d39dd572f695db812d032d81f68c83e76a8bab16b274caf7a",
+      "size": 1050
+    },
+    {
+      "path": "etc/permissions/android.software.managed_users.xml",
+      "sha256": "30322d49e6108ea9ca6b46c7bf8bd1cf5674a5776c4bcff3b297aeeaba6c86ca",
+      "size": 843
+    },
+    {
+      "path": "etc/permissions/android.software.sip.voip.xml",
+      "sha256": "04c279b39e0c7c00c5a5de76cf2a23afb36dd1188c60322e9f8362ae9287ebd9",
+      "size": 880
+    },
+    {
+      "path": "etc/permissions/android.software.sip.xml",
+      "sha256": "31fac728e53478ba071b71762631b75a969cc0e0d4f66fb8867fc22a40d674dd",
+      "size": 829
+    },
+    {
+      "path": "etc/permissions/android.software.webview.xml",
+      "sha256": "2e293ff6ea02063ea3835e42e7a5c17fc5a15a46fff0af486c19dcb5b92fe821",
+      "size": 748
+    },
+    {
+      "path": "etc/permissions/com.android.location.provider.xml",
+      "sha256": "9ccb80158de3aa3d3b0385d320b537526328530cf62522564ab1c56c97f67e74",
+      "size": 828
+    },
+    {
+      "path": "etc/permissions/com.android.media.remotedisplay.xml",
+      "sha256": "4aab4f7a0d722018682d71e0696715b00648433dcfdd4174cb10245ee8302d80",
+      "size": 828
+    },
+    {
+      "path": "etc/permissions/com.android.mediadrm.signer.xml",
+      "sha256": "d1f05b025acc4a39e8139a3f71a277e13edc05f4dbc3e14b5c2197b1651b0d93",
+      "size": 820
+    },
+    {
+      "path": "etc/permissions/com.google.android.maps.xml",
+      "sha256": "51110dd5c9b92983c5d36684fb0539642bc27e1d67f81d36e4698eddd5405eef",
+      "size": 816
+    },
+    {
+      "path": "etc/permissions/com.google.widevine.software.drm.xml",
+      "sha256": "f2b61f6130513d484db2d0a2ef25861f7b46a6b2396a853b7cc9ffb5b4ee41a0",
+      "size": 261
+    },
+    {
+      "path": "etc/permissions/com.meizu.camera.xml",
+      "sha256": "0558473b4b0463ae05c190648dc2923e41646176995754fd2dee10baaf241f99",
+      "size": 798
+    },
+    {
+      "path": "etc/permissions/handheld_core_hardware.xml",
+      "sha256": "7015306009b210afab5446672de3c44b26b872f305546317ded0c39cca67827f",
+      "size": 3924
+    },
+    {
+      "path": "etc/permissions/media_codecs.xml",
+      "sha256": "da5e1f32bb3e72539190b3d27b2561383fed23834057675635baf455b0159beb",
+      "size": 13795
+    },
+    {
+      "path": "etc/permissions/org.simalliance.openmobileapi.xml",
+      "sha256": "e3e48c0827f0404755117478616c039bbb09e638be6c681a6f359f8de9d9c5c1",
+      "size": 824
+    },
+    {
+      "path": "etc/permissions/platform.xml",
+      "sha256": "f3b84bb6b65f7ebdf2adbddbac1fc0d831a09530fec975b80fcc71205c63fff8",
+      "size": 7093
+    },
+    {
+      "path": "etc/wifi/p2p_supplicant_overlay.conf",
+      "sha256": "21d030d7722662089d9e78eb7a1d7d1aec9b5c68e7c3a6a583280721733fcb3f",
+      "size": 115
+    },
+    {
+      "path": "etc/wifi/wpa_supplicant.conf",
+      "sha256": "119857c7f3e5dedff458c82810806f133d19621d128c2c564966b577631d9604",
+      "size": 305
+    },
+    {
+      "path": "etc/wifi/wpa_supplicant_overlay.conf",
+      "sha256": "abeb74602cba6c94899468bda58fcb4ad77866676be372cf199b87599c623529",
+      "size": 102
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/audio.primary.default.so",
+      "sha256": "34eac0a2857fa0987bd9d68ee7df96a70e589cf65b38612c42a295c6053f4383",
+      "size": 5316
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libaed.so",
+        "libaudio_param_parser.so",
+        "libaudiocompensationfilter.so",
+        "libaudiocomponentengine.so",
+        "libaudiocustparam.so",
+        "libaudiodcrflt.so",
+        "libaudiosetting.so",
+        "libaudioutils.so",
+        "libbinder.so",
+        "libblisrc.so",
+        "libbluetoothdrv.so",
+        "libc.so",
+        "libc2kutils.so",
+        "libcustom_nvram.so",
+        "libcutils.so",
+        "libcvsd_mtk.so",
+        "libdl.so",
+        "libhardware.so",
+        "libhardware_legacy.so",
+        "libm.so",
+        "libmedia.so",
+        "libmsbc_mtk.so",
+        "libnvram.so",
+        "libpowermanager.so",
+        "libspeech_enh_lib.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libtinyalsa.so",
+        "libtinycompress.so",
+        "libtinyxml.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/audio.primary.mt6750.so",
+      "sha256": "efd310877f1b9532e6cc349cc507946bdb215a4921a6c5473bfd9a014c0f297c",
+      "size": 1225084
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libnbaio.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/audio.r_submix.default.so",
+      "sha256": "d41c0c0a26f58505f0035965204051e9e34b148fe13ee313e266a5b6c6d4339d",
+      "size": 25968
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libaudioutils.so",
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libtinyalsa.so"
+      ],
+      "path": "lib/hw/audio.usb.default.so",
+      "sha256": "4ec7cf9fd8ac2becffa8bdd685e5fe79081cafba4e092239969d31aa0b43208f",
+      "size": 13588
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/audio_policy.default.so",
+      "sha256": "53f764ca5798560f5726e2d688ebd02f866b101e3ec45f3793e57bfc4250d7ef",
+      "size": 87468
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/audio_policy.stub.so",
+      "sha256": "c2576865cbc9d8d4e7245122b5a573d8c342970c26c7f74af7fa3752e3feb091",
+      "size": 5316
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so",
+        "libpower.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/bluetooth.default.so",
+      "sha256": "2fa69ba2de89e71534dc0b1d0ad5a34902ded85cafb68ccf6be6d083cf1bb5c3",
+      "size": 1350184
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcamera_metadata.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libsync.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/camera.default.so",
+      "sha256": "8d7fb649ee361bbca3a850d4dffc4c73fe252f19822af6719776fc8715102632",
+      "size": 21956
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libbinder.so",
+        "libc.so",
+        "libcam.halsensor.so",
+        "libcam.metadataprovider.so",
+        "libcam_hwutils.so",
+        "libcam_utils.so",
+        "libcamera_client.so",
+        "libcamera_client_mtk.so",
+        "libcutils.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so",
+        "libmeizucamera.so",
+        "libmmsdkservice.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/camera.mt6750.so",
+      "sha256": "d34f6533f0f3aeaecb4a8d209a3074d82c45454bb06bbca1f5b56ef3f8c9eacc",
+      "size": 34268
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/consumerir.mt6750.so",
+      "sha256": "0f51ba85a6bc7028504a87f941d6c2c04ffb978523665b58ea2dc97d928a59c7",
+      "size": 9716
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libandroid_runtime.so",
+        "libc.so",
+        "libcrypto.so",
+        "libcurl.so",
+        "libcutils.so",
+        "libhardware.so",
+        "liblog.so",
+        "libm.so",
+        "libnativehelper.so",
+        "libssl.so",
+        "libstdc++.so",
+        "libz.so"
+      ],
+      "path": "lib/hw/gps.default.so",
+      "sha256": "d63c0516acae12eaddb73b3117b123905482f32e35b9a4d4e615ea93ab982632",
+      "size": 83496
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/gralloc.default.so",
+      "sha256": "89af2b6db5dd74fd9e5d3e2c55fd866aaf56ba2c18c16e4bd5da60323b217970",
+      "size": 9744
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libGLESv1_CM.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libgralloc_extra.so",
+        "libhardware.so",
+        "libion.so",
+        "libion_mtk.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/gralloc.mt6750.so",
+      "sha256": "3d458ac719c623146b53cc81f3ab13df6f46852d053fd7ce3f32f4d2567ca425",
+      "size": 39628
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libbwc.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libdpframework.so",
+        "libgas.so",
+        "libged.so",
+        "libgralloc_extra.so",
+        "libgui_ext.so",
+        "libhardware.so",
+        "libion.so",
+        "libion_mtk.so",
+        "libm.so",
+        "libm4u.so",
+        "libperfservicenative.so",
+        "libstdc++.so",
+        "libsync.so",
+        "libui.so",
+        "libui_ext.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/hwcomposer.mt6750.so",
+      "sha256": "4aa0b2e28a3e240db8ef69ccc201828879592bc7bcb26d76aa1485b29aa829f5",
+      "size": 198068
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcrypto.so",
+        "libkeystore_binder.so",
+        "liblog.so",
+        "libm.so",
+        "libsoftkeymaster.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/keystore.default.so",
+      "sha256": "de792bfeaa9798e146b30c4a05619f982fcdb2a0418fff533d081b2bab8aa9a1",
+      "size": 5316
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libMcClient.so",
+        "libMcTeeKeymaster.so",
+        "libc.so",
+        "libcrypto.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/keystore.mt6750.so",
+      "sha256": "bd0c00a383920a5552303aed70855fe1c6b548cd1e442c6d9a3f3cdda67218a8",
+      "size": 9412
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/lights.default.so",
+      "sha256": "db2332fae0e306fc8339e1300465e9cea5bacc8da89fd1d627afd84c746cb9d3",
+      "size": 9520
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/local_time.default.so",
+      "sha256": "167b75705b2d20821118b59a008cb5e914f77b146d3e95f1b68e4b274a3047c0",
+      "size": 5316
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libaed.so",
+        "libbinder.so",
+        "libc.so",
+        "libcam.camnode.so",
+        "libcam.camshot.so",
+        "libcam.common.meizu.so",
+        "libcam.exif.so",
+        "libcam.exif.v3.so",
+        "libcam.halsensor.so",
+        "libcam.iopipe.so",
+        "libcam.paramsmgr.so",
+        "libcam1_utils.so",
+        "libcam_hwutils.so",
+        "libcam_mmp.so",
+        "libcam_utils.so",
+        "libcamdrv.so",
+        "libcamera_client.so",
+        "libcamera_client_mtk.so",
+        "libcameracustom.so",
+        "libcutils.so",
+        "libdl.so",
+        "libfeatureio.featurefactory.so",
+        "libfeatureio.so",
+        "libfilter_effects.so",
+        "liblog.so",
+        "libm.so",
+        "libperfservicenative.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/mmsdk.default.so",
+      "sha256": "434b0bf4ee4b5b34cdd19bfe02fb917851508822c7ff50f8e280f7c3b3dd1b41",
+      "size": 206332
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/power.default.so",
+      "sha256": "69e4675096e4faf35f9619635158378760373446c40fadfb259c7e3153ddfc94",
+      "size": 5324
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib/hw/sensors.mt6750.so",
+      "sha256": "0a07d162e259414cf4606f365ce21582e78216697a8d6d68b617c0e1bd2804c1",
+      "size": 116756
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib/hw/vibrator.default.so",
+      "sha256": "2c0c53db15c9fe900b25846a368a00e3ef4a8d99345d6af8f071a4010c68371f",
+      "size": 5316
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/audio.primary.default.so",
+      "sha256": "1c9039816b274e51ebda0d3197773348e86d65cb80460da71230dbdcf1cb92c4",
+      "size": 9864
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libaed.so",
+        "libaudio_param_parser.so",
+        "libaudiocompensationfilter.so",
+        "libaudiocomponentengine.so",
+        "libaudiocustparam.so",
+        "libaudiodcrflt.so",
+        "libaudiosetting.so",
+        "libaudioutils.so",
+        "libbinder.so",
+        "libblisrc.so",
+        "libbluetoothdrv.so",
+        "libc.so",
+        "libc2kutils.so",
+        "libcustom_nvram.so",
+        "libcutils.so",
+        "libcvsd_mtk.so",
+        "libdl.so",
+        "libhardware.so",
+        "libhardware_legacy.so",
+        "libm.so",
+        "libmedia.so",
+        "libmsbc_mtk.so",
+        "libnvram.so",
+        "libpowermanager.so",
+        "libspeech_enh_lib.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libtinyalsa.so",
+        "libtinycompress.so",
+        "libtinyxml.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/audio.primary.mt6750.so",
+      "sha256": "86e5a47daece3501cab95102c5be371a41b4aacfc6eb1b44c439ad4f0f22bca9",
+      "size": 1331960
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libnbaio.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/audio.r_submix.default.so",
+      "sha256": "4029cab06f1d22bd82094c863883516eecc5d8de21acd4ef7b5c47f00d0fd33e",
+      "size": 38648
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libaudioutils.so",
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libtinyalsa.so"
+      ],
+      "path": "lib64/hw/audio.usb.default.so",
+      "sha256": "fa8073b6e5f41086569cabaadd1e6e108dc1f6868b206876a06e5a25399db2eb",
+      "size": 22192
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/audio_policy.default.so",
+      "sha256": "6a4c0e7002a0a94bc8001c3e76102e6d7d05d9840c08e6098821f46d7b827e67",
+      "size": 128968
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/audio_policy.stub.so",
+      "sha256": "33e3ec1c4ccec814e373dff614068cbe673f412da4564fb506e7cd3808578109",
+      "size": 9864
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcamera_metadata.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libsync.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/camera.default.so",
+      "sha256": "5c64896d2a375b50bda2a899a9ead2511340418fbd04be1f49c910b9bd1df4f1",
+      "size": 34616
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libbinder.so",
+        "libc.so",
+        "libcam.halsensor.so",
+        "libcam.metadataprovider.so",
+        "libcam_hwutils.so",
+        "libcam_utils.so",
+        "libcamera_client.so",
+        "libcamera_client_mtk.so",
+        "libcutils.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so",
+        "libmeizucamera.so",
+        "libmmsdkservice.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/camera.mt6750.so",
+      "sha256": "bdc8c160e12af00608e0b27559bcefeb1995749c04764532cbec74494180d04f",
+      "size": 46936
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/consumerir.mt6750.so",
+      "sha256": "3351b3a3f0c6ebe81e4ef194e63225aceadd775505bedde4928e5c340dd18f25",
+      "size": 10168
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libandroid_runtime.so",
+        "libc.so",
+        "libcrypto.so",
+        "libcurl.so",
+        "libcutils.so",
+        "libhardware.so",
+        "liblog.so",
+        "libm.so",
+        "libnativehelper.so",
+        "libssl.so",
+        "libstdc++.so",
+        "libz.so"
+      ],
+      "path": "lib64/hw/gps.default.so",
+      "sha256": "3174a2bdbda1150ca1d568b5a81b26fb388f98270d1bdfe1ea5457a53d5ddca2",
+      "size": 150008
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/gralloc.default.so",
+      "sha256": "6fb46f9686bd4d8c4c28d053d94dd0e012e9184150709428b228366c7ebdaf15",
+      "size": 14400
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libGLESv1_CM.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libgralloc_extra.so",
+        "libhardware.so",
+        "libion.so",
+        "libion_mtk.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/gralloc.mt6750.so",
+      "sha256": "7fdcd304983f6613a3d929e0eb004ae0269efe3f41de4c256241953e8097e66e",
+      "size": 52176
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libbwc.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libdpframework.so",
+        "libgas.so",
+        "libged.so",
+        "libgralloc_extra.so",
+        "libgui_ext.so",
+        "libhardware.so",
+        "libion.so",
+        "libion_mtk.so",
+        "libm.so",
+        "libm4u.so",
+        "libperfservicenative.so",
+        "libstdc++.so",
+        "libsync.so",
+        "libui.so",
+        "libui_ext.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/hwcomposer.mt6750.so",
+      "sha256": "c5aa6e2bbf50d2f1976826d1f39fb57dc205f622153df4af5bfbeb755b3da82b",
+      "size": 337648
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcrypto.so",
+        "libkeystore_binder.so",
+        "liblog.so",
+        "libm.so",
+        "libsoftkeymaster.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/keystore.default.so",
+      "sha256": "c58395793065a704fb3158f8ff0532fdf89512624cc6ba898249bf0fec44ea65",
+      "size": 5768
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libMcClient.so",
+        "libMcTeeKeymaster.so",
+        "libc.so",
+        "libcrypto.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/keystore.mt6750.so",
+      "sha256": "2bde40d2a9a48486e03ca69012f424d2c2b4600f6279d07ddea058d2ea1bd7c9",
+      "size": 13960
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/lights.default.so",
+      "sha256": "67ea4bf611d281c47575ca7c9046e6d98ed026a2dd24d8df13a7eb98a44edd10",
+      "size": 14048
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/local_time.default.so",
+      "sha256": "3aef751d4967c0c8e0680dd9e16e383ffeb6241a6c325196baad64054dbec6bb",
+      "size": 5768
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libaed.so",
+        "libbinder.so",
+        "libc.so",
+        "libcam.camnode.so",
+        "libcam.camshot.so",
+        "libcam.common.meizu.so",
+        "libcam.exif.so",
+        "libcam.exif.v3.so",
+        "libcam.halsensor.so",
+        "libcam.iopipe.so",
+        "libcam.paramsmgr.so",
+        "libcam1_utils.so",
+        "libcam_hwutils.so",
+        "libcam_mmp.so",
+        "libcam_utils.so",
+        "libcamdrv.so",
+        "libcamera_client.so",
+        "libcamera_client_mtk.so",
+        "libcameracustom.so",
+        "libcutils.so",
+        "libdl.so",
+        "libfeatureio.featurefactory.so",
+        "libfeatureio.so",
+        "libfilter_effects.so",
+        "liblog.so",
+        "libm.so",
+        "libperfservicenative.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/mmsdk.default.so",
+      "sha256": "a54992f92bc4e0510f3557abaf57f00a18797faefe989c7397fea48ca0b83c32",
+      "size": 362352
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/power.default.so",
+      "sha256": "22d2ce53734f59e60dfcb82553c52784a293d880b99e26043b776240c75f2d64",
+      "size": 9888
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "lib64/hw/sensors.mt6750.so",
+      "sha256": "9b311c8c0b89604f525fcdcc9401de0f788a35bc9c80c4ec876ee9c30579774c",
+      "size": 166704
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "lib64/hw/vibrator.default.so",
+      "sha256": "2207333211d8829dd448c85d705f0ede14278c235dab1806f1fddc3258d0477f",
+      "size": 5768
+    },
+    {
+      "path": "usr/keylayout/ACCDET.kl",
+      "sha256": "1798fb3bdc12c747384fc497be6b18de6bd13dbc3041aca80185c5ada3388aa6",
+      "size": 151
+    },
+    {
+      "path": "usr/keylayout/AVRCP.kl",
+      "sha256": "bce0de89d54c072dedc3025dce55ab2e3009fcd23c01c22c189cdc74eed4ba2e",
+      "size": 811
+    },
+    {
+      "path": "usr/keylayout/AW9201_ts.kl",
+      "sha256": "63120f5a358025f78beedcd6016594c31ddf649495b578dc2d46ff9bd9543099",
+      "size": 21
+    },
+    {
+      "path": "usr/keylayout/Generic.kl",
+      "sha256": "95b1cd368e59592d50c7b83c4605d71dd4835bd814d850a5ad941fa23c77b2ca",
+      "size": 9185
+    },
+    {
+      "path": "usr/keylayout/Vendor_0079_Product_0011.kl",
+      "sha256": "dee9a90e910b76c19e08480ce7a27ffb5801abc38dc7e0649491fbfc7ccb7971",
+      "size": 737
+    },
+    {
+      "path": "usr/keylayout/Vendor_045e_Product_028e.kl",
+      "sha256": "ee3a51c7963c4eb964a7543678e44a6ad965f708f717b842e2b6b3b7e1eb72eb",
+      "size": 1277
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_b501.kl",
+      "sha256": "44f92cd2121beceb55fba4dcdeab16a2cac002dba7b9d167bece46aeac643851",
+      "size": 1416
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c216.kl",
+      "sha256": "5bc9d7777660a7f92a197bd5ccf39788e2433a30c224c58bf2d7e1158dcd9921",
+      "size": 1027
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c219.kl",
+      "sha256": "738ea5393578328f9a3bfe70b527e520d133b83f5b4e5d34da94930f1b471b63",
+      "size": 943
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c21d.kl",
+      "sha256": "eee743911e25fb58e8288b285c2dc2046f4ccb381eb881d1465e7ddfab5abf4e",
+      "size": 925
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c21f.kl",
+      "sha256": "ff5da9a1d4944cdd5e7e6921867e54fac9747735fef196f16c83d696f3f3d10e",
+      "size": 950
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c294.kl",
+      "sha256": "bb37625cac3c96647932e715479d15bafc729a2a3c29eb8daf1e99860f746d1e",
+      "size": 1325
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c299.kl",
+      "sha256": "ff5ebb8ece58ab909af3538a8a89dc62959d3a5cb8d4cf6ec81521fb044e683c",
+      "size": 1392
+    },
+    {
+      "path": "usr/keylayout/Vendor_046d_Product_c532.kl",
+      "sha256": "adb12e9f67cecb798648e46e71c437000d69b76ee284188064e2b462fc2c16c7",
+      "size": 2793
+    },
+    {
+      "path": "usr/keylayout/Vendor_054c_Product_0268.kl",
+      "sha256": "4b467e6e22d52667c8c12c3e4df96e52fab09580ba88bcd09337cc66c4bb0e7a",
+      "size": 1454
+    },
+    {
+      "path": "usr/keylayout/Vendor_0583_Product_2060.kl",
+      "sha256": "cf807d3df2a451ef1ba8c67942584b649cc72cf571c58a59763c4866ded46586",
+      "size": 788
+    },
+    {
+      "path": "usr/keylayout/Vendor_05ac_Product_0239.kl",
+      "sha256": "6e31ce1f1b45147002a5b83f37ba1caf4242ea6db6a85dec40ad0c8af91b9276",
+      "size": 2399
+    },
+    {
+      "path": "usr/keylayout/Vendor_0b05_Product_4500.kl",
+      "sha256": "70272b1f948db26f53d2a6ca5f5f021244dfea93e96908860cd2290e4e78101e",
+      "size": 1021
+    },
+    {
+      "path": "usr/keylayout/Vendor_1038_Product_1412.kl",
+      "sha256": "b99b31b6baaa5733b84c832ab72e326ae58cbad926af82a592121bbee02c79ff",
+      "size": 850
+    },
+    {
+      "path": "usr/keylayout/Vendor_12bd_Product_d015.kl",
+      "sha256": "2af703379a3c9f6c77b14c20b4ebc852f7b10e45e6eae9e6f68bf5743e862dbc",
+      "size": 805
+    },
+    {
+      "path": "usr/keylayout/Vendor_1532_Product_0900.kl",
+      "sha256": "fa75ecd4640c4f565b08f123ac3d2be6369e7d136fd5f25374ee480b8112c503",
+      "size": 1021
+    },
+    {
+      "path": "usr/keylayout/Vendor_1689_Product_fd00.kl",
+      "sha256": "947e09d1c0f79e71a581c8861609eec2da8b084df0e34c20a27336aa4bb678f3",
+      "size": 988
+    },
+    {
+      "path": "usr/keylayout/Vendor_1689_Product_fd01.kl",
+      "sha256": "b1e954b43b52ad82290859c8d9737f24b927e3cec5cc6a04d7cd011c62963a7a",
+      "size": 942
+    },
+    {
+      "path": "usr/keylayout/Vendor_1689_Product_fe00.kl",
+      "sha256": "83d9e1841f261d174ae5b3a675fa2c71fdabf9bf770710b1be079cd1cb5b8ee7",
+      "size": 942
+    },
+    {
+      "path": "usr/keylayout/Vendor_18d1_Product_2c40.kl",
+      "sha256": "7168845cf3d59c824312b11506c48efd3971f906daf6bbf556e7201bddbbd3f9",
+      "size": 1013
+    },
+    {
+      "path": "usr/keylayout/Vendor_1949_Product_0401.kl",
+      "sha256": "6da139238a79463fadd4eafb133ef75f3b3208d7682018f1dceab03306867a5b",
+      "size": 831
+    },
+    {
+      "path": "usr/keylayout/Vendor_1bad_Product_f016.kl",
+      "sha256": "2b67e16a321d66ffa26ee708cfd3602ec2abe2fbeab7a457cd347eeeb30393b8",
+      "size": 935
+    },
+    {
+      "path": "usr/keylayout/Vendor_1bad_Product_f023.kl",
+      "sha256": "129334073ee5ebd742f6ee72e5f3427ce937ea8e25b49711e7eb8d0fd9ffb06d",
+      "size": 940
+    },
+    {
+      "path": "usr/keylayout/Vendor_1bad_Product_f027.kl",
+      "sha256": "ea00e14c1f7972307f86ede2b31caf0ba1fe908fff9b8a1c5faf9fc1c410f583",
+      "size": 935
+    },
+    {
+      "path": "usr/keylayout/Vendor_1bad_Product_f036.kl",
+      "sha256": "bdb74e2c1224bf33eda8a41b3ca9e77a48a2cea98a1903490889a643a7d2202d",
+      "size": 951
+    },
+    {
+      "path": "usr/keylayout/Vendor_1d79_Product_0009.kl",
+      "sha256": "1723364da48d9a4d0a2d1e7e38dde3cc0e447f076f6ab5dd4203c70ecf5088b9",
+      "size": 1017
+    },
+    {
+      "path": "usr/keylayout/Vendor_22b8_Product_093d.kl",
+      "sha256": "7f0309c1de67a80778fc204fd615de9545680f786e5a3a7781ff73385dfa7714",
+      "size": 1994
+    },
+    {
+      "path": "usr/keylayout/Vendor_2378_Product_1008.kl",
+      "sha256": "b8125324952fbc686273abea889619de9bc41ab6a6b4ab3cfccd4a12168e23b8",
+      "size": 968
+    },
+    {
+      "path": "usr/keylayout/Vendor_2378_Product_100a.kl",
+      "sha256": "fea4575d11be8ccb12a614ac1fe9af648986bea8d241e59cd6c4f64cdfe88bfe",
+      "size": 955
+    },
+    {
+      "path": "usr/keylayout/fp-keys.kl",
+      "sha256": "3d3e6ac224fbc26087c7de462cb0b65c3f37f670681b878876d98a176f97aeb5",
+      "size": 22
+    },
+    {
+      "path": "usr/keylayout/mtk-kpd.kl",
+      "sha256": "cab6bc9903dec5edc0926cba38adaf7361dbaacdf1f6ffdb3e11305c2626a700",
+      "size": 1463
+    },
+    {
+      "path": "usr/keylayout/mtk-tpd.kl",
+      "sha256": "f384ff68a03fd4b11ae85290560589a10e0a77f2b644da7e413f1c1ce69c5ef5",
+      "size": 18
+    },
+    {
+      "path": "usr/keylayout/qwerty.kl",
+      "sha256": "70d6452eec1b80c9b490f81227d8f76e04cbaaa08c57504d0c076946eea51191",
+      "size": 2087
+    },
+    {
+      "path": "vendor/etc/dirac_types.xml",
+      "sha256": "3d41cb63a9fc3a41a26b2ce49730eeaefec0260cd8206c23ebb20c44c2fe78e5",
+      "size": 2427
+    },
+    {
+      "path": "vendor/etc/diracmobile.config",
+      "sha256": "5e1798ff06a9c5406586e311449b826395c372c110a68e9cb5ebabc6ecd178d9",
+      "size": 2210187
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libWVStreamControlAPI_L3.so",
+        "libbinder.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libdrmmtkutil.so",
+        "libm.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so",
+        "libwvdrm_L3.so",
+        "libz.so"
+      ],
+      "path": "vendor/lib/drm/libdrmwvmplugin.so",
+      "sha256": "90187ab217cf3e27b4fb40bab410d140fb8e4f13ed588bf648dce910db0c3f3d",
+      "size": 54512
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libm.so",
+        "libmedia.so",
+        "libpower.so",
+        "libsbccodec.so",
+        "libstagefright.so",
+        "libstdc++.so"
+      ],
+      "path": "vendor/lib/hw/audio.a2dp.blueangel.so",
+      "sha256": "18a7a8afc9c54a5fb4127892a6f33a4bf6808ad0c76befac6c594010749bab99",
+      "size": 464444
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libbtcust.so",
+        "libbtcusttable.so",
+        "libbtsession.so",
+        "libbtstd.so",
+        "libc.so",
+        "libcustom_prop.so",
+        "libcutils.so",
+        "libm.so",
+        "libstdc++.so"
+      ],
+      "path": "vendor/lib/hw/bluetooth.blueangel.so",
+      "sha256": "66650de992402625ccef84343dee68c1465cef20ff836f4a21e2b4de1b8d72fb",
+      "size": 391108
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so",
+        "libnetutils.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so",
+        "libz.so"
+      ],
+      "path": "vendor/lib/libWVStreamControlAPI_L3.so",
+      "sha256": "410b4c63b3a11935f5ee232ebcd0adb7d03af7fec2001fe06bd3a330953ec71c",
+      "size": 2533124
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libWVStreamControlAPI_L3.so",
+        "libc.so",
+        "libcutils.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so",
+        "libz.so"
+      ],
+      "path": "vendor/lib/libwvdrm_L3.so",
+      "sha256": "ef3b4a4ec869ed8e5daec4637fb1ab6ff306b4b724dea7bc4c522d683efb3aec",
+      "size": 87268
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libWVStreamControlAPI_L3.so",
+        "libc.so",
+        "libcutils.so",
+        "libdl.so",
+        "libdrmframework.so",
+        "libdrmmtkutil.so",
+        "liblog.so",
+        "libm.so",
+        "libstagefright.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so",
+        "libz.so"
+      ],
+      "path": "vendor/lib/libwvm.so",
+      "sha256": "6e51c40307318cee0672b042e92a4ca25f9e51136dc1f62bd8cc81b9d52499e9",
+      "size": 42216
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcrypto.so",
+        "liblog.so",
+        "libm.so",
+        "libstagefright_foundation.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+      "sha256": "821d5631dd7885a5ae875ff2ca35bf62605c21e49b80d443177304f2bab09476",
+      "size": 34008
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+      "sha256": "813c02e0b223887b21659d837e3e099495feed2987b207a9cd6e8afa5e4a7917",
+      "size": 29812
+    },
+    {
+      "elf_class": 32,
+      "needed": [
+        "libc.so",
+        "libcrypto.so",
+        "libcutils.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so",
+        "libstagefright_foundation.so",
+        "libstdc++.so",
+        "libstlport.so",
+        "libutils.so"
+      ],
+      "path": "vendor/lib/mediadrm/libwvdrmengine.so",
+      "sha256": "23665cca014fd5f49b63edd07c233afd0115928024650f7b87029349ecc050e8",
+      "size": 898384
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "libcrypto.so",
+        "liblog.so",
+        "libm.so",
+        "libstagefright_foundation.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+      "sha256": "65772c9dc05499448e137a7dddcf1650c61524798db55bde97ecb46c0109a115",
+      "size": 46552
+    },
+    {
+      "elf_class": 64,
+      "needed": [
+        "libc.so",
+        "liblog.so",
+        "libm.so",
+        "libstdc++.so",
+        "libutils.so"
+      ],
+      "path": "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so",
+      "sha256": "7d8f6637a50b304120e716f691264835122a6654a308591cc8ee056dde623c5d",
+      "size": 42456
+    }
+  ],
+  "blockers": [
+    "full stock extraction and vendor ABI/module audit",
+    "board-specific kernel port",
+    "stock fstab/init and board feature mapping"
+  ],
+  "boot": {
+    "cmdline": "bootopt=64S3,32N2,64N2",
+    "dt_size": 0,
+    "kernel_addr": 1074266112,
+    "kernel_payload_sha256": "0cb9f694e7cece64cdca5d429c8205a78e2aa0bc78f95d8a675763254e9efdf6",
+    "kernel_size": 7201223,
+    "name": "1523472516",
+    "page_size": 2048,
+    "ramdisk_addr": 1157627904,
+    "ramdisk_size": 1943099,
+    "second_addr": 1089470464,
+    "second_size": 0,
+    "sha256": "f0b4f31d205a2ce052bb8f0118ee89e5bca322fce5bcf2f638f04e4936205e9a",
+    "tags_addr": 1140850688,
+    "unused": 0
+  },
+  "build_ready": false,
+  "curated_blob_count": 152,
+  "curated_elf_count": 54,
+  "dependencies_absent_from_curated_extract": {
+    "lib/libGLESv1_CM.so": {
+      "required_by": [
+        "lib/hw/gralloc.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libGLESv1_CM.so"
+      ]
+    },
+    "lib/libMcClient.so": {
+      "required_by": [
+        "lib/hw/keystore.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libMcClient.so"
+      ]
+    },
+    "lib/libMcTeeKeymaster.so": {
+      "required_by": [
+        "lib/hw/keystore.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libMcTeeKeymaster.so"
+      ]
+    },
+    "lib/libaed.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libaed.so"
+      ]
+    },
+    "lib/libandroid_runtime.so": {
+      "required_by": [
+        "lib/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libandroid_runtime.so"
+      ]
+    },
+    "lib/libaudio_param_parser.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudio_param_parser.so"
+      ]
+    },
+    "lib/libaudiocompensationfilter.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudiocompensationfilter.so"
+      ]
+    },
+    "lib/libaudiocomponentengine.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudiocomponentengine.so"
+      ]
+    },
+    "lib/libaudiocustparam.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudiocustparam.so"
+      ]
+    },
+    "lib/libaudiodcrflt.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudiodcrflt.so"
+      ]
+    },
+    "lib/libaudiosetting.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudiosetting.so"
+      ]
+    },
+    "lib/libaudioutils.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.usb.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libaudioutils.so"
+      ]
+    },
+    "lib/libbinder.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so"
+      ],
+      "stock_candidates": [
+        "lib/libbinder.so"
+      ]
+    },
+    "lib/libblisrc.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libblisrc.so"
+      ]
+    },
+    "lib/libbluetoothdrv.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libbluetoothdrv.so"
+      ]
+    },
+    "lib/libbtcust.so": {
+      "required_by": [
+        "vendor/lib/hw/bluetooth.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libbtcust.so"
+      ]
+    },
+    "lib/libbtcusttable.so": {
+      "required_by": [
+        "vendor/lib/hw/bluetooth.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libbtcusttable.so"
+      ]
+    },
+    "lib/libbtsession.so": {
+      "required_by": [
+        "vendor/lib/hw/bluetooth.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libbtsession.so"
+      ]
+    },
+    "lib/libbtstd.so": {
+      "required_by": [
+        "vendor/lib/hw/bluetooth.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libbtstd.so"
+      ]
+    },
+    "lib/libbwc.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libbwc.so"
+      ]
+    },
+    "lib/libc.so": {
+      "required_by": [
+        "lib/hw/audio.primary.default.so",
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio.usb.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/audio_policy.stub.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/consumerir.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/keystore.default.so",
+        "lib/hw/keystore.mt6750.so",
+        "lib/hw/lights.default.so",
+        "lib/hw/local_time.default.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/power.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "lib/hw/vibrator.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/hw/bluetooth.blueangel.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libc.so"
+      ]
+    },
+    "lib/libc2kutils.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libc2kutils.so"
+      ]
+    },
+    "lib/libcam.camnode.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.camnode.so"
+      ]
+    },
+    "lib/libcam.camshot.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.camshot.so"
+      ]
+    },
+    "lib/libcam.common.meizu.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.common.meizu.so"
+      ]
+    },
+    "lib/libcam.exif.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.exif.so"
+      ]
+    },
+    "lib/libcam.exif.v3.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.exif.v3.so"
+      ]
+    },
+    "lib/libcam.halsensor.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.halsensor.so"
+      ]
+    },
+    "lib/libcam.iopipe.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.iopipe.so"
+      ]
+    },
+    "lib/libcam.metadataprovider.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.metadataprovider.so"
+      ]
+    },
+    "lib/libcam.paramsmgr.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam.paramsmgr.so"
+      ]
+    },
+    "lib/libcam1_utils.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam1_utils.so"
+      ]
+    },
+    "lib/libcam_hwutils.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam_hwutils.so"
+      ]
+    },
+    "lib/libcam_mmp.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam_mmp.so"
+      ]
+    },
+    "lib/libcam_utils.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcam_utils.so"
+      ]
+    },
+    "lib/libcamdrv.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcamdrv.so"
+      ]
+    },
+    "lib/libcamera_client.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcamera_client.so"
+      ]
+    },
+    "lib/libcamera_client_mtk.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcamera_client_mtk.so"
+      ]
+    },
+    "lib/libcamera_metadata.so": {
+      "required_by": [
+        "lib/hw/camera.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcamera_metadata.so"
+      ]
+    },
+    "lib/libcameracustom.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcameracustom.so"
+      ]
+    },
+    "lib/libcrypto.so": {
+      "required_by": [
+        "lib/hw/gps.default.so",
+        "lib/hw/keystore.default.so",
+        "lib/hw/keystore.mt6750.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libcrypto.so"
+      ]
+    },
+    "lib/libcurl.so": {
+      "required_by": [
+        "lib/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libcurl.so"
+      ]
+    },
+    "lib/libcustom_nvram.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libcustom_nvram.so"
+      ]
+    },
+    "lib/libcustom_prop.so": {
+      "required_by": [
+        "vendor/lib/hw/bluetooth.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libcustom_prop.so"
+      ]
+    },
+    "lib/libcutils.so": {
+      "required_by": [
+        "lib/hw/audio.primary.default.so",
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio.usb.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/audio_policy.stub.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/consumerir.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/local_time.default.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/hw/bluetooth.blueangel.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libcutils.so"
+      ]
+    },
+    "lib/libcvsd_mtk.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libcvsd_mtk.so"
+      ]
+    },
+    "lib/libdl.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/mmsdk.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libdl.so"
+      ]
+    },
+    "lib/libdpframework.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libdpframework.so"
+      ]
+    },
+    "lib/libdrmframework.so": {
+      "required_by": [
+        "vendor/lib/libwvm.so"
+      ],
+      "stock_candidates": [
+        "lib/libdrmframework.so"
+      ]
+    },
+    "lib/libdrmmtkutil.so": {
+      "required_by": [
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/libwvm.so"
+      ],
+      "stock_candidates": [
+        "lib/libdrmmtkutil.so"
+      ]
+    },
+    "lib/libfeatureio.featurefactory.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libfeatureio.featurefactory.so"
+      ]
+    },
+    "lib/libfeatureio.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libfeatureio.so"
+      ]
+    },
+    "lib/libfilter_effects.so": {
+      "required_by": [
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libfilter_effects.so"
+      ]
+    },
+    "lib/libgas.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libgas.so"
+      ]
+    },
+    "lib/libged.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libged.so"
+      ]
+    },
+    "lib/libgralloc_extra.so": {
+      "required_by": [
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libgralloc_extra.so"
+      ]
+    },
+    "lib/libgui_ext.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libgui_ext.so"
+      ]
+    },
+    "lib/libhardware.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libhardware.so"
+      ]
+    },
+    "lib/libhardware_legacy.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libhardware_legacy.so"
+      ]
+    },
+    "lib/libion.so": {
+      "required_by": [
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libion.so"
+      ]
+    },
+    "lib/libion_mtk.so": {
+      "required_by": [
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libion_mtk.so"
+      ]
+    },
+    "lib/libkeystore_binder.so": {
+      "required_by": [
+        "lib/hw/keystore.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libkeystore_binder.so"
+      ]
+    },
+    "lib/liblog.so": {
+      "required_by": [
+        "lib/hw/audio.primary.default.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio.usb.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/audio_policy.stub.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/consumerir.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/keystore.default.so",
+        "lib/hw/keystore.mt6750.so",
+        "lib/hw/lights.default.so",
+        "lib/hw/local_time.default.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/power.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "lib/hw/vibrator.default.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/liblog.so"
+      ]
+    },
+    "lib/libm.so": {
+      "required_by": [
+        "lib/hw/audio.primary.default.so",
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio.usb.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/audio_policy.stub.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/consumerir.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/keystore.default.so",
+        "lib/hw/keystore.mt6750.so",
+        "lib/hw/lights.default.so",
+        "lib/hw/local_time.default.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/power.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "lib/hw/vibrator.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/hw/bluetooth.blueangel.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libm.so"
+      ]
+    },
+    "lib/libm4u.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libm4u.so"
+      ]
+    },
+    "lib/libmedia.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libmedia.so"
+      ]
+    },
+    "lib/libmeizucamera.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libmeizucamera.so"
+      ]
+    },
+    "lib/libmmsdkservice.so": {
+      "required_by": [
+        "lib/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libmmsdkservice.so"
+      ]
+    },
+    "lib/libmsbc_mtk.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libmsbc_mtk.so"
+      ]
+    },
+    "lib/libnativehelper.so": {
+      "required_by": [
+        "lib/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libnativehelper.so"
+      ]
+    },
+    "lib/libnbaio.so": {
+      "required_by": [
+        "lib/hw/audio.r_submix.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libnbaio.so"
+      ]
+    },
+    "lib/libnetutils.so": {
+      "required_by": [
+        "vendor/lib/libWVStreamControlAPI_L3.so"
+      ],
+      "stock_candidates": [
+        "lib/libnetutils.so"
+      ]
+    },
+    "lib/libnvram.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libnvram.so"
+      ]
+    },
+    "lib/libperfservicenative.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libperfservicenative.so"
+      ]
+    },
+    "lib/libpower.so": {
+      "required_by": [
+        "lib/hw/bluetooth.default.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libpower.so"
+      ]
+    },
+    "lib/libpowermanager.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libpowermanager.so"
+      ]
+    },
+    "lib/libsbccodec.so": {
+      "required_by": [
+        "vendor/lib/hw/audio.a2dp.blueangel.so"
+      ],
+      "stock_candidates": [
+        "lib/libsbccodec.so"
+      ]
+    },
+    "lib/libsoftkeymaster.so": {
+      "required_by": [
+        "lib/hw/keystore.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libsoftkeymaster.so"
+      ]
+    },
+    "lib/libspeech_enh_lib.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libspeech_enh_lib.so"
+      ]
+    },
+    "lib/libssl.so": {
+      "required_by": [
+        "lib/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libssl.so"
+      ]
+    },
+    "lib/libstagefright.so": {
+      "required_by": [
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/libwvm.so"
+      ],
+      "stock_candidates": [
+        "lib/libstagefright.so"
+      ]
+    },
+    "lib/libstagefright_foundation.so": {
+      "required_by": [
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libstagefright_foundation.so"
+      ]
+    },
+    "lib/libstdc++.so": {
+      "required_by": [
+        "lib/hw/audio.primary.default.so",
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio.usb.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/audio_policy.stub.so",
+        "lib/hw/bluetooth.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/consumerir.mt6750.so",
+        "lib/hw/gps.default.so",
+        "lib/hw/gralloc.default.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/keystore.default.so",
+        "lib/hw/keystore.mt6750.so",
+        "lib/hw/lights.default.so",
+        "lib/hw/local_time.default.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/power.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "lib/hw/vibrator.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/hw/audio.a2dp.blueangel.so",
+        "vendor/lib/hw/bluetooth.blueangel.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libstdc++.so"
+      ]
+    },
+    "lib/libstlport.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/mmsdk.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libstlport.so"
+      ]
+    },
+    "lib/libsync.so": {
+      "required_by": [
+        "lib/hw/camera.default.so",
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libsync.so"
+      ]
+    },
+    "lib/libtinyalsa.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.usb.default.so"
+      ],
+      "stock_candidates": [
+        "lib/libtinyalsa.so"
+      ]
+    },
+    "lib/libtinycompress.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libtinycompress.so"
+      ]
+    },
+    "lib/libtinyxml.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libtinyxml.so"
+      ]
+    },
+    "lib/libui.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libui.so"
+      ]
+    },
+    "lib/libui_ext.so": {
+      "required_by": [
+        "lib/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib/libui_ext.so"
+      ]
+    },
+    "lib/libutils.so": {
+      "required_by": [
+        "lib/hw/audio.primary.mt6750.so",
+        "lib/hw/audio.r_submix.default.so",
+        "lib/hw/audio_policy.default.so",
+        "lib/hw/camera.default.so",
+        "lib/hw/camera.mt6750.so",
+        "lib/hw/gralloc.mt6750.so",
+        "lib/hw/hwcomposer.mt6750.so",
+        "lib/hw/mmsdk.default.so",
+        "lib/hw/sensors.mt6750.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so",
+        "vendor/lib/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib/mediadrm/libmockdrmcryptoplugin.so",
+        "vendor/lib/mediadrm/libwvdrmengine.so"
+      ],
+      "stock_candidates": [
+        "lib/libutils.so"
+      ]
+    },
+    "lib/libz.so": {
+      "required_by": [
+        "lib/hw/gps.default.so",
+        "vendor/lib/drm/libdrmwvmplugin.so",
+        "vendor/lib/libWVStreamControlAPI_L3.so",
+        "vendor/lib/libwvdrm_L3.so",
+        "vendor/lib/libwvm.so"
+      ],
+      "stock_candidates": [
+        "lib/libz.so"
+      ]
+    },
+    "lib64/libGLESv1_CM.so": {
+      "required_by": [
+        "lib64/hw/gralloc.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libGLESv1_CM.so"
+      ]
+    },
+    "lib64/libMcClient.so": {
+      "required_by": [
+        "lib64/hw/keystore.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libMcClient.so"
+      ]
+    },
+    "lib64/libMcTeeKeymaster.so": {
+      "required_by": [
+        "lib64/hw/keystore.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libMcTeeKeymaster.so"
+      ]
+    },
+    "lib64/libaed.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaed.so"
+      ]
+    },
+    "lib64/libandroid_runtime.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libandroid_runtime.so"
+      ]
+    },
+    "lib64/libaudio_param_parser.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudio_param_parser.so"
+      ]
+    },
+    "lib64/libaudiocompensationfilter.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudiocompensationfilter.so"
+      ]
+    },
+    "lib64/libaudiocomponentengine.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudiocomponentengine.so"
+      ]
+    },
+    "lib64/libaudiocustparam.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudiocustparam.so"
+      ]
+    },
+    "lib64/libaudiodcrflt.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudiodcrflt.so"
+      ]
+    },
+    "lib64/libaudiosetting.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudiosetting.so"
+      ]
+    },
+    "lib64/libaudioutils.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.usb.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libaudioutils.so"
+      ]
+    },
+    "lib64/libbinder.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libbinder.so"
+      ]
+    },
+    "lib64/libblisrc.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libblisrc.so"
+      ]
+    },
+    "lib64/libbluetoothdrv.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libbluetoothdrv.so"
+      ]
+    },
+    "lib64/libbwc.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libbwc.so"
+      ]
+    },
+    "lib64/libc.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.default.so",
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio.usb.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/audio_policy.stub.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/consumerir.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/keystore.default.so",
+        "lib64/hw/keystore.mt6750.so",
+        "lib64/hw/lights.default.so",
+        "lib64/hw/local_time.default.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/power.default.so",
+        "lib64/hw/sensors.mt6750.so",
+        "lib64/hw/vibrator.default.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libc.so"
+      ]
+    },
+    "lib64/libc2kutils.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libc2kutils.so"
+      ]
+    },
+    "lib64/libcam.camnode.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.camnode.so"
+      ]
+    },
+    "lib64/libcam.camshot.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.camshot.so"
+      ]
+    },
+    "lib64/libcam.common.meizu.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.common.meizu.so"
+      ]
+    },
+    "lib64/libcam.exif.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.exif.so"
+      ]
+    },
+    "lib64/libcam.exif.v3.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.exif.v3.so"
+      ]
+    },
+    "lib64/libcam.halsensor.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.halsensor.so"
+      ]
+    },
+    "lib64/libcam.iopipe.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.iopipe.so"
+      ]
+    },
+    "lib64/libcam.metadataprovider.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.metadataprovider.so"
+      ]
+    },
+    "lib64/libcam.paramsmgr.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam.paramsmgr.so"
+      ]
+    },
+    "lib64/libcam1_utils.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam1_utils.so"
+      ]
+    },
+    "lib64/libcam_hwutils.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam_hwutils.so"
+      ]
+    },
+    "lib64/libcam_mmp.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam_mmp.so"
+      ]
+    },
+    "lib64/libcam_utils.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcam_utils.so"
+      ]
+    },
+    "lib64/libcamdrv.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcamdrv.so"
+      ]
+    },
+    "lib64/libcamera_client.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcamera_client.so"
+      ]
+    },
+    "lib64/libcamera_client_mtk.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcamera_client_mtk.so"
+      ]
+    },
+    "lib64/libcamera_metadata.so": {
+      "required_by": [
+        "lib64/hw/camera.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcamera_metadata.so"
+      ]
+    },
+    "lib64/libcameracustom.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcameracustom.so"
+      ]
+    },
+    "lib64/libcrypto.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so",
+        "lib64/hw/keystore.default.so",
+        "lib64/hw/keystore.mt6750.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcrypto.so"
+      ]
+    },
+    "lib64/libcurl.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcurl.so"
+      ]
+    },
+    "lib64/libcustom_nvram.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcustom_nvram.so"
+      ]
+    },
+    "lib64/libcutils.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.default.so",
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio.usb.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/audio_policy.stub.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/consumerir.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/local_time.default.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/sensors.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcutils.so"
+      ]
+    },
+    "lib64/libcvsd_mtk.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libcvsd_mtk.so"
+      ]
+    },
+    "lib64/libdl.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libdl.so"
+      ]
+    },
+    "lib64/libdpframework.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libdpframework.so"
+      ]
+    },
+    "lib64/libfeatureio.featurefactory.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libfeatureio.featurefactory.so"
+      ]
+    },
+    "lib64/libfeatureio.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libfeatureio.so"
+      ]
+    },
+    "lib64/libfilter_effects.so": {
+      "required_by": [
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libfilter_effects.so"
+      ]
+    },
+    "lib64/libgas.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libgas.so"
+      ]
+    },
+    "lib64/libged.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libged.so"
+      ]
+    },
+    "lib64/libgralloc_extra.so": {
+      "required_by": [
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libgralloc_extra.so"
+      ]
+    },
+    "lib64/libgui_ext.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libgui_ext.so"
+      ]
+    },
+    "lib64/libhardware.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libhardware.so"
+      ]
+    },
+    "lib64/libhardware_legacy.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libhardware_legacy.so"
+      ]
+    },
+    "lib64/libion.so": {
+      "required_by": [
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libion.so"
+      ]
+    },
+    "lib64/libion_mtk.so": {
+      "required_by": [
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libion_mtk.so"
+      ]
+    },
+    "lib64/libkeystore_binder.so": {
+      "required_by": [
+        "lib64/hw/keystore.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libkeystore_binder.so"
+      ]
+    },
+    "lib64/liblog.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.default.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio.usb.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/audio_policy.stub.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/consumerir.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/keystore.default.so",
+        "lib64/hw/keystore.mt6750.so",
+        "lib64/hw/lights.default.so",
+        "lib64/hw/local_time.default.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/power.default.so",
+        "lib64/hw/sensors.mt6750.so",
+        "lib64/hw/vibrator.default.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/liblog.so"
+      ]
+    },
+    "lib64/libm.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.default.so",
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio.usb.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/audio_policy.stub.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/consumerir.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/keystore.default.so",
+        "lib64/hw/keystore.mt6750.so",
+        "lib64/hw/lights.default.so",
+        "lib64/hw/local_time.default.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/power.default.so",
+        "lib64/hw/sensors.mt6750.so",
+        "lib64/hw/vibrator.default.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libm.so"
+      ]
+    },
+    "lib64/libm4u.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libm4u.so"
+      ]
+    },
+    "lib64/libmedia.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libmedia.so"
+      ]
+    },
+    "lib64/libmeizucamera.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libmeizucamera.so"
+      ]
+    },
+    "lib64/libmmsdkservice.so": {
+      "required_by": [
+        "lib64/hw/camera.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libmmsdkservice.so"
+      ]
+    },
+    "lib64/libmsbc_mtk.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libmsbc_mtk.so"
+      ]
+    },
+    "lib64/libnativehelper.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libnativehelper.so"
+      ]
+    },
+    "lib64/libnbaio.so": {
+      "required_by": [
+        "lib64/hw/audio.r_submix.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libnbaio.so"
+      ]
+    },
+    "lib64/libnvram.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libnvram.so"
+      ]
+    },
+    "lib64/libperfservicenative.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libperfservicenative.so"
+      ]
+    },
+    "lib64/libpowermanager.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libpowermanager.so"
+      ]
+    },
+    "lib64/libsoftkeymaster.so": {
+      "required_by": [
+        "lib64/hw/keystore.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libsoftkeymaster.so"
+      ]
+    },
+    "lib64/libspeech_enh_lib.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libspeech_enh_lib.so"
+      ]
+    },
+    "lib64/libssl.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libssl.so"
+      ]
+    },
+    "lib64/libstagefright_foundation.so": {
+      "required_by": [
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libstagefright_foundation.so"
+      ]
+    },
+    "lib64/libstdc++.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.default.so",
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio.usb.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/audio_policy.stub.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/consumerir.mt6750.so",
+        "lib64/hw/gps.default.so",
+        "lib64/hw/gralloc.default.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/keystore.default.so",
+        "lib64/hw/keystore.mt6750.so",
+        "lib64/hw/lights.default.so",
+        "lib64/hw/local_time.default.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/power.default.so",
+        "lib64/hw/sensors.mt6750.so",
+        "lib64/hw/vibrator.default.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libstdc++.so"
+      ]
+    },
+    "lib64/libstlport.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/mmsdk.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libstlport.so"
+      ]
+    },
+    "lib64/libsync.so": {
+      "required_by": [
+        "lib64/hw/camera.default.so",
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libsync.so"
+      ]
+    },
+    "lib64/libtinyalsa.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.usb.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libtinyalsa.so"
+      ]
+    },
+    "lib64/libtinycompress.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libtinycompress.so"
+      ]
+    },
+    "lib64/libtinyxml.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libtinyxml.so"
+      ]
+    },
+    "lib64/libui.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libui.so"
+      ]
+    },
+    "lib64/libui_ext.so": {
+      "required_by": [
+        "lib64/hw/hwcomposer.mt6750.so"
+      ],
+      "stock_candidates": [
+        "lib64/libui_ext.so"
+      ]
+    },
+    "lib64/libutils.so": {
+      "required_by": [
+        "lib64/hw/audio.primary.mt6750.so",
+        "lib64/hw/audio.r_submix.default.so",
+        "lib64/hw/audio_policy.default.so",
+        "lib64/hw/camera.default.so",
+        "lib64/hw/camera.mt6750.so",
+        "lib64/hw/gralloc.mt6750.so",
+        "lib64/hw/hwcomposer.mt6750.so",
+        "lib64/hw/mmsdk.default.so",
+        "lib64/hw/sensors.mt6750.so",
+        "vendor/lib64/mediadrm/libdrmclearkeyplugin.so",
+        "vendor/lib64/mediadrm/libmockdrmcryptoplugin.so"
+      ],
+      "stock_candidates": [
+        "lib64/libutils.so"
+      ]
+    },
+    "lib64/libz.so": {
+      "required_by": [
+        "lib64/hw/gps.default.so"
+      ],
+      "stock_candidates": [
+        "lib64/libz.so"
+      ]
+    }
+  },
+  "device": "m3s",
+  "firmware_fingerprint": "Meizu/meizu_M3s/M3s:5.1/LMY47I/1523472516:user/release-keys",
+  "partition_bounds": {
+    "boot": {
+      "end": 761266176,
+      "size": 16777216,
+      "start": 744488960,
+      "variable": "BOARD_BOOTIMAGE_PARTITION_SIZE"
+    },
+    "cache": {
+      "end": 3934257152,
+      "size": 452984832,
+      "start": 3481272320,
+      "variable": "BOARD_CACHEIMAGE_PARTITION_SIZE"
+    },
+    "recovery": {
+      "end": 22052864,
+      "size": 22020096,
+      "start": 32768,
+      "variable": "BOARD_RECOVERYIMAGE_PARTITION_SIZE"
+    },
+    "system": {
+      "end": 3481272320,
+      "size": 2684354560,
+      "start": 796917760,
+      "variable": "BOARD_SYSTEMIMAGE_PARTITION_SIZE"
+    }
+  },
+  "runtime_verified": false,
+  "scatter_sha256": "3aa3292813ca5b473acbabb50496c10b604e425a7f525c5149cf82609e3c608e",
+  "schema_version": "remeizu.los16.stock-inputs.v1",
+  "stock_gpt_readback_verified": false,
+  "userdata_capacity": null,
+  "vendor_complete": false
+}

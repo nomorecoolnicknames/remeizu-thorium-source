@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Build Station bring-up: conservative Android 7 codec ranking metadata.
+     Keeps MediaCodecList from treating performance XML as absent while MTK
+     OMX encoder init is debugged separately. -->
+<MediaCodecs>
+    <Encoders>
+        <MediaCodec name="OMX.google.h264.encoder" type="video/avc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="120-120" />
+            <Limit name="measured-frame-rate-720x480" range="60-60" />
+            <Limit name="measured-frame-rate-1280x720" range="30-30" />
+            <Limit name="measured-frame-rate-720x1280" range="30-30" />
+        </MediaCodec>
+    </Encoders>
+</MediaCodecs>

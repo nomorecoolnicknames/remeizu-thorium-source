@@ -1,0 +1,18 @@
+# Shared Meizu MT6750/MT6755 runtime device detection.
+
+import /init.meizu_mt675x.meizu_m6.rc
+import /init.meizu_mt675x.m681.rc
+import /init.meizu_mt675x.l681.rc
+
+on early-init
+    setprop sys.forge.meizu.detect init-parsed
+
+on post-fs
+    start meizu-detect
+
+service meizu-detect /sbin/sh /sbin/meizu-detect.sh
+    class core
+    user root
+    group root system
+    disabled
+    oneshot

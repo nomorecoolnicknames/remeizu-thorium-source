@@ -1,0 +1,5 @@
+add_lunch_combo lineage_u10-userdebug
+add_lunch_combo lineage_u10-user
+add_lunch_combo lineage_u10-eng
+add_lunch_combo lineage_u10_stockgraph-userdebug
+add_lunch_combo lineage_u10_stockgraph-eng

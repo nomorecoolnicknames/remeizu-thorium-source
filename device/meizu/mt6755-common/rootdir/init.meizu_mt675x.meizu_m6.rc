@@ -1,0 +1,6 @@
+on property:sys.forge.meizu.codename=meizu_m6
+    setprop sys.forge.meizu.panel ili9881p_hd_dsi_txd
+    setprop sys.forge.meizu.touch ft5x0x
+    setprop sys.forge.meizu.charger bq24157
+    setprop sys.forge.meizu.kernel_track 3.18.140
+    setprop sys.forge.meizu.bringup_state unknown-runtime

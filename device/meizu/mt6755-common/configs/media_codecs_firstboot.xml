@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Build Station: first-boot codec list for LOS15.1 stock-kernel bringup.
+     Keep software codecs only; re-enable MTK OMX after UI/core services are stable. -->
+<MediaCodecs>
+    <Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_google_telephony.xml" />
+    <Include href="media_codecs_google_video.xml" />
+</MediaCodecs>
