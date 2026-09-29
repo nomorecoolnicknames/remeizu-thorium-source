@@ -91,7 +91,7 @@ index 12674aa..5c2db71 100644
 +                // getValidFrequenciesForBand, so wificond logs "no available channel to scan" and the
 +                // Settings WiFi list stays empty even though the connsys driver scans fine via nl80211
 +                // (wpa_cli scan finds APs). Fall back to a default channel list per band so the
-+                // framework scanner has channels. (BRINGUP_STATE 2026-06-21 open issue.)
++                // framework scanner has channels.
 +                return getDefaultChannelsForBand(band);
              } catch (RemoteException e) {
                  handleRemoteException(e);
