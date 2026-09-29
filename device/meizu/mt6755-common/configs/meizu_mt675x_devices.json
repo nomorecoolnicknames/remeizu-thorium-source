@@ -121,7 +121,7 @@
         "front: OV5675 or S5K5E8"
       ],
       "notes": [
-        "Marketing M5 Note / Meilan Note 5; possible stock codename m1621 — verify ro.product.device on first dump (UNIFIED_TREE_PLAN §1)"
+        "Marketing M5 Note / Meilan Note 5; possible stock codename m1621 — verify ro.product.device on first dump"
       ]
     },
     "u10": {
