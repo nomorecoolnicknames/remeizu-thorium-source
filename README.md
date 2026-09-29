@@ -1,13 +1,17 @@
-# ReMeizu thorium: Android 9 source checkpoint
+# ReMeizu MediaTek common device trees
 
-This branch publishes the actual Android 9 device/common adaptation source from private development commit `22d8906039b2010cc252556e391c0fd9ef7f386f`. It is a source review checkpoint, not a downloadable ROM or a claim of successful boot. Original private development history is preserved; this public branch starts from an audited source export so private files are not present in ancestor commits.
+Android 9 common configuration and thin device trees for Meizu MT6750/MT6755 boards,
+including M6, M6T, M5, M3 Note M681/L681, M5 Note, M3s, U10 and U20.
 
-The tree contains product and board configuration, init/SELinux wiring and compatibility code. The common/thin-device layout includes M3s, U10 and U20 LOS16 graph diagnostics. Stock graph products are diagnostic; their source does not establish custom-kernel or device readiness.
+`device/meizu/mt6755-common` contains shared build, init, policy and compatibility
+code. Each device directory supplies its own board geometry, product and kernel
+configuration. Shared SoC code does not make board firmware interchangeable.
 
-## Inputs and status
+Use with the matching LineageOS 16.0 platform, kernel trees and per-device vendor
+inputs. M3s/U10/U20 stockgraph products validate dependency graphs only; they do
+not produce a certified custom-kernel device port. `tools/` contains stock-input
+validation and graph helpers; supply their explicit paths and retain checksum checks.
 
-Prebuilt kernels, shared libraries, compiled SELinux databases, firmware, stock archives and private operational evidence are deliberately absent. No vendor blobs or private Git history are included. `SOURCE_PROVENANCE.json` records exact upstream commit, source file hashes, exclusions and limited identifier redactions. Existing references to excluded inputs remain explicit and must be satisfied separately; they have not been replaced with success stubs.
-
-A complete Android build still requires the matching LineageOS platform, appropriate kernel source/build output and device-specific proprietary inputs. The snapshot alone is not a blob-free ROM build recipe. For open-source-only infrastructure, restrict jobs to selected openly licensed code, source checks and separately audited GPL kernel builds; do not run stock extraction or import firmware there. Retain existing per-file copyright and license notices; this export does not relicense inherited files.
-
-Historical notes may describe previous experiments. They do not certify the current branch on hardware. Common-tree board inheritance is not proof that M6, M3s, U10 or U20 have identical wiring.
+Kernel prebuilts, proprietary firmware and ROM downloads are supplied separately.
+The common tree still requires per-board integration and hardware testing.
+Individual files retain their existing copyright and license notices.
