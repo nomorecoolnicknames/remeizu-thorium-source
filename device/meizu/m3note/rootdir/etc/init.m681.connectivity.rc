@@ -1,0 +1,16 @@
+service wmt_loader /vendor/bin/wmt_loader
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
+    class core
+    user system
+    group system
+    disabled
+
+on property:vendor.m681.wmt.start=1
+    start wmt_loader
+    start wmt_launcher

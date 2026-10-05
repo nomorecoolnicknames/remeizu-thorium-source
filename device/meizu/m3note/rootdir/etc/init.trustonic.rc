@@ -1,0 +1,29 @@
+# MobiCore (Trustonic) TEE daemon: keymaster/gatekeeper of the N set (keystore.mt6755.so
+# -> libMcTeeKeymaster.so, m3note_vendor_symlinks) talk to the secure world through it.
+# From the LOS 16 m681 tree (rootdir/init.trustonic.rc), cut to what Android 13 can run:
+# no /persist or /sbin/mcregistry-setup.sh. The M681 LOS 20 treble tree did not start it.
+# Its files come from the vendor profile (M681 set on both revisions since the L681
+# borrowing of 2026-10-05).
+on fs
+    chmod 0600 /dev/mobicore
+    chown system system /dev/mobicore
+    chmod 0666 /dev/mobicore-user
+    chown system system /dev/mobicore-user
+    chmod 0666 /dev/t-base-tui
+    chown system system /dev/t-base-tui
+    export MC_AUTH_TOKEN_PATH /efs
+    # mcDriverDaemon floods logcat with scheduler INFO lines on this build.
+    setprop persist.sys.log_reject_level 5
+    start mobicore
+
+on post-fs-data
+    mkdir /data/misc/mcRegistry 0775 system system
+    mkdir /data/misc/mcRegistry/TbStorage 0775 system system
+    restorecon_recursive /data/misc/mcRegistry
+
+service mobicore /vendor/bin/mcDriverDaemon -r /vendor/etc/mcRegistry/020f0000000000000000000000000000.drbin -r /vendor/etc/mcRegistry/05120000000000000000000000000000.drbin -r /vendor/etc/mcRegistry/070b0000000000000000000000000000.drbin -r /vendor/etc/mcRegistry/020b0000000000000000000000000000.drbin -r /vendor/etc/mcRegistry/030b0000000000000000000000000000.drbin -r /vendor/etc/mcRegistry/5a7b770d08d14b8fb00f53de4173145a.drbin -r /vendor/etc/mcRegistry/05070000000000000000000000000000.drbin
+    user system
+    group system
+    class core
+    disabled
+    oneshot

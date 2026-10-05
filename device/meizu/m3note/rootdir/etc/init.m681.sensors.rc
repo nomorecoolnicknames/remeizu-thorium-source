@@ -1,0 +1,12 @@
+# MTK msensord of the M681 N sensor stack (LOS 16 m681 rootdir/init.m681_sensors.rc),
+# started only when the M681 vendor profile is active: /vendor/bin/msensord is the
+# M681 blob mounted by the profile; on L681 the placeholder stays empty.
+service msensord /vendor/bin/msensord
+    class core
+    user system
+    group system input
+    oneshot
+    disabled
+
+on property:ro.vendor.meizu.profile=m681 && property:sys.boot_completed=1
+    start msensord

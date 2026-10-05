@@ -1,0 +1,2 @@
+ro.vendor.meizu.profile       u:object_r:vendor_meizu_profile_prop:s0 exact string
+ro.vendor.meizu.profile_ready u:object_r:vendor_meizu_profile_prop:s0 exact bool

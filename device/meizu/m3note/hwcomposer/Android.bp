@@ -1,0 +1,48 @@
+// forge_hwc — hwcomposer.forge for the m681 (MT6755) on the forge 4.9 kernel:
+// HWC 1.1 over the mt6755 mtk_disp_mgr session ABI (header of forge_hwc.c has
+// the design).  Port of the m5c module (device_m5c_treble cf47bbc) — lane
+
+//
+
+// Flyme-era hwcomposer.mt6755 blob, composer@2.1 and SurfaceFlinger ran and
+// the boot animation rendered through Mali, but the blob never got a frame to
+// the panel ("[DEV] Failed to config M4U port(0)", "getPrivateHandleInfo
+// err(fffffff9)" per frame, screencap 0 bytes).
+//
+// Name: NOT hwcomposer.mt6755.  That path is taken by the blob, installed
+// through PRODUCT_COPY_FILES from vendor/meizu/m681 (shared with l681), and a
+// second install rule for it breaks the build.  vendor.prop sets
+// ro.hardware.hwcomposer=forge, which hw_get_module() checks before
+// ro.board.platform (m95 selects its HWC the same way).  The blob stays in
+// the image, unused: back to it = drop that property.
+//
+// disp_session_uapi.h must stay a byte-for-byte copy of the header the mt6755
+// display driver is BUILT against: drivers/misc/mediatek/video/mt6755/include/
+// disp_session.h (videox Makefile puts mt6755/include first), NOT
+// video/include/disp_session.h.  FACT: identical to kernel-mt6755-49
+// 91e69fe3c (A13v), sha256 0205e375…; the m5c header (5f65dcfc…) differs in
+// every struct the module uses.
+//
+// 64-bit only: the only loader is android.hardware.graphics.composer@2.1-
+// service, a 64-bit cc_binary; the 32-bit FRAME_CONFIG path through
+// compat_mtk_disp_mgr is unverified, so no 32-bit variant is shipped.
+//
+// The only other dependency is dlopen("libgralloc_extra.so"), a vendor blob
+// in /vendor/lib64.
+cc_library_shared {
+    name: "hwcomposer.forge",
+    vendor: true,
+    relative_install_path: "hw",
+    compile_multilib: "first",
+    srcs: ["forge_hwc.c"],
+    local_include_dirs: ["."],
+    header_libs: ["libhardware_headers"],
+    shared_libs: [
+        "liblog",
+        "libdl",
+    ],
+    cflags: [
+        "-Wall",
+        "-Wno-unused-parameter",
+    ],
+}

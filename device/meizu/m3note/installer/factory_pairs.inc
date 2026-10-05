@@ -1,0 +1,1 @@
+/* Public installer admits no factory pairs. Private build inputs only. */

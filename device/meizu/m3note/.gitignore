@@ -1,3 +1,0 @@
-# Prebuilt kernels are build inputs, not history: path + hash live in prebuilt-kernel/EXPECTED*.txt
-prebuilt-kernel/*.gz-dtb
-prebuilt-kernel/Image*

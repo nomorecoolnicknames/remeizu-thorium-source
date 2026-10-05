@@ -1,0 +1,13 @@
+--- a/Android.bp
++++ b/Android.bp
+@@ -261,7 +261,10 @@
+ // somewhere that needs the FIPS version.
+ cc_library_static {
+     name: "libcrypto_static",
++    recovery_available: true,
+     visibility: [
++        "//device/meizu/m3note/installer",
++        "//device/meizu/m3note/libinit",
+         "//art/build/sdk",
+         "//bootable/recovery/updater",
+         "//external/conscrypt",

@@ -1,3 +1,12 @@
+# mtk-kpd.kl — Meizu M3 Note (m681), LOS 20 Treble.  Taken from the LOS 16 tree
+# (los16-ct07/device/meizu/m681/keylayout/mtk-kpd.kl, sha256 38aa0a35…); only
+# change: HOME carries WAKE (owner, 2026-09-29: the physical Home button must
+# wake the screen).  Without this file the input stack falls back to Generic.kl,
+# where scan code 102 is MOVE_HOME, not HOME.
+# FACT (TWRP 3.10 kernel on this unit, /proc/bus/input/devices): mtk-kpd reports
+# keys 102 HOME, 114/115 volume, 116 POWER.  HYPOTHESIS until getevent on the
+# device shows it: the Home press (dome click) arrives here as scan 102, as the
+# PMIC HOMEKEY does on m95.
 key 399   GRAVE
 key 2     1
 key 3     2

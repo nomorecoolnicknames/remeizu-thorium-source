@@ -1,0 +1,17 @@
+// AIDL vibrator for the M3 Note: the 4.9 kernel exposes the motor as the LED-class
+// device /sys/class/leds/vibrator (activate, duration, state; m3note-components c3,
+// PMIC VIBR LDO). hardware/lineage's vibrator is timed_output only, the AOSP one an
+// example without hardware access.
+cc_binary {
+    name: "android.hardware.vibrator-service.m3note",
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["vibrator-m3note.rc"],
+    vintf_fragments: ["vibrator-m3note.xml"],
+    srcs: ["Vibrator.cpp"],
+    shared_libs: [
+        "android.hardware.vibrator-V2-ndk",
+        "libbase",
+        "libbinder_ndk",
+    ],
+}

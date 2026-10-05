@@ -1,0 +1,16 @@
+/(vendor|system/vendor)/bin/spm_loader    u:object_r:spm_loader_exec:s0
+/(vendor|system/vendor)/bin/wmt_loader    u:object_r:wmt_loader_exec:s0
+/(vendor|system/vendor)/bin/wmt_launcher    u:object_r:wmt_launcher_exec:s0
+/file_contexts\.bin    u:object_r:file_contexts_file:s0
+# From the M681 LOS 20 treble tree (7dd224c): mount points and MTK device nodes.
+/nvdata             u:object_r:nvdata_file:s0
+/nvdata(/.*)?       u:object_r:nvdata_file:s0
+/protect_f          u:object_r:protect_f_data_file:s0
+/protect_s          u:object_r:protect_s_data_file:s0
+/dev/spm                              u:object_r:spm_device:s0
+/dev/stpwmt                           u:object_r:stpwmt_device:s0
+/dev/wmtdetect                        u:object_r:wmtdetect_device:s0
+/dev/wmtWifi                          u:object_r:wmtWifi_device:s0
+/dev/stpbt                            u:object_r:stpbt_device:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.m3note    u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/mcDriverDaemon    u:object_r:mobicore_exec:s0

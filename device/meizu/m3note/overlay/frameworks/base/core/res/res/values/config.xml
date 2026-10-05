@@ -51,4 +51,8 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
+    <!-- Headset jack from evdev: the 4.9 ACCDET driver (m3note-components c12, 9589aaea7)
+         reports SW_HEADPHONE_INSERT / SW_MICROPHONE_INSERT on input "ACCDET"; there is
+         no switch/h2w class in this kernel. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
 </resources>

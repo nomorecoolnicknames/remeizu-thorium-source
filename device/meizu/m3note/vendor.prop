@@ -1,0 +1,23 @@
+# vendor.prop — Meizu M3 Note CN (m681) / MT6755, LineageOS 20 (Android 13).
+# Lands in /vendor/build.prop (TARGET_VENDOR_PROP, BoardConfig.mk).  Only
+# properties that belong to the vendor partition under the split-property
+# rules; everything with an effect on the framework stays in system.prop.
+
+ro.vendor.vintf.legacy_kernel=true
+
+# audio.primary.mt6755.so is a Nougat build (stock Flyme 6.2.0.2A is Android 7.0,
+# NRD90M): its audio_hw_device / audio_stream_* structs end before the fields
+# the >= 4.0 HIDL wrappers read.  hardware/interfaces (branch
+# meizu-legacy-kernel) reads this property in
+# audio/core/all-versions/default/PrimaryDevice.cpp:38-41 and reports
+# NOT_SUPPORTED for those methods instead of reading past the struct — the
+# same guard m95 runs audio@6.0 with (device/meizu/m95/vendor.prop).
+ro.vendor.audio.legacy_nougat_abi=1
+
+ro.hardware.hwcomposer=forge
+
+# TEMPORARY (bring-up, as in the M681 treble tree device.mk): adb without the key
+# dialog; vendor build.prop is read after system's ro.adb.secure=1 and wins. Through
+# PRODUCT_PROPERTY_OVERRIDES it landed in system build.prop next to ro.adb.secure=1
+# and the build refused the duplicate.
+ro.adb.secure=0

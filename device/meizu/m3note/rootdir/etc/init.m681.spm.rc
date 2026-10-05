@@ -1,0 +1,13 @@
+# SPM firmware trigger (sleep / deep idle): /vendor/bin/spm_loader opens /dev/spm so the
+# 4.9 kernel loads the pcm_*.bin of the M681 set (MT6351). Taken from the M681 LOS 20
+# treble tree (init.m681.spm.rc), started only with the M681 profile: L681's SPM
+# tables are not proven on 4.9 (l681 4.4 needed its own MT6351/MT6353 fix).
+service spm_script /vendor/bin/spm_loader
+    class core
+    user system
+    group system
+    oneshot
+    disabled
+
+on property:ro.vendor.meizu.profile=m681
+    start spm_script

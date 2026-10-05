@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: Apache-2.0
+# Device/mount types of the M681 LOS 20 treble tree (wt/device_m681_treble 7dd224c,
+# sepolicy/vendor/file.te); both M3 Note revisions have the same MTK nodes and
+# nvdata/protect partitions.
+# Placeholder vendor sepolicy for m681.
+#
+# The build is androidboot.selinux=permissive (BoardConfig.mk cmdline) and
+# SELINUX_IGNORE_NEVERALLOWS is on, because the MTK Nougat blob set trips A13
+# public-policy neverallows wholesale -- exactly as it did on the LOS16 lane
+# (device/meizu/mt6755-common/BoardConfigCommon.mk:60-66 in the LOS16 tree).
+#
+# Nothing real can be written here until a kernel boots far enough to produce
+# a single avc denial log on this device under Android 13. Writing speculative
+# rules now would be unverifiable.
+
+# Mount points on the system root (BoardConfig.mk BOARD_ROOT_EXTRA_FOLDERS, device
+# 35d9416) for the nofail fstab entries /nvdata (p7), /protect_f (p11), /protect_s (p12).
+# FACT (build-treble-m681-vendorimage_systemimage_bootimage.log, 2026-09-28 22:17):
+# e2fsdroid "set_selinux_xattr: No such file or directory searching for label
+# "/nvdata"" — system.img does not pack without labels for them.  Types as on m5c
+# (device m5c lineage-20-treble sepolicy/vendor/file.te).
+type nvdata_file, file_type, data_file_type, core_data_file_type;
+type protect_f_data_file, file_type, data_file_type;
+type protect_s_data_file, file_type, data_file_type;
+
+# SPM and WMT (rootdir/etc/init/init.m681.spm.rc, init.m681.connectivity.rc,
+# 2026-09-29).  Declarations and labels only, no allow rules: the device runs
+# permissive, and with the domains in place the first boot logs the real avc
+# set for a census (the rule at the top of this file).
+type spm_device, dev_type;
+type stpwmt_device, dev_type;
+type wmtdetect_device, dev_type;
+type wmtWifi_device, dev_type;
+type stpbt_device, dev_type;

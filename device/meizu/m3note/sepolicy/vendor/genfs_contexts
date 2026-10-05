@@ -1,0 +1,6 @@
+# M681 battery observer (forge_chg_observe, common kernel f63bb43b): its battery and
+# usb power supplies are registered without a parent device, so they live under
+# /sys/devices/virtual/power_supply. health@2.1 reads them (hal_health.te:19);
+# unlabeled they are plain sysfs and the reads are denied (m681 bat1, 2026-10-05:
+# avc { read open } hal_health_default -> sysfs, .../power_supply/battery/status).
+genfscon sysfs /devices/virtual/power_supply u:object_r:sysfs_batteryinfo:s0

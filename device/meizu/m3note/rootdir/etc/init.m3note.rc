@@ -1,0 +1,4 @@
+# Diagnostic common startup. Revision HAL services remain disabled until
+# their origin and profile activation are admitted; no donor daemon fallback.
+on boot
+    setprop sys.usb.config adb

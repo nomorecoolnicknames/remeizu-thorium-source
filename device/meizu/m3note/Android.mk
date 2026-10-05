@@ -1,45 +1,30 @@
-# Shared M3 Note module integration and vendor compatibility includes.
-LOCAL_PATH:= $(call my-dir)
+# SPDX-License-Identifier: Apache-2.0
+LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter m3note, $(TARGET_DEVICE)),)
-
-
-include $(call first-makefiles-under,$(LOCAL_PATH))
-
-MTK_SYMBOLS_GUI_ONLY := true
-include vendor/mediatek/symbols/Android.mk
-MTK_SYMBOLS_GUI_ONLY :=
-include vendor/mediatek/combo_loader/Android.mk
-include vendor/mediatek/wlan/wifi_hal/Android.mk
-include vendor/mediatek/ril/Android.mk
-
-include $(call first-makefiles-under,device/meizu/m3_meizu_m6-common)
-$(shell mkdir -p $(PRODUCT_OUT)/obj/KERNEL_OBJ/usr)
-
-m3note_saved_target_device := $(TARGET_DEVICE)
-TARGET_DEVICE := m681
-include vendor/meizu/m681/Android.mk
-TARGET_DEVICE := $(m3note_saved_target_device)
-m3note_saved_target_device :=
-ifeq ($(ALL_MODULES.mtk-ril.PATH),)
-$(error m3note: vendor/meizu/m681/Android.mk defined no mtk-ril module -- its TARGET_DEVICE guard changed; see device/meizu/m3note/Android.mk step 4)
-endif
-
+ifeq ($(TARGET_DEVICE),m3note)
+# Vendor symlinks of the M681 blob set, as m681_vendor_symlinks in the M681 LOS 20
+# treble tree (vendor/meizu/m681/Android.mk): keymaster 3.0 / gatekeeper load
+# keystore.<platform>.so / gatekeeper.<platform>.so, which in the N set are the MobiCore
+# TEE libraries; MobiCore looks for its registry under /vendor/app. The targets are
+# profile-mounted files. A FAKE module has no installed file, so systemimage never
+# built it (u4, 2026-10-05): the links hang off a small installed text file instead.
 include $(CLEAR_VARS)
-LOCAL_PATH := device/meizu/m3note
-LOCAL_MODULE := m3note_keystore_profile
-LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := m3note_vendor_symlinks
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
-LOCAL_SRC_FILES := keystore/m3note_keystore_profile.txt
-LOCAL_REQUIRED_MODULES := m681_vendor_hal_symlinks
+LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
+LOCAL_SRC_FILES := vendor_symlinks.txt
+LOCAL_MODULE_STEM := m3note_vendor_symlinks.txt
 LOCAL_POST_INSTALL_CMD := \
-    rm -f $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.mt6755.so \
-          $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.mz6755_66_n.so \
-          $(2ND_TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.mt6755.so \
-          $(2ND_TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.mz6755_66_n.so && \
-    ln -sf libMcTeeKeymaster.so $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.m681tee.so && \
-    ln -sf libMcTeeKeymaster.so $(2ND_TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/keystore.m681tee.so
+    for lib in lib lib64; do \
+        mkdir -p $(TARGET_OUT_VENDOR)/$$lib/hw; \
+        for n in mt6755 mz6755_66_n; do \
+            ln -sf libMcGatekeeper.so $(TARGET_OUT_VENDOR)/$$lib/hw/gatekeeper.$$n.so; \
+            ln -sf libMcTeeKeymaster.so $(TARGET_OUT_VENDOR)/$$lib/hw/keystore.$$n.so; \
+        done; \
+    done; \
+    mkdir -p $(TARGET_OUT_VENDOR)/app; \
+    rm -rf $(TARGET_OUT_VENDOR)/app/mcRegistry; \
+    ln -sf ../etc/mcRegistry $(TARGET_OUT_VENDOR)/app/mcRegistry
 include $(BUILD_PREBUILT)
-
 endif

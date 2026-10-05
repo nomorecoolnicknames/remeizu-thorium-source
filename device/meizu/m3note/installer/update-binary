@@ -1,0 +1,72 @@
+#!/sbin/sh
+# SPDX-License-Identifier: Apache-2.0
+set -eu
+set -o pipefail
+[ "$#" = 3 ] || exit 2
+ZIP=$3
+WORK=/tmp/m3note-unified
+[ ! -e "$WORK" ] || exit 2
+mkdir -m 700 "$WORK"
+KEEP_BACKUP=0
+cleanup() {
+    if [ "$KEEP_BACKUP" = 0 ]; then rm -f "$WORK"/*; rmdir "$WORK"; fi
+}
+trap cleanup EXIT
+for name in m3note_probe admission.conf boot-m681.img boot-l681.img; do
+    unzip -p "$ZIP" "$name" > "$WORK/$name"
+done
+field() {
+    VALUE=$(grep "^$1=" "$WORK/admission.conf" | cut -d= -f2)
+    [ "$(grep -c "^$1=" "$WORK/admission.conf")" = 1 ] || exit 2
+    printf '%s\n' "$VALUE"
+}
+# admission.conf contains only the fixed fields produced by the packaging tool.
+# An experimental package refuses before any block-device write.
+[ "$(field deployment_admitted)" = 1 ] || exit 2
+chmod 700 "$WORK/m3note_probe"
+BOARD=$("$WORK/m3note_probe" --inspect)
+case "$BOARD" in m681|l681) ;; *) exit 2 ;; esac
+# No sourced package text and no package-provided device paths.
+
+BOOT_SHA=$(field "boot_${BOARD}_sha256")
+BOOT_BYTES=$(field "boot_${BOARD}_bytes")
+SYSTEM_SHA=$(field system_sha256)
+SYSTEM_GZ_SHA=$(field system_gzip_sha256)
+SYSTEM_BYTES=$(field system_bytes)
+case "$BOOT_SHA$SYSTEM_SHA$SYSTEM_GZ_SHA" in *[!0-9a-f]*) exit 2 ;; esac
+[ "${#BOOT_SHA}" = 64 ] && [ "${#SYSTEM_SHA}" = 64 ] && [ "${#SYSTEM_GZ_SHA}" = 64 ]
+case "$BOOT_BYTES$SYSTEM_BYTES" in *[!0-9]*) exit 2 ;; esac
+[ "$BOOT_BYTES" -gt 0 ] && [ "$BOOT_BYTES" -le 16777216 ]
+[ "$SYSTEM_BYTES" -gt 0 ] && [ "$SYSTEM_BYTES" -le 2684354560 ]
+[ "$(stat -c %s "$WORK/boot-$BOARD.img")" = "$BOOT_BYTES" ]
+[ "$(sha256sum "$WORK/boot-$BOARD.img" | cut -d' ' -f1)" = "$BOOT_SHA" ]
+[ "$(unzip -p "$ZIP" system.img.gz | sha256sum | cut -d' ' -f1)" = "$SYSTEM_GZ_SHA" ]
+unzip -p "$ZIP" system.img.gz | gzip -t
+[ "$(unzip -p "$ZIP" system.img.gz | gzip -dc | wc -c | tr -d ' ')" = "$SYSTEM_BYTES" ]
+[ "$(unzip -p "$ZIP" system.img.gz | gzip -dc | sha256sum | cut -d' ' -f1)" = "$SYSTEM_SHA" ]
+# Mounted target filesystems make raw writes unsafe; refuse rather than guess.
+! grep -Eq ' /system(/| )| /vendor(/| )|mmcblk0p29' /proc/mounts
+[ "$("$WORK/m3note_probe" --inspect)" = "$BOARD" ]
+dd if=/dev/block/mmcblk0p22 of="$WORK/boot-before.img" bs=1048576 count=16
+[ "$(stat -c %s "$WORK/boot-before.img")" = 16777216 ]
+BOOT_BEFORE_SHA=$(sha256sum "$WORK/boot-before.img" | cut -d' ' -f1)
+[ "$("$WORK/m3note_probe" --hash boot 16777216)" = "$BOOT_BEFORE_SHA" ]
+restore_boot() {
+    KEEP_BACKUP=1
+    dd if="$WORK/boot-before.img" of=/dev/block/mmcblk0p22 bs=1048576 conv=fsync || return 2
+    [ "$("$WORK/m3note_probe" --hash boot 16777216)" = "$BOOT_BEFORE_SHA" ] || return 2
+    KEEP_BACKUP=0
+}
+# Shared system first, selected own-DTB boot last. Never touch user data,
+# calibration, bootloader, modem, recovery, cache or GPT partitions.
+unzip -p "$ZIP" system.img.gz | gzip -dc | dd of=/dev/block/mmcblk0p29 bs=1048576 conv=fsync
+[ "$("$WORK/m3note_probe" --hash system "$SYSTEM_BYTES")" = "$SYSTEM_SHA" ]
+if ! dd if="$WORK/boot-$BOARD.img" of=/dev/block/mmcblk0p22 bs=1048576 conv=fsync; then
+    restore_boot || true
+    exit 2
+fi
+if [ "$("$WORK/m3note_probe" --hash boot "$BOOT_BYTES")" != "$BOOT_SHA" ]; then
+    restore_boot || true
+    exit 2
+fi
+printf 'ui_print Unified M3 Note images written and read back.\nui_print\n' > "/proc/self/fd/$2"

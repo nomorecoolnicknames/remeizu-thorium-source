@@ -1,0 +1,10 @@
+cc_binary {
+    name: "m3note_probe",
+    recovery: true,
+    static_executable: true,
+    srcs: ["probe.cpp"],
+    local_include_dirs: ["include"],
+    static_libs: ["libcrypto_static", "libz"],
+    cflags: ["-Wall", "-Werror"],
+    cppflags: ["-fexceptions"],
+}

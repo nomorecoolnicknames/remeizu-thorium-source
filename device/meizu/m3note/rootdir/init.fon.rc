@@ -1,3 +1,0 @@
-# Minimal bring-up stub.
-# The stock ramdisk imported this file, but it is absent in the current tree.
-# Keep the import satisfiable so init does not depend on a missing optional rc.

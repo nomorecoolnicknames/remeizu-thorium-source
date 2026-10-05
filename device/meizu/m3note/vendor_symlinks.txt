@@ -1,0 +1,2 @@
+Installed by m3note_vendor_symlinks (Android.mk): its post-install step creates the
+MobiCore keystore/gatekeeper links and /vendor/app/mcRegistry.

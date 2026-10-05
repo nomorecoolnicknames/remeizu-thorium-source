@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Meizu M3 Note (m681) lineage-sdk overlay.  PhoneWindowManager reads the key
+     resources below from org.lineageos.platform.internal.R, so they belong here
+     and would be ignored under overlay/frameworks/base (same layout as m95). -->
 <resources>
+    <!-- Hardware keys present: 1 Home | 64 Volume = 65.  The lineage-sdk
+         default is 64 (volume only), with which LineageParts hides the
+         Settings > Buttons > Home category.  Back (the mBack tap, KEY_BACK from
+         the Goodix driver on "fp-keys") is left out until it is seen on A13:
+         it needs the fingerprint stack, which this tree does not run yet. -->
     <integer name="config_deviceHardwareKeys">65</integer>
 
+    <!-- Keys allowed to wake the screen: 1 Home only (owner, 2026-09-29: the
+         physical Home button must wake the screen; volume wake was not asked
+         for and gives false wakes in a pocket — lead's decision).
+         FACT (LOS 20 PhoneWindowManager.java:4605-4607): for KEYCODE_HOME
+         while not interactive, isWakeKey = mWakeOnHomeKeyPress, which REPLACES
+         the WAKE flag of the keylayout; mWakeOnHomeKeyPress is HOME_WAKE_SCREEN
+         (default 1) AND this bit (:2910-2912).  So this bit is what decides;
+         WAKE in mtk-kpd.kl only covers non-Lineage policy.  The kernel side is a
+         separate requirement: the Home IRQ has to be a wakeup source, or a
+         suspended phone never sees the press. -->
     <integer name="config_deviceHardwareWakeKeys">1</integer>
 </resources>

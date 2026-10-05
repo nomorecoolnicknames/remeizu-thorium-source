@@ -1,32 +1,25 @@
-# Meizu M3 Note · Android 9
+# Meizu M3 Note · Android 13
 
-Unified device configuration for **M681 and L681** on **LineageOS 16.0**, using a shared native **Linux 4.4.15** core with each revision's own appended DTB. This is a development source selection. It is separate from the Android 13 / Linux 4.9 port; that older port's observations do not establish support for this source pair.
+Experimental unified **LineageOS 20.0** device configuration for **M681 and L681**, targeting one Linux 4.9 core with separate board DTBs and vendor profiles. This source tip includes board selection from the device tree, per-revision VINTF manifests and corrected vendor symlink installation. The earlier complete ROM build used source revision `89a7e734`; later source changes do not establish a new complete build or hardware acceptance.
 
-The board profile is selected from device-tree compatible strings, bootloader panel identity and an optional explicit board property. Conflicting or missing identity selects `unknown` rather than borrowing the other board's firmware profile. The two DTBs and matching vendor profiles remain distinct. The goal is one installable ROM for both revisions; the current boot packaging retains per-board kernel/DTB identities and verification.
-
-| Component | Source / integration | Status for this unified source selection |
+| Component | Source / integration | Current status |
 |---|---|---|
-| Board identity | `libinit/init_m3note.cpp`, revision selector and panel map | Host logic checked; physical profile acceptance pending |
-| Kernel / boot | `prebuilt-kernel/EXPECTED-m681.txt`, `EXPECTED-l681.txt`, boot verification | Common 4.4 core and own DTBs selected; binaries supplied separately |
-| Display / GPU | Shared vendor graphics and rotation profile | Per-board rotation selected; full unified hardware pass pending |
-| Touch / keys | Kernel input and `keylayout/` | Layout integration present; both-revision validation pending |
-| Modem / Wi-Fi / BT / GNSS | Board-specific firmware profiles and shared Android services | Integration present; external vendor inputs required; unified runtime pending |
-| Audio | Vendor primary HAL, policy and compile-time ABI guard | Integration present; unified playback/recording pending |
-| Sensors | Per-revision HAL selection and service configuration | M681/L681 bindings differ; all sensors need physical validation |
-| Fingerprint / TEE | Revision-specific keystore selection, external vendor TA/HAL | Integration present; enrollment/authentication unverified |
-| Camera | Legacy vendor HAL and provider | Kernel camera support incomplete; no working unified camera claimed |
-| Charging / suspend / thermal | Health services and board kernel drivers | Development configuration; physical acceptance pending |
-| USB / recovery | Init/FunctionFS configuration and legacy fstab | Source integration present; both-revision recovery/USB validation pending |
-| Security | Development SELinux configuration | Permissive; enforcing operation not validated |
+| Board profile | `libinit/`, per-revision VINTF and init | DT/board selection implemented; both-board acceptance pending |
+| Boot / installer | `installer/`, Linux board/factory UAPI | Common system and own-DTB boots; verification/readback logic present; public factory table empty, installation disabled |
+| Display / graphics | `hwcomposer/`, Nougat ABI shims and external Mali/gralloc | Source integration present; common graphics closure pending |
+| Touch / keys | Per-board kernel resources and input configuration | M681 lifecycle work present; L681 resource ownership incomplete |
+| Wi-Fi / BT / modem / GNSS | Selected vendor profile, init and legacy compatibility | Integration present; complete two-board runtime acceptance pending |
+| Audio | Vendor primary HAL and source compatibility | Integration present; full playback/recording/routing acceptance pending |
+| Sensors / vibrator | Per-revision service selection and source vibrator | Source integrated; individual physical tests pending |
+| TEE / fingerprint | Board-specific vendor services and manifest selection | Different TEE providers; enrollment/authentication acceptance pending |
+| Camera | Legacy provider and external vendor camera stack | Complete common camera support pending |
+| Power / charging / thermal | Board-specific PMIC/charger drivers and health integration | No unified daily-operation or thermal acceptance claimed |
+| Security | Development SELinux policy and guarded deployment | Permissive; enforcing/encryption not accepted |
 
-## Building
+## Build inputs
 
-Use the matching LineageOS 16.0 platform and this common repository at the Android source root. Supply `vendor/meizu/m681`, the corresponding `vendor/meizu/m3note` board profiles, firmware, native kernel images and required platform compatibility patches. Binaries and restricted vendor inputs are not included. Kernel checksum gates retain the actual per-board expected inputs.
+Use a matching LineageOS 20.0 platform with this directory at `device/meizu/m3note`. Supply the corresponding source-built common kernel and generated headers, two independently identified vendor profiles and compatible platform libraries/patches. The public source contains no vendor blob, kernel image, capture or physical device identity. The default public installer factory-pair table is empty and admits no deployment. Guarded diagnostic build scope does not bypass source or profile checks.
 
-```sh
-source build/envsetup.sh
-lunch lineage_m3note-userdebug
-mka bacon
-```
+The current source product is `lineage_m3note-userdebug`. Matching platform integration and independently verified private build inputs are required before a complete build can be attempted. Android-generated OTA output is intermediate: the common package tooling must supply both own-DTB boots and verify target identity, boot geometry and readback. A successful compiler exit does not establish installation safety or working hardware.
 
-Keep boot verification enabled and verify the target revision before installation. Compiled images and host profile tests do not prove physical operation. Original copyright and license notices are retained; vendor libraries and firmware have separate terms.
+Android 9 and native Linux 4.4 are maintained separately on [lineage-16.0](https://github.com/nomorecoolnicknames/remeizu-thorium-source/tree/lineage-16.0/device/meizu/m3note). Original copyright and license notices are retained. Restricted vendor libraries and firmware are separate inputs.

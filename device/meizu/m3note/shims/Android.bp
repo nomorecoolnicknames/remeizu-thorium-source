@@ -1,0 +1,72 @@
+
+cc_library_shared {
+    name: "libm3note_n_gui",
+    stem: "libgui",
+    vendor: true,
+    srcs: [
+        "fwd_stub.c",
+        "gui_n.cpp",
+    ],
+    shared_libs: [
+        "libgui_vendor",
+        "libsensor_vendor",
+        "liblog",
+    ],
+}
+cc_library_shared {
+    name: "libm3note_n_base",
+    stem: "libm681shim_base",
+    vendor: true,
+    srcs: [
+        "base_n_c.c",
+        "base_n.cpp",
+    ],
+    header_libs: ["libcutils_headers"],
+    shared_libs: [
+        "libbinder",
+        "libutilscallstack",
+        "liblog",
+    ],
+    ldflags: ["-Wl,--no-as-needed"],
+}
+cc_library_shared {
+    name: "libm3note_n_ui",
+    stem: "libmtkshim_ui",
+    vendor: true,
+    srcs: ["ui_n.cpp"],
+    shared_libs: [
+        "libm3note_n_base",
+        "libui",
+        "libutils",
+        "liblog",
+    ],
+}
+cc_library_shared {
+    name: "libm3note_n_perfservice",
+    vendor: true,
+    stem: "libperfservicenative",
+    srcs: ["perfservice.c"],
+    cflags: ["-Wno-unused-parameter"],
+}
+cc_library_shared {
+    name: "libm3note_n_region",
+    stem: "libm681shim_region",
+    vendor: true,
+    srcs: ["region_n.cpp"],
+    header_libs: [
+        "libutils_headers",
+        "liblog_headers",
+    ],
+    shared_libs: ["liblog"],
+    cflags: [
+        "-fvisibility=hidden",
+        "-Wno-unused-parameter",
+    ],
+}
+// AudioSystem::getDeviceConnectionState for audio.primary.mt6755.so, added to
+// it by TARGET_LD_SHIM_LIBS (BoardConfig.mk); see audiosystem_n.cpp.
+cc_library_shared {
+    name: "libm3note_n_audio",
+    vendor: true,
+    srcs: ["audiosystem_n.cpp"],
+}

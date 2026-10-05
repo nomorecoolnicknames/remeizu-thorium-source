@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Audio policy, Meizu M3 Note L681 (MT6755, MT6351 codec), Android 13 common ROM.
+
+     Installed as /vendor/etc/audio/sku_L681/audio_policy_configuration.xml;
+     libinit sets ro.boot.product.vendor.sku to the verified board, and
+     audio_get_configuration_paths() (system/media audio_config.h) looks in
+     /vendor/etc/audio/sku_<sku> before /vendor/etc. /vendor/etc/
+     audio_policy_configuration.xml is the M681 variant (no speaker), used if
+     the board profile is not ready.
+
+     Source: the stock M681 audio_policy.conf (M681 vendor profile
+     etc/audio_policy.conf, primary module: one primary output 44100|48000 Hz
+     stereo PCM 16/32 bit, the input rates and masks, the gain ranges). Layout,
+     device-port profiles and the Android 13 parser fixes are those of the m5c
+     A13 conversion (wt/device_m5c_treble configs/audio/
+     audio_policy_configuration.xml, where STATIC/STREAM PCM played): no MATV,
+     no OUT/IN_DEFAULT, canonical alias names, no fast output (the legacy HAL
+     path was proven without it), no a2dp module (Bluetooth audio HAL).
+     The includes are absolute because this file lives below /vendor/etc.
+
+     L681: Speaker kept - the kernel drives the AW8736 on GPIO115 on this board
+     (DCT GPIO_SPEAKER_EN_PIN, 4.4 L681 DTS forge,extamp-gpio = 115).
+-->
+
+<audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <globalConfiguration speaker_drc_enabled="false"/>
+
+    <modules>
+        <module name="primary" halVersion="3.0">
+            <attachedDevices>
+                <item>Earpiece</item>
+                <item>Speaker</item>
+                <item>Built-In Mic</item>
+                <item>FM Tuner</item>
+                <item>Telephony Rx</item>
+            </attachedDevices>
+            <defaultOutputDevice>Speaker</defaultOutputDevice>
+
+            <mixPorts>
+                <mixPort name="primary output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100,48000"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+                             samplingRates="44100,48000"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                    <gains>
+                        <gain name="gain_1" mode="AUDIO_GAIN_MODE_JOINT"
+                              channel_mask="AUDIO_CHANNEL_OUT_STEREO"
+                              minValueMB="-6400"
+                              maxValueMB="0"
+                              defaultValueMB="0"
+                              stepValueMB="100"/>
+                    </gains>
+                </mixPort>
+
+                <mixPort name="primary input" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+                </mixPort>
+            </mixPorts>
+
+            <devicePorts>
+                <devicePort tagName="Earpiece" type="AUDIO_DEVICE_OUT_EARPIECE" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Speaker" type="AUDIO_DEVICE_OUT_SPEAKER" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Wired Headset" type="AUDIO_DEVICE_OUT_WIRED_HEADSET" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                    <gains>
+                        <gain name="gain_1" mode="AUDIO_GAIN_MODE_JOINT"
+                              channel_mask="AUDIO_CHANNEL_OUT_STEREO"
+                              minValueMB="-6400"
+                              maxValueMB="0"
+                              defaultValueMB="0"
+                              stepValueMB="100"/>
+                    </gains>
+                </devicePort>
+                <devicePort tagName="Wired Headphones" type="AUDIO_DEVICE_OUT_WIRED_HEADPHONE" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                    <gains>
+                        <gain name="gain_1" mode="AUDIO_GAIN_MODE_JOINT"
+                              channel_mask="AUDIO_CHANNEL_OUT_STEREO"
+                              minValueMB="-6400"
+                              maxValueMB="0"
+                              defaultValueMB="0"
+                              stepValueMB="100"/>
+                    </gains>
+                </devicePort>
+                <devicePort tagName="BT SCO" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000"
+                             channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                </devicePort>
+                <devicePort tagName="BT SCO Headset" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000"
+                             channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                </devicePort>
+                <devicePort tagName="BT SCO Car Kit" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000"
+                             channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                </devicePort>
+                <devicePort tagName="FM" type="AUDIO_DEVICE_OUT_FM" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Analog Dock" type="AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Digital Dock" type="AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+                <devicePort tagName="HDMI Out" type="AUDIO_DEVICE_OUT_HDMI" role="sink">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100"
+                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </devicePort>
+
+                <devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Built-In Back Mic" type="AUDIO_DEVICE_IN_BACK_MIC" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Wired Headset Mic" type="AUDIO_DEVICE_IN_WIRED_HEADSET" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="BT SCO Headset Mic" type="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+                </devicePort>
+                <devicePort tagName="Ambient Mic" type="AUDIO_DEVICE_IN_AMBIENT" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Communication Mic" type="AUDIO_DEVICE_IN_COMMUNICATION" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="FM Tuner" type="AUDIO_DEVICE_IN_FM_TUNER" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+                <devicePort tagName="Telephony Rx" type="AUDIO_DEVICE_IN_TELEPHONY_RX" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+                </devicePort>
+                <devicePort tagName="HDMI In" type="AUDIO_DEVICE_IN_HDMI" role="source">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="8000,16000,32000,44100,48000"
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                </devicePort>
+            </devicePorts>
+
+            <routes>
+                <route type="mix" sink="Earpiece" sources="primary output"/>
+                <route type="mix" sink="Speaker" sources="primary output"/>
+                <route type="mix" sink="Wired Headset" sources="primary output"/>
+                <route type="mix" sink="Wired Headphones" sources="primary output"/>
+                <route type="mix" sink="BT SCO" sources="primary output"/>
+                <route type="mix" sink="BT SCO Headset" sources="primary output"/>
+                <route type="mix" sink="BT SCO Car Kit" sources="primary output"/>
+                <route type="mix" sink="FM" sources="primary output"/>
+                <route type="mix" sink="Analog Dock" sources="primary output"/>
+                <route type="mix" sink="Digital Dock" sources="primary output"/>
+                <route type="mix" sink="HDMI Out" sources="primary output"/>
+
+                <route type="mix" sink="primary input"
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,Ambient Mic,Communication Mic,FM Tuner,Telephony Rx,HDMI In"/>
+            </routes>
+        </module>
+
+        <!-- No a2dp module.  FACT (A13, set 10, 2026-09-29): the AOSP a2dp
+             include made the audio service load the stock Flyme
+             audio.a2dp.default.so (Nougat audio.h, legacy bluedroid socket
+             A2DP that Android 13 no longer serves) as a plain Device; any
+             dump of it (dumpsys, lshal debug, bugreport) called a NULL
+             function in its shifted audio_hw_device and killed the whole
+             audio service (Device::debug -> pc 0, 02:03:03 and 02:07:38).
+             A2DP on Android 13 goes through the Bluetooth audio HAL — BT lane. -->
+        <xi:include href="/vendor/etc/usb_audio_policy_configuration.xml"/>
+        <xi:include href="/vendor/etc/r_submix_audio_policy_configuration.xml"/>
+    </modules>
+
+    <!-- Volume tables: without them every stream gets Min 0 / Max 0 (m95). -->
+    <xi:include href="/vendor/etc/audio_policy_volumes.xml"/>
+    <xi:include href="/vendor/etc/default_volume_tables.xml"/>
+
+    <xi:include href="/vendor/etc/surround_sound_configuration_5_0.xml"/>
+</audioPolicyConfiguration>

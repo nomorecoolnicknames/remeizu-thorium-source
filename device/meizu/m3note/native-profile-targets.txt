@@ -1,0 +1,16 @@
+lib/hw/audio.primary.default.so
+lib/hw/audio.r_submix.default.so
+lib/hw/audio.usb.default.so
+lib/hw/audio_policy.stub.so
+lib/hw/gralloc.default.so
+lib/mediadrm/libdrmclearkeyplugin.so
+lib/mediadrm/libmockdrmcryptoplugin.so
+lib/soundfx/libaudiopreprocessing.so
+lib64/hw/audio.primary.default.so
+lib64/hw/audio.r_submix.default.so
+lib64/hw/audio.usb.default.so
+lib64/hw/audio_policy.stub.so
+lib64/hw/gralloc.default.so
+lib64/mediadrm/libdrmclearkeyplugin.so
+lib64/mediadrm/libmockdrmcryptoplugin.so
+lib64/soundfx/libaudiopreprocessing.so
