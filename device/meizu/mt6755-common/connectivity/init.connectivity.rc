@@ -1,0 +1,36 @@
+# PROPER-FIX: commands and service ownership from the exact own-board ramdisk.
+# Kernel owns /dev nodes; Android 9 init has no mknod builtin.
+on post-fs-data
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wpa_supplicant 0770 wifi wifi
+    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    restorecon_recursive /data/vendor/wifi
+    # Source Wi-Fi HAL runs as wifi and changes STA/AP/P2P via this node.
+    chown wifi wifi /dev/wmtWifi
+    chmod 0660 /dev/wmtWifi
+
+service wmtLoader /system/bin/wmt_loader
+    user root
+    group root
+    class core
+    oneshot
+
+service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
+    user system
+    group system
+    class core
+
+# SDK28 HIDL creates interfaces and their config after the global daemon starts.
+# Preadding wlan0 with -c fails on a fresh data tree before HIDL can copy the template.
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant -e/data/vendor/wifi/wpa/entropy.bin -O/data/vendor/wifi/wpa/sockets -g@android:wpa_wlan0
+    interface android.hardware.wifi.supplicant@1.0::ISupplicant default
+    interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+    class main
+    user wifi
+    group wifi inet net_raw net_admin
+    capabilities NET_ADMIN NET_RAW
+    disabled
+    oneshot

@@ -1,0 +1,5 @@
+service vendor.meizu-bluetooth /vendor/bin/hw/meizu.hardware.bluetooth@1.0-service
+    class hal
+    user bluetooth
+    group bluetooth net_bt_stack
+    capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE

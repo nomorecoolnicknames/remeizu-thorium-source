@@ -1,0 +1,64 @@
+--- a/vendor/mediatek/ril/libril/Android.mk
++++ b/vendor/mediatek/ril/libril/Android.mk
+@@ -40,6 +40,11 @@
+ 
+ ril_cflags := -Wno-unused-parameter -DANDROID_SIM_COUNT_2 -DANDROID_MULTI_SIM -DMTK_HARDWARE
+ 
++# U10/U20 use RIL version 11 and five socket callbacks.
++ifneq ($(filter u10 u20,$(TARGET_DEVICE)),)
++  ril_cflags += -DMEIZU_NATIVE_RIL_V11
++endif
++
+ # forge (m5c, 2026-09-03): RIL_InitialAttachApn is NOT the same struct on every
+ # MTK blob. m681 (MT6755) reads a pointer at 0x10 and an int at 0x18, so it has
+ # a roamingProtocol member; m5c (MT6737M) reads an int at 0x10 and a pointer at
+@@ -52,7 +57,7 @@
+ # FACT (llvm-objdump of requestSetInitialAttachApn in lib64/mtk-ril.so): m5c,
+ # m5s and m2note all do "ldr w6, [xN, #16]; ldr x7, [xN, #24]" — an int at 0x10
+ # and a pointer at 0x18, i.e. no roamingProtocol member.
+-ifneq ($(filter m5c m5s m2note,$(TARGET_DEVICE)),)
++ifneq ($(filter m5c m5s m2note u10 u20,$(TARGET_DEVICE)),)
+   ril_cflags += -DMTK_RIL_IAA_NO_ROAMING_PROTOCOL
+ endif
+ 
+--- a/vendor/mediatek/ril/libril/ril.cpp
++++ b/vendor/mediatek/ril/libril/ril.cpp
+@@ -47,6 +47,7 @@
+ 
+ #include <hardware_legacy/power.h>
+ #include <telephony/ril.h>
++#include <stddef.h>
+ #include <telephony/ril_cdma_sms.h>
+ #include <cutils/sockets.h>
+ #include <cutils/jstring.h>
+@@ -1887,6 +1888,16 @@
+ 
+ }
+ 
++#if defined(MEIZU_NATIVE_RIL_V11) && defined(__LP64__)
++// Own ROMv11 callback table at0xea1f0: version0, five pointers8..40.
++static_assert(sizeof(RIL_RadioFunctionsSocket) == 48, "own RIL callback size");
++static_assert(offsetof(RIL_RadioFunctionsSocket, onRequest) == 8, "own request offset");
++static_assert(offsetof(RIL_RadioFunctionsSocket, getVersion) == 40, "own version callback offset");
++// Own requestSetInitialAttachApn reads int0x10 and pointer0x18.
++static_assert(offsetof(RIL_InitialAttachApn, authtype) == 16, "own attach auth offset");
++static_assert(offsetof(RIL_InitialAttachApn, username) == 24, "own attach username offset");
++#endif
++
+ extern "C" void
+ RIL_registerSocket (const RIL_RadioFunctionsSocket *callbacks) {
+     int ret;
+@@ -1899,6 +1910,13 @@
+ 	RLOGE("RIL_registerSocket: RIL_RadioFunctions * null");
+ 	return;
+     }
++#ifdef MEIZU_NATIVE_RIL_V11
++    if (callbacks->version != 11 || !callbacks->onRequest || !callbacks->onStateRequest ||
++        !callbacks->supports || !callbacks->onCancel || !callbacks->getVersion) {
++        RLOGE("Own U10/U20 RIL callback contract mismatch; refusing HIDL registration");
++        return;
++    }
++#endif
+     if (callbacks->version < RIL_VERSION_MIN) {
+ 	RLOGE("RIL_registerSocket: version %d is to old, min version is %d",
+ 	     callbacks->version, RIL_VERSION_MIN);

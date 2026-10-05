@@ -1,0 +1,68 @@
+# Metadata-only native checker: no block contents, mount, format or repair access.
+type meizu_calibration_check, domain, coredomain;
+type meizu_calibration_check_exec, exec_type, file_type;
+init_daemon_domain(meizu_calibration_check)
+type meizu_calibration_ready_prop, property_type, extended_core_property_type;
+set_prop(meizu_calibration_check, meizu_calibration_ready_prop)
+allow meizu_calibration_check proc_mounts:file r_file_perms;
+allow meizu_calibration_check block_device:dir search;
+allow meizu_calibration_check block_device:lnk_file { getattr read };
+allow meizu_calibration_check block_device:blk_file getattr;
+allow meizu_calibration_check radio_data_file:lnk_file { getattr read };
+allow meizu_calibration_check { system_data_file radio_data_file }:dir search;
+
+# Explicit system-side owners for exact legacy NV/CCCI/mux executables.
+type meizu_nvram_daemon, domain, coredomain;
+type meizu_nvram_daemon_exec, exec_type, file_type;
+init_daemon_domain(meizu_nvram_daemon)
+type meizu_ccci_fsd, domain, coredomain;
+type meizu_ccci_fsd_exec, exec_type, file_type;
+init_daemon_domain(meizu_ccci_fsd)
+type meizu_ccci_mdinit, domain, coredomain;
+type meizu_ccci_mdinit_exec, exec_type, file_type;
+init_daemon_domain(meizu_ccci_mdinit)
+type meizu_gsm_mux, domain, coredomain;
+type meizu_gsm_mux_exec, exec_type, file_type;
+init_daemon_domain(meizu_gsm_mux)
+
+allow rild self:unix_stream_socket create_stream_socket_perms;
+allow rild { rild_socket rild_debug_socket }:sock_file rw_file_perms;
+allow rild self:capability { setuid setgid };
+
+# The writable calibration-ready property belongs only to the native checker.
+get_prop(init, meizu_calibration_ready_prop)
+get_prop(meizu_nvram_daemon, meizu_calibration_ready_prop)
+get_prop(meizu_ccci_fsd, meizu_calibration_ready_prop)
+get_prop(meizu_ccci_mdinit, meizu_calibration_ready_prop)
+type meizu_nvram_ready_prop, property_type, extended_core_property_type;
+set_prop(meizu_nvram_daemon, meizu_nvram_ready_prop)
+get_prop(init, meizu_nvram_ready_prop)
+get_prop(meizu_ccci_mdinit, meizu_nvram_ready_prop)
+type meizu_radio_control_prop, property_type, extended_core_property_type;
+set_prop(meizu_ccci_mdinit, meizu_radio_control_prop)
+set_prop(meizu_gsm_mux, meizu_radio_control_prop)
+set_prop(rild, radio_prop)
+set_prop(meizu_ccci_mdinit, radio_prop)
+
+# Exact module endpoints and existing calibration stores, not arbitrary blocks.
+type meizu_ccci_device, dev_type;
+type meizu_ccci_sysfs, fs_type, sysfs_type;
+type meizu_nvram_block_device, dev_type;
+type meizu_protect_data_file, file_type, data_file_type;
+allow meizu_calibration_check meizu_nvram_block_device:blk_file getattr;
+allow meizu_nvram_daemon meizu_nvram_block_device:blk_file rw_file_perms;
+allow { meizu_ccci_fsd meizu_ccci_mdinit meizu_gsm_mux rild } meizu_ccci_device:chr_file rw_file_perms;
+allow { meizu_nvram_daemon meizu_ccci_fsd meizu_ccci_mdinit meizu_gsm_mux } sysfs:dir search;
+allow { meizu_ccci_mdinit meizu_ccci_fsd meizu_gsm_mux } sysfs:file r_file_perms;
+allow { meizu_ccci_mdinit meizu_ccci_fsd meizu_gsm_mux } meizu_ccci_sysfs:dir r_dir_perms;
+allow { meizu_ccci_fsd meizu_gsm_mux } meizu_ccci_sysfs:file r_file_perms;
+allow meizu_ccci_mdinit meizu_ccci_sysfs:file rw_file_perms;
+allow { meizu_nvram_daemon meizu_ccci_fsd meizu_ccci_mdinit } radio_data_file:dir create_dir_perms;
+allow { meizu_nvram_daemon meizu_ccci_fsd meizu_ccci_mdinit } radio_data_file:file create_file_perms;
+allow { meizu_nvram_daemon meizu_ccci_fsd } meizu_protect_data_file:dir create_dir_perms;
+allow { meizu_nvram_daemon meizu_ccci_fsd } meizu_protect_data_file:file create_file_perms;
+allow rild { radio_data_file meizu_protect_data_file }:dir r_dir_perms;
+allow rild { radio_data_file meizu_protect_data_file }:file r_file_perms;
+allow meizu_gsm_mux radio_device:dir rw_dir_perms;
+allow meizu_gsm_mux radio_device:lnk_file create_file_perms;
+allow meizu_gsm_mux devpts:chr_file rw_file_perms;

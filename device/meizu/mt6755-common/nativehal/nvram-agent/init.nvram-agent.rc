@@ -1,0 +1,9 @@
+# Own system-side Binder service, started only after genuine calibration guards.
+on property:sys.meizu.calibration.mounted=1 && property:service.nvram_init=Ready
+    start NvRAMAgent
+
+service NvRAMAgent /system/bin/nvram_agent_binder
+    class main
+    user system
+    group system
+    disabled

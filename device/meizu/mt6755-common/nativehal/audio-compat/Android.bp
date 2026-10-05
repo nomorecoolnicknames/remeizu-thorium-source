@@ -1,0 +1,8 @@
+cc_library_shared {
+    name: "libmeizu_audio_capability_compat",
+    vendor: true,
+    srcs: ["VoiceUnlockCompat.cpp"],
+    compile_multilib: "both",
+    shared_libs: ["liblog"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}

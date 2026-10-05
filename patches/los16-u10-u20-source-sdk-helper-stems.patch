@@ -1,0 +1,72 @@
+--- a/external/tinycompress/Android.bp
++++ b/external/tinycompress/Android.bp
+@@ -1,5 +1,10 @@
+ cc_library_shared {
+     name: "libtinycompress",
++    target: {
++        android: {
++            stem: "libmeizu_sdk28_tinycompress",
++        },
++    },
+     vendor: true,
+ 
+     cflags: [
+--- a/external/tinyxml/Android.mk
++++ b/external/tinyxml/Android.mk
+@@ -28,6 +28,9 @@
+ 	$(commonSources)
+ 
+ LOCAL_MODULE:= libtinyxml
++ifneq ($(filter lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
++LOCAL_INSTALLED_MODULE_STEM := libmeizu_sdk28_tinyxml.so
++endif
+ 
+ LOCAL_VENDOR_MODULE := true
+ 
+--- a/external/curl/Android.bp
++++ b/external/curl/Android.bp
+@@ -195,6 +195,9 @@
+         "libz",
+     ],
+     target: {
++        android: {
++            stem: "libmeizu_sdk28_curl",
++        },
+         host: {
+             cflags: ["-D_GNU_SOURCE=1"],
+         },
+--- a/hardware/ril/librilutils/Android.mk
++++ b/hardware/ril/librilutils/Android.mk
+@@ -19,6 +19,9 @@
+ LOCAL_PROTOC_OPTIMIZE_TYPE := nanopb-c-enable_malloc
+ 
+ LOCAL_MODULE:= librilutils
++ifneq ($(filter lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
++LOCAL_INSTALLED_MODULE_STEM := libmeizu_sdk28_rilutils.so
++endif
+ LOCAL_VENDOR_MODULE:= true
+ 
+ include $(BUILD_SHARED_LIBRARY)
+--- a/build/soong/cc/library.go
++++ b/build/soong/cc/library.go
+@@ -24,6 +24,9 @@
+ )
+ 
+ type LibraryProperties struct {
++	// Optional output filename; logical dependency module names stay unchanged.
++	Stem *string `android:"arch_variant"`
++
+ 	Static struct {
+ 		Srcs   []string `android:"arch_variant"`
+ 		Cflags []string `android:"arch_variant"`
+@@ -424,6 +427,10 @@
+ 	name := library.libName
+ 	if name == "" {
+ 		name = ctx.baseModuleName()
++	}
++
++	if library.Properties.Stem != nil {
++		name = String(library.Properties.Stem)
+ 	}
+ 
+ 	if ctx.isVndkExt() {

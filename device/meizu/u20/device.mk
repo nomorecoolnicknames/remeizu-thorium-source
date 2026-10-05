@@ -1,5 +1,25 @@
 # Meizu U20 (u20) — LOS16 product wiring; board bring-up remains incomplete
 TARGET_MEIZU_MT675X_DEVICE := u20
 LOCAL_PATH := device/meizu/u20
-$(call inherit-product, device/meizu/mt6755-common/device-common.mk)
-$(call inherit-product, vendor/meizu/u20/u20-vendor.mk)
+$(call inherit-product, device/meizu/u20/stockgraph/device.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/normal-components-base.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/sensors.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/audio.mk)
+
+$(call inherit-product, device/meizu/mt6755-common/connectivity/connectivity.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/peripherals.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/icu55.mk)
+
+$(call inherit-product, device/meizu/mt6755-common/nativehal/fingerprint.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/radio.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/firmware.mk)
+
+$(call inherit-product, device/meizu/mt6755-common/nativehal/gnss.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/lights.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/thermal.mk)
+
+# Bootstrap libc/libui first; admit the camera after compiled ABI verification.
+ifeq ($(MEIZU_NATIVE_CAMERA_ABI_VERIFIED),true)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/camera.mk)
+$(call inherit-product, device/meizu/mt6755-common/nativehal/nvram-agent.mk)
+endif

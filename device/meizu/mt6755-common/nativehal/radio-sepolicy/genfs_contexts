@@ -1,0 +1,1 @@
+genfscon sysfs /kernel/ccci u:object_r:meizu_ccci_sysfs:s0

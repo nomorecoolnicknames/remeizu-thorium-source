@@ -1,0 +1,7 @@
+# Canonical SDK28 service owns this domain; telemetry never changes cooling.
+r_dir_file(hal_thermal_default, sysfs_thermal)
+r_dir_file(hal_thermal_default, sysfs_batteryinfo)
+r_dir_file(hal_thermal_default, sysfs_devices_system_cpu)
+allow hal_thermal_default proc_stat:file r_file_perms;
+# Enumerate only the standard class directory; no generic sysfs file read/write.
+allow hal_thermal_default sysfs:dir r_dir_perms;

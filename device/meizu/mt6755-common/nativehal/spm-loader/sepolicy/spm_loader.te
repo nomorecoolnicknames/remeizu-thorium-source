@@ -1,0 +1,6 @@
+type meizu_spm_loader, domain, coredomain;
+type meizu_spm_loader_exec, exec_type, file_type;
+init_daemon_domain(meizu_spm_loader)
+type meizu_spm_device, dev_type;
+allow init meizu_spm_device:chr_file getattr;
+allow meizu_spm_loader meizu_spm_device:chr_file { getattr open read };

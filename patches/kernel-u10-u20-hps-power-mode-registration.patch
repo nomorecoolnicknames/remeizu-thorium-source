@@ -1,0 +1,16 @@
+--- a/drivers/misc/mediatek/base/power/mt6755/mt_hotplug_strategy_procfs.c
++++ b/drivers/misc/mediatek/base/power/mt6755/mt_hotplug_strategy_procfs.c
+@@ -100,4 +100,3 @@
+ 	} else if (hpsvar == &hps_ctxt.power_mode) {
+-		/* NOTE: what is the accepted range? */
+-		if (newv > 0)
++		if (newv >= 1 && newv <= 3)
+ 			rc = 0;
+@@ -206,2 +205,3 @@
+ ***********************************************************/
++PROC_FOPS_RW_UINT(power_mode, hps_ctxt.power_mode, hps_proc_uint_write_with_lock_reset);
+ PROC_FOPS_RO_UINT(init_state, hps_ctxt.init_state);
+@@ -715,2 +715,3 @@
+ 	const struct pentry entries[] = {
++		PROC_ENTRY(power_mode),
+ 		PROC_ENTRY(init_state),

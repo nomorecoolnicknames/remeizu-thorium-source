@@ -1,0 +1,18 @@
+diff --git a/drivers/power/mediatek/battery_common_fg_20.c b/drivers/power/mediatek/battery_common_fg_20.c
+index b65c8159..e44f67c3 100755
+--- a/drivers/power/mediatek/battery_common_fg_20.c
++++ b/drivers/power/mediatek/battery_common_fg_20.c
+@@ -803,10 +803,11 @@ static int battery_get_property(struct power_supply *psy,
+ 		break;
+ 		/* Dual battery */
+ 	case POWER_SUPPLY_PROP_CHARGE_FULL:
+-		val->intval = CHAEGR_FULL;
++		/* power_supply charge attributes are reported in microamp-hours. */
++		val->intval = CHAEGR_FULL * 1000;
+ 		break;
+ 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
+-		val->intval = CHAEGR_FULL_DESIGN;
++		val->intval = CHAEGR_FULL_DESIGN * 1000;
+ 		break;
+ 	case POWER_SUPPLY_PROP_CYCLE_COUNT:
+ 		val->intval = data->CycleCount;

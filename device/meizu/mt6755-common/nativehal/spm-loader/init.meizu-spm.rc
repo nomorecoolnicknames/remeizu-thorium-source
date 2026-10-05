@@ -1,0 +1,10 @@
+on post-fs-data
+    wait /dev/spm 5
+    exec_start meizu-spm-loader
+
+service meizu-spm-loader /system/bin/meizu-spm-loader
+    class core
+    user root
+    group root
+    disabled
+    oneshot

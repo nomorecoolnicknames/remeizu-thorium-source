@@ -1,0 +1,12 @@
+import /init.meizu-radio.rc
+
+on early-init
+    mkdir /nvdata 0771 root system
+    mkdir /protect_f 0770 root system
+    mkdir /protect_s 0770 root system
+
+import /init.meizu-connectivity.rc
+
+# Own U10 mount skeleton and independently owned component services.
+on fs
+    mount_all /fstab.mt6755

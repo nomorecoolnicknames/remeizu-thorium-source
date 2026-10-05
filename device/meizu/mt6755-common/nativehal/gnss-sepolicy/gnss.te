@@ -1,0 +1,25 @@
+type meizu_gnss_backend, domain;
+type meizu_gnss_backend_exec, exec_type, file_type;
+init_daemon_domain(meizu_gnss_backend)
+typeattribute meizu_gnss_backend coredomain;
+net_domain(meizu_gnss_backend)
+type meizu_gnss_device, dev_type;
+type meizu_gnss_data_file, file_type, data_file_type, core_data_file_type;
+type meizu_gnss_socket, file_type;
+allow init meizu_gnss_socket:sock_file { create setattr unlink };
+type meizu_gnss_sysfs, fs_type, sysfs_type;
+allow { meizu_gnss_backend hal_gnss_default } meizu_gnss_sysfs:file rw_file_perms;
+allow { meizu_gnss_backend hal_gnss_default } sysfs:lnk_file read;
+allow { meizu_gnss_backend hal_gnss_default } sysfs_type:dir search;
+allow meizu_gnss_backend meizu_gnss_device:chr_file rw_file_perms;
+allow hal_gnss_default meizu_gnss_device:chr_file rw_file_perms;
+allow { meizu_gnss_backend hal_gnss_default } meizu_gnss_data_file:dir create_dir_perms;
+allow { meizu_gnss_backend hal_gnss_default } meizu_gnss_data_file:file create_file_perms;
+allow { meizu_gnss_backend hal_gnss_default } meizu_gnss_data_file:sock_file create_file_perms;
+allow { meizu_gnss_backend hal_gnss_default } meizu_gnss_socket:sock_file rw_file_perms;
+allow hal_gnss_default meizu_gnss_backend:unix_stream_socket connectto;
+allow hal_gnss_default meizu_gnss_backend:unix_dgram_socket sendto;
+allow meizu_gnss_backend hal_gnss_default:unix_dgram_socket sendto;
+allow meizu_gnss_backend system_data_file:dir search;
+allow meizu_gnss_backend system_file:file rx_file_perms;
+allow meizu_gnss_backend vendor_file:file rx_file_perms;

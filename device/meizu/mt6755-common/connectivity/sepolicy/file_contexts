@@ -1,0 +1,4 @@
+/system/bin/wmt_loader                         u:object_r:meizu_wmt_loader_exec:s0
+/system/bin/6620_launcher                      u:object_r:meizu_wmt_launcher_exec:s0
+/(vendor|system/vendor)/bin/hw/meizu\.hardware\.bluetooth@1\.0-service u:object_r:hal_bluetooth_default_exec:s0
+/dev/(stpwmt|wmtdetect|stpbt|stpant) u:object_r:meizu_wmt_transport_device:s0

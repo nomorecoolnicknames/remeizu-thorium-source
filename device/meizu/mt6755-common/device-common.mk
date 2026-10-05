@@ -58,8 +58,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(COMMON_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     $(COMMON_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(COMMON_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -81,6 +79,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
+
+# RIL
+ifeq ($(filter $(TARGET_MEIZU_MT675X_DEVICE),u10 u20),)
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/configs/audio_device.xml:system/etc/audio_device.xml
+PRODUCT_PACKAGES += libtinyxml libtinycompress
+endif
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -118,8 +124,6 @@ PRODUCT_PACKAGES += \
 # Build Station: scrcpy/media/audio bring-up. Keep ROM-built helper libraries
 # in /system so MTK vendor blobs do not fail early dlopen.
 PRODUCT_PACKAGES += \
-	libtinyxml \
-	libtinycompress \
 	libstagefright_soft_avcenc \
 	libstagefright_soft_vpxenc
 

@@ -1,0 +1,40 @@
+# System-side compatibility service: own legacy daemon uses /dev/binder.
+type meizu_fingerprint_hal, domain, coredomain;
+type meizu_fingerprint_hal_exec, exec_type, file_type;
+init_daemon_domain(meizu_fingerprint_hal)
+hal_server_domain(meizu_fingerprint_hal, hal_fingerprint)
+binder_use(meizu_fingerprint_hal)
+
+# Distinct exact-stock Goodix and Trustonic daemon owners.
+type meizu_goodix_daemon, domain, coredomain;
+type meizu_goodix_daemon_exec, exec_type, file_type;
+init_daemon_domain(meizu_goodix_daemon)
+binder_use(meizu_goodix_daemon)
+type meizu_goodix_service, service_manager_type;
+add_service(meizu_goodix_daemon, meizu_goodix_service)
+allow meizu_fingerprint_hal meizu_goodix_service:service_manager find;
+binder_call(meizu_fingerprint_hal, meizu_goodix_daemon)
+binder_call(meizu_goodix_daemon, meizu_fingerprint_hal)
+
+# Permissions name only the own stock device endpoints and registry storage.
+type meizu_goodix_device, dev_type;
+allow meizu_goodix_daemon meizu_goodix_device:chr_file rw_file_perms;
+type meizu_mobicore_device, dev_type;
+allow meizu_goodix_daemon meizu_mobicore_device:chr_file rw_file_perms;
+type meizu_mobicore_daemon, domain, coredomain;
+type meizu_mobicore_daemon_exec, exec_type, file_type;
+init_daemon_domain(meizu_mobicore_daemon)
+allow meizu_mobicore_daemon meizu_mobicore_device:chr_file rw_file_perms;
+allow meizu_mobicore_daemon self:unix_stream_socket create_stream_socket_perms;
+allow meizu_goodix_daemon self:unix_stream_socket create_stream_socket_perms;
+allow meizu_goodix_daemon meizu_mobicore_daemon:unix_stream_socket connectto;
+allow meizu_mobicore_daemon meizu_goodix_daemon:unix_stream_socket { read write getattr getopt setopt };
+type meizu_mobicore_data_file, file_type, data_file_type, core_data_file_type;
+allow meizu_mobicore_daemon meizu_mobicore_data_file:dir create_dir_perms;
+allow meizu_mobicore_daemon meizu_mobicore_data_file:file create_file_perms;
+allow meizu_goodix_daemon meizu_mobicore_data_file:dir r_dir_perms;
+allow meizu_goodix_daemon meizu_mobicore_data_file:file r_file_perms;
+# AOSP fingerprint store: restrict template access to the fingerprint owner.
+allow meizu_fingerprint_hal fingerprintd_data_file:dir rw_dir_perms;
+allow meizu_goodix_daemon fingerprintd_data_file:dir create_dir_perms;
+allow meizu_goodix_daemon fingerprintd_data_file:file create_file_perms;

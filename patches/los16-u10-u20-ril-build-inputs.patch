@@ -1,0 +1,45 @@
+--- a/vendor/mediatek/ril/libril/Android.mk
++++ b/vendor/mediatek/ril/libril/Android.mk
+@@ -44,6 +44,14 @@
+ 
+ ril_inc := external/nanopb-c \
+     $(LOCAL_PATH)/../include
++
++ifeq ($(MEIZU_NATIVE_CAMERA_ABI_VERIFIED),true)
++ifneq ($(filter u10 u20,$(TARGET_DEVICE)),)
++ril_inc := $(LOCAL_PATH)/../../include $(ril_inc)
++meizu_ril_sap_proto_dir := $(call generated-sources-dir-for,SHARED_LIBRARIES,librilutils)/proto
++ril_inc += $(meizu_ril_sap_proto_dir)
++endif
++endif
+ 
+ ril_cflags := -Wno-unused-parameter -DANDROID_SIM_COUNT_2 -DANDROID_MULTI_SIM -DMTK_HARDWARE
+ 
+@@ -93,6 +101,12 @@
+ LOCAL_CFLAGS := $(ril_cflags)
+ LOCAL_C_INCLUDES += $(ril_inc)
+ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/../include
++ifeq ($(MEIZU_NATIVE_CAMERA_ABI_VERIFIED),true)
++ifneq ($(filter u10 u20,$(TARGET_DEVICE)),)
++LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/../../include
++LOCAL_ADDITIONAL_DEPENDENCIES += $(meizu_ril_sap_proto_dir)/hardware/ril/librilutils/proto/sap-api.pb.c
++endif
++endif
+ LOCAL_MODULE:= libril
+ LOCAL_CLANG := true
+ LOCAL_SANITIZE := integer
+--- a/vendor/mediatek/ril/rild/Android.mk
++++ b/vendor/mediatek/ril/rild/Android.mk
+@@ -49,6 +49,12 @@
+ LOCAL_C_INCLUDES += \
+ 	system/core/libcutils/include
+ 
++ifeq ($(MEIZU_NATIVE_CAMERA_ABI_VERIFIED),true)
++ifneq ($(filter u10 u20,$(TARGET_DEVICE)),)
++LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../include $(LOCAL_C_INCLUDES)
++endif
++endif
++
+ 
+ LOCAL_CFLAGS += -DANDROID_MULTI_SIM
+ LOCAL_CFLAGS += -DANDROID_SIM_COUNT_2

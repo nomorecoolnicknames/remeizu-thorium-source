@@ -1,0 +1,62 @@
+--- a/audio/core/all-versions/default/include/core/all-versions/default/Stream.h
++++ b/audio/core/all-versions/default/include/core/all-versions/default/Stream.h
+@@ -18,6 +18,7 @@
+
+ #include <vector>
+
++#include <cutils/properties.h>
+ #include <hardware/audio.h>
+ #include <hidl/Status.h>
+
+@@ -121,7 +122,9 @@
+
+ template <typename T>
+ struct StreamMmap : public RefBase {
+-    explicit StreamMmap(T* stream) : mStream(stream) {}
++    explicit StreamMmap(T* stream)
++        : mStream(stream),
++          mLegacyMmapUnsupported(property_get_bool("ro.audio.legacy_hal_no_mmap", false)) {}
+
+     Return<Result> start();
+     Return<Result> stop();
+@@ -133,10 +136,14 @@
+     StreamMmap() {}
+
+     T* mStream;
++    // Own U10/U20 legacy structs end before the MMAP callbacks. A NULL
++    // test would itself read past their allocation (or read a C++ object).
++    bool mLegacyMmapUnsupported;
+ };
+
+ template <typename T>
+ Return<Result> StreamMmap<T>::start() {
++    if (mLegacyMmapUnsupported) return Result::NOT_SUPPORTED;
+     if (mStream->start == NULL) return Result::NOT_SUPPORTED;
+     int result = mStream->start(mStream);
+     return Stream::analyzeStatus("start", result);
+@@ -144,6 +151,7 @@
+
+ template <typename T>
+ Return<Result> StreamMmap<T>::stop() {
++    if (mLegacyMmapUnsupported) return Result::NOT_SUPPORTED;
+     if (mStream->stop == NULL) return Result::NOT_SUPPORTED;
+     int result = mStream->stop(mStream);
+     return Stream::analyzeStatus("stop", result);
+@@ -156,7 +164,7 @@
+     MmapBufferInfo info;
+     native_handle_t* hidlHandle = nullptr;
+
+-    if (mStream->create_mmap_buffer != NULL) {
++    if (!mLegacyMmapUnsupported && mStream->create_mmap_buffer != NULL) {
+         struct audio_mmap_buffer_info halInfo;
+         retval = Stream::analyzeStatus(
+             "create_mmap_buffer", mStream->create_mmap_buffer(mStream, minSizeFrames, &halInfo));
+@@ -181,7 +189,7 @@
+     Result retval(Result::NOT_SUPPORTED);
+     MmapPosition position;
+
+-    if (mStream->get_mmap_position != NULL) {
++    if (!mLegacyMmapUnsupported && mStream->get_mmap_position != NULL) {
+         struct audio_mmap_position halPosition;
+         retval = Stream::analyzeStatus("get_mmap_position",
+                                        mStream->get_mmap_position(mStream, &halPosition));

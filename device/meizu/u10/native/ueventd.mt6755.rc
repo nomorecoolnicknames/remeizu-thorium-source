@@ -1,0 +1,13 @@
+import /ueventd.meizu-connectivity.rc
+
+# U10 stock ueventd.mt6755.rc:107/110, paired with its own kernel/graphics.
+/dev/mali 0666 system graphics
+/dev/ion 0666 system graphics
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram 0660 root system
+/dev/ccci* 0660 radio radio
+/dev/ttyC* 0660 radio radio
+/dev/ccci_pcm_rx 0660 audio audio
+/dev/ccci_pcm_tx 0660 audio audio
+/dev/ccci_aud 0660 audio audio
+/dev/ccci2_aud 0660 audio audio
+/dev/ccci3_aud 0660 audio audio

@@ -1,0 +1,27 @@
+cc_library_shared {
+    name: "android.hardware.power@1.0-impl-meizu-legacy",
+    defaults: ["hidl_defaults"],
+    proprietary: true,
+    relative_install_path: "hw",
+    compile_multilib: "64",
+    srcs: ["Power.cpp"],
+    cflags: ["-Wall", "-Werror"],
+    shared_libs: [
+        "liblog", "libhardware", "libhidlbase", "libhidltransport",
+        "libutils", "android.hardware.power@1.0",
+    ],
+}
+cc_binary {
+    name: "meizu.hardware.power@1.0-service",
+    defaults: ["hidl_defaults"],
+    proprietary: true,
+    relative_install_path: "hw",
+    compile_multilib: "64",
+    srcs: ["service.cpp"],
+    init_rc: ["meizu.hardware.power@1.0-service.rc"],
+    cflags: ["-Wall", "-Werror"],
+    shared_libs: [
+        "liblog", "libdl", "libutils", "libhardware", "libhidlbase",
+        "libhidltransport", "android.hardware.power@1.0", "libhwbinder",
+    ],
+}

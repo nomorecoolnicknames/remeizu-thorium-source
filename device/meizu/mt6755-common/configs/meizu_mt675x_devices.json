@@ -22,7 +22,7 @@
         "3.18.140 (ACTIVE)"
       ],
       "state": "los16.0-pie-close: boot_completed=1 on 2026-08-03 lanes; HWC/mbackd/camera-enum/audio working; camera-open/wifi-install/bt-kernel/mback-human/fp-enroll remaining",
-      "panel": "ili9881c_hd_dsi_txd (unit REDACTED_UNIT; earlier units were ili9881p — panel is UNIT-DEPENDENT, see M6_LIVE_STOCK_CAPTURE_2026-07-25)",
+      "panel": "ili9881c_hd_dsi_txd (unit 711HEBRN23L3N; earlier units were ili9881p — panel is UNIT-DEPENDENT, see M6_LIVE_STOCK_CAPTURE_2026-07-25)",
       "touch": "ft5x0x",
       "sensors": [
         "BMA253",
@@ -121,7 +121,7 @@
         "front: OV5675 or S5K5E8"
       ],
       "notes": [
-        "Marketing M5 Note / Meilan Note 5; possible stock codename m1621 — verify ro.product.device on first dump"
+        "Marketing M5 Note / Meilan Note 5; possible stock codename m1621 — verify ro.product.device on first dump (UNIFIED_TREE_PLAN §1)"
       ]
     },
     "u10": {
@@ -142,7 +142,7 @@
       ],
       "notes": [
         "Stock ro.product.device UNVERIFIED — u10/U680 alias resolution needs first dump",
-        "Stock OTA assert: U10 (uppercase) — BoardConfig uses 'u10 U10'"
+        "Stock OTA assert: U10 (uppercase) — BoardConfig uses 'u10,U10'"
       ],
       "sensors": [
         "N2DM accel",
@@ -177,7 +177,7 @@
       ],
       "notes": [
         "Helio P10 1.8GHz x4 + 1.0GHz x4 (Meizu spec; some sources claim 2.0 — resolve on dump)",
-        "Stock OTA assert: U20 (uppercase) — BoardConfig uses 'u20 U20'",
+        "Stock OTA assert: U20 (uppercase) — BoardConfig uses 'u20,U20'",
         "atag nt35695 in stock DTB = template garbage — ignore"
       ],
       "sensors": [

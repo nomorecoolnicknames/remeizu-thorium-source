@@ -1,0 +1,7 @@
+# Own SpeechMessengerECCCI reads the port version, opens ccci*_aud with
+# O_RDWR, exchanges speech messages and queries CCCI_IOC_GET_MD_STATE.
+# Preserve the existing radio/sysfs labels and restrict the ioctl to that query.
+allow hal_audio_default meizu_ccci_sysfs:dir search;
+allow hal_audio_default meizu_ccci_sysfs:file { open read };
+allow hal_audio_default mtk_ccci_aud_device:chr_file { open read write ioctl };
+allowxperm hal_audio_default mtk_ccci_aud_device:chr_file ioctl { 0x4301 };

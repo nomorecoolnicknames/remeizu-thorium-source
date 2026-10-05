@@ -1,0 +1,17 @@
+// Own stock vendor interface exists only in ELF32. Force a matching service.
+cc_binary {
+    name: "meizu.hardware.bluetooth@1.0-service",
+    defaults: ["hidl_defaults"],
+    vendor: true,
+    relative_install_path: "hw",
+    compile_multilib: "32",
+    srcs: ["service.cpp"],
+    init_rc: ["meizu.hardware.bluetooth@1.0-service.rc"],
+    shared_libs: [
+        "libhidlbase",
+        "libhidltransport",
+        "libutils",
+        "liblog",
+        "android.hardware.bluetooth@1.0",
+    ],
+}

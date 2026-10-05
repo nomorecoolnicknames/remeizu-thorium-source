@@ -1,0 +1,30 @@
+--- a/vendor/mediatek/Android.mk
++++ b/vendor/mediatek/Android.mk
+@@ -46,7 +46,14 @@
+ endif
+ include $(MTK_VENDOR_PATH)/wlan/wifi_hal/Android.mk
+ 
+-else ifneq ($(filter lineage_m3s_stockgraph lineage_u10_stockgraph lineage_u20_stockgraph lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
++else ifneq ($(filter lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
++
++include $(MTK_VENDOR_PATH)/wlan/wifi_hal/Android.mk
++include $(MTK_VENDOR_PATH)/wlan/wpa_supplicant_8_lib/Android.mk
++include $(MTK_VENDOR_PATH)/ril/libril/Android.mk
++include $(MTK_VENDOR_PATH)/ril/rild/Android.mk
++
++else ifneq ($(filter lineage_m3s_stockgraph lineage_u10_stockgraph lineage_u20_stockgraph,$(TARGET_PRODUCT)),)
+ 
+ # The diagnostic products inherit BOARD_WLAN_DEVICE=MediaTek. Frameworks parses
+ # libwifi-hal globally, so its real MT66xx static provider must be registered.
+--- a/hardware/ril/reference-ril/Android.mk
++++ b/hardware/ril/reference-ril/Android.mk
+@@ -4,6 +4,9 @@
+ #
+ LOCAL_PATH:= $(call my-dir)
+ include $(CLEAR_VARS)
++ifneq ($(filter lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
++LOCAL_MULTILIB := 64
++endif
+ 
+ LOCAL_SRC_FILES:= \
+     reference-ril.c \

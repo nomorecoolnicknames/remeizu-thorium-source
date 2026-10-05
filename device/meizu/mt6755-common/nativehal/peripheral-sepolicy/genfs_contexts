@@ -1,0 +1,4 @@
+genfscon proc /ppm/mode u:object_r:meizu_native_power_proc:s0
+genfscon proc /hps/power_mode u:object_r:meizu_native_power_proc:s0
+genfscon proc /cpufreq/cpufreq_power_mode u:object_r:meizu_native_power_proc:s0
+genfscon debugfs /ged/hal/event_notify u:object_r:meizu_native_power_debugfs:s0

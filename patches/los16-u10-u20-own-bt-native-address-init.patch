@@ -1,0 +1,66 @@
+--- a/hardware/interfaces/bluetooth/1.0/default/vendor_interface.cc
++++ b/hardware/interfaces/bluetooth/1.0/default/vendor_interface.cc
+@@ -208,10 +208,45 @@
+   // Get the local BD address
+ 
+   uint8_t local_bda[BluetoothAddress::kBytes];
+-  if (!BluetoothAddress::get_local_address(local_bda)) {
++  unsigned char* init_bda = nullptr;
++  if (BluetoothAddress::get_local_address(local_bda)) {
++    init_bda = local_bda;
++  } else {
++#if defined(MEIZU_U10_U20_OWN_MTK_NV_BDA_INIT) && defined(__arm__)
++    // Only the reviewed own ELF32 MTK interface ignores its BDA argument.
++    // Its firmware sequence obtains the real address from native NVRAM/HCI;
++    // the stack subsequently reads the controller address with HCI 0x1009.
++    static_assert(sizeof(void*) == 4, "own MTK vendor interface is ELF32");
++    static_assert(sizeof(bt_vendor_interface_t) == 16,
++                  "own MTK vendor interface has three callback slots");
++    // The reviewed firmware worker uses this actual SDK callback prefix.
++    static_assert(sizeof(bt_vendor_callbacks_t) == 40,
++                  "SDK28 ARM32 vendor callbacks have ten pointer-size fields");
++    static_assert(__builtin_offsetof(bt_vendor_callbacks_t, fwcfg_cb) == 4,
++                  "own MTK firmware completion callback offset");
++    static_assert(__builtin_offsetof(bt_vendor_callbacks_t, alloc) == 20,
++                  "own MTK command allocation callback offset");
++    static_assert(__builtin_offsetof(bt_vendor_callbacks_t, dealloc) == 24,
++                  "own MTK command deallocation callback offset");
++    static_assert(__builtin_offsetof(bt_vendor_callbacks_t, xmit_cb) == 28,
++                  "own MTK HCI command transmit callback offset");
++    const auto own_init = reinterpret_cast<decltype(lib_interface_->init)>(
++        dlsym(lib_handle_, "mtk_bt_init"));
++    const auto own_op = reinterpret_cast<decltype(lib_interface_->op)>(
++        dlsym(lib_handle_, "mtk_bt_op"));
++    const auto own_cleanup = reinterpret_cast<decltype(lib_interface_->cleanup)>(
++        dlsym(lib_handle_, "mtk_bt_cleanup"));
++    LOG_ALWAYS_FATAL_IF(
++        lib_interface_->size != sizeof(bt_vendor_interface_t) ||
++            own_init == nullptr || own_op == nullptr || own_cleanup == nullptr ||
++            lib_interface_->init != own_init || lib_interface_->op != own_op ||
++            lib_interface_->cleanup != own_cleanup,
++        "%s: No Bluetooth Address for unreviewed vendor interface!", __func__);
++#else
+     LOG_ALWAYS_FATAL("%s: No Bluetooth Address!", __func__);
+-  }
+-  int status = lib_interface_->init(&lib_callbacks, (unsigned char*)local_bda);
++#endif
++  }
++  int status = lib_interface_->init(&lib_callbacks, init_bda);
+   if (status) {
+     ALOGE("%s unable to initialize vendor library: %d", __func__, status);
+     return false;
+--- a/hardware/interfaces/bluetooth/1.0/default/Android.bp
++++ b/hardware/interfaces/bluetooth/1.0/default/Android.bp
+@@ -15,6 +15,12 @@
+ 
+ cc_library_shared {
+     name: "android.hardware.bluetooth@1.0-impl",
++    // This patch is admitted only in normal U10/U20 own-stock source views.
++    target: {
++        android_arm: {
++            cflags: ["-DMEIZU_U10_U20_OWN_MTK_NV_BDA_INIT"],
++        },
++    },
+     defaults: ["hidl_defaults"],
+     vendor: true,
+     relative_install_path: "hw",

@@ -1,0 +1,6 @@
+# Own HAL's Goodix Binder protocol uses /dev/binder and system libraries.
+service meizu-fingerprint-2-1 /system/bin/hw/meizu.hardware.biometrics.fingerprint@2.1-service
+    class hal
+    user system
+    group system input
+    interface android.hardware.biometrics.fingerprint@2.1::IBiometricsFingerprint default

@@ -1,0 +1,6 @@
+/system/bin/(mtk_agpsd|wifi2agps|slpd) u:object_r:meizu_gnss_backend_exec:s0
+/system/xbin/mnld u:object_r:meizu_gnss_backend_exec:s0
+/dev/(stpgps|gps) u:object_r:meizu_gnss_device:s0
+/data/(gps_mnl|agps_supl|mpe_mnl)(/.*)? u:object_r:meizu_gnss_data_file:s0
+/data/misc/gps(/.*)? u:object_r:meizu_gnss_data_file:s0
+/dev/socket/(agpsd|agpsd2|agpsd3|mnld) u:object_r:meizu_gnss_socket:s0

@@ -1,0 +1,163 @@
+--- a/frameworks/native/libs/sensor/include/sensor/SensorManager.h
++++ b/frameworks/native/libs/sensor/include/sensor/SensorManager.h
+@@ -85,8 +85,7 @@
+     Vector<Sensor> mSensors;
+     sp<IBinder::DeathRecipient> mDeathObserver;
+     const String16 mOpPackageName;
+-    std::unordered_map<int, sp<ISensorEventConnection>> mDirectConnection;
+-    int32_t mDirectConnectionHandle;
++    // Modern direct channels live in a sidecar: own clients allocate the legacy prefix.
+ };
+ 
+ // ----------------------------------------------------------------------------
+--- a/frameworks/native/libs/sensor/SensorManager.cpp
++++ b/frameworks/native/libs/sensor/SensorManager.cpp
+@@ -17,6 +17,8 @@
+ #define LOG_TAG "Sensors"
+ 
+ #include <sensor/SensorManager.h>
++#include "SensorManagerSidecar.h"
++#include <cstddef>
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+@@ -38,6 +40,8 @@
+ // ----------------------------------------------------------------------------
+ namespace android {
+ // ----------------------------------------------------------------------------
++
++using ManagerSidecar = SensorManagerSidecar<SensorManager, sp<ISensorEventConnection>>;
+ 
+ Mutex SensorManager::sLock;
+ std::map<String16, SensorManager*> SensorManager::sPackageInstances;
+@@ -103,13 +107,37 @@
+ }
+ 
+ SensorManager::SensorManager(const String16& opPackageName)
+-    : mSensorList(0), mOpPackageName(opPackageName), mDirectConnectionHandle(1) {
++    : mSensorList(0), mOpPackageName(opPackageName) {
++    // The four independently decoded own camera clients allocate these sizes.
++    // Check the full legacy prefix, not only the constructor's exported name.
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Winvalid-offsetof"
++#if defined(__LP64__)
++    static_assert(sizeof(SensorManager) == 112, "own ARM64 SensorManager allocation");
++    static_assert(offsetof(SensorManager, mLock) == 0, "lock");
++    static_assert(offsetof(SensorManager, mSensorServer) == 40, "server");
++    static_assert(offsetof(SensorManager, mSensorList) == 48, "list");
++    static_assert(offsetof(SensorManager, mSensors) == 56, "sensors");
++    static_assert(offsetof(SensorManager, mDeathObserver) == 96, "death observer");
++    static_assert(offsetof(SensorManager, mOpPackageName) == 104, "package name");
++#else
++    static_assert(sizeof(SensorManager) == 40, "own ARM32 SensorManager allocation");
++    static_assert(offsetof(SensorManager, mLock) == 0, "lock");
++    static_assert(offsetof(SensorManager, mSensorServer) == 4, "server");
++    static_assert(offsetof(SensorManager, mSensorList) == 8, "list");
++    static_assert(offsetof(SensorManager, mSensors) == 12, "sensors");
++    static_assert(offsetof(SensorManager, mDeathObserver) == 32, "death observer");
++    static_assert(offsetof(SensorManager, mOpPackageName) == 36, "package name");
++#endif
++#pragma clang diagnostic pop
++    ManagerSidecar::state(this);
+     Mutex::Autolock _l(mLock);
+     assertStateLocked();
+ }
+ 
+ SensorManager::~SensorManager() {
+     free(mSensorList);
++    ManagerSidecar::forget(this);
+ }
+ 
+ status_t SensorManager::waitForSensorService(sp<ISensorServer> *server) {
+@@ -285,15 +313,15 @@
+         return NO_MEMORY;
+     }
+ 
+-    int nativeHandle = mDirectConnectionHandle++;
+-    mDirectConnection.emplace(nativeHandle, conn);
++    int nativeHandle = ManagerSidecar::state(this).nextHandle++;
++    ManagerSidecar::state(this).directConnections.emplace(nativeHandle, conn);
+     return nativeHandle;
+ }
+ 
+ void SensorManager::destroyDirectChannel(int channelNativeHandle) {
+     Mutex::Autolock _l(mLock);
+     if (assertStateLocked() == NO_ERROR) {
+-        mDirectConnection.erase(channelNativeHandle);
++        ManagerSidecar::state(this).directConnections.erase(channelNativeHandle);
+     }
+ }
+ 
+@@ -303,8 +331,8 @@
+         return NO_INIT;
+     }
+ 
+-    auto i = mDirectConnection.find(channelNativeHandle);
+-    if (i == mDirectConnection.end()) {
++    auto i = ManagerSidecar::state(this).directConnections.find(channelNativeHandle);
++    if (i == ManagerSidecar::state(this).directConnections.end()) {
+         ALOGE("Cannot find the handle in client direct connection table");
+         return BAD_VALUE;
+     }
+--- /dev/null
++++ b/frameworks/native/libs/sensor/SensorManagerSidecar.h
+@@ -0,0 +1,59 @@
++/*
++ * Copyright 2026 ReMeizu contributors
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ */
++#pragma once
++#include <cstdint>
++#include <memory>
++#include <mutex>
++#include <unordered_map>
++
++namespace android {
++// Owners serialize direct-channel operations with their existing mLock.
++// Only sidecar map ownership uses this separate lock. Binder references must
++// be destroyed after releasing it, because destruction can reenter libsensor.
++template <typename Owner, typename ConnectionPointer>
++class SensorManagerSidecar {
++public:
++    struct State {
++        std::unordered_map<int, ConnectionPointer> directConnections;
++        int32_t nextHandle = 1;
++    };
++    static State& state(const Owner* owner) {
++        auto& storage = getStorage();
++        std::lock_guard<std::mutex> lock(storage.mutex);
++        auto& entry = storage.states[owner];
++        if (!entry) entry.reset(new State());
++        return *entry;
++    }
++    static void forget(const Owner* owner) {
++        std::unique_ptr<State> released;
++        auto& storage = getStorage();
++        {
++            std::lock_guard<std::mutex> lock(storage.mutex);
++            auto i = storage.states.find(owner);
++            if (i != storage.states.end()) {
++                released = std::move(i->second);
++                storage.states.erase(i);
++            }
++        }
++    }
++private:
++    struct Storage {
++        std::mutex mutex;
++        std::unordered_map<const Owner*, std::unique_ptr<State>> states;
++    };
++    static Storage& getStorage() {
++        // Like the platform's process-wide SensorManager instance registry,
++        // storage outlives object destruction during process teardown.
++        static Storage* storage = new Storage();
++        return *storage;
++    }
++};
++} // namespace android

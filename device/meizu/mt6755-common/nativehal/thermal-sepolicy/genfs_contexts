@@ -1,0 +1,5 @@
+# Own thermal_core creates parentless devices in the thermal class.
+genfscon sysfs /devices/virtual/thermal u:object_r:sysfs_thermal:s0
+genfscon sysfs /class/thermal u:object_r:sysfs_thermal:s0
+# Own platform_device battery(id=-1) parents power_supply battery.
+genfscon sysfs /devices/platform/battery/power_supply/battery u:object_r:sysfs_batteryinfo:s0

@@ -1,0 +1,15 @@
+--- a/frameworks/base/services/core/java/com/android/server/fingerprint/FingerprintService.java
++++ b/frameworks/base/services/core/java/com/android/server/fingerprint/FingerprintService.java
+@@ -672,3 +672,11 @@
+-            newClient.start();
++            final int startResult = newClient.start();
++            if (startResult != 0 && mCurrentClient == newClient &&
++                    (newClient instanceof EnumerateClient || newClient instanceof RemovalClient)) {
++                if (newClient instanceof InternalEnumerateClient ||
++                        newClient instanceof InternalRemovalClient) {
++                    clearEnumerateState();
++                }
++                removeClient(newClient);
++            }
+         }
+     }

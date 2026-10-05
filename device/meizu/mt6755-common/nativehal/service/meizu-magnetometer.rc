@@ -1,0 +1,13 @@
+# Own board profile selects qmcX983d (U10) or akmd09911 (U20), never a donor.
+on post-fs-data
+    mkdir /data/vendor/meizu-sensors 0770 system system
+    restorecon_recursive /data/vendor/meizu-sensors
+    # symlink refuses an existing path, preserving existing calibration bytes.
+    symlink /data/vendor/meizu-sensors/calib.dat /data/misc/calib.dat
+    symlink /data/vendor/meizu-sensors/akmd_set.txt /data/misc/akmd_set.txt
+    restorecon /data/misc/calib.dat /data/misc/akmd_set.txt
+
+service vendor.meizu-magnetometer /vendor/bin/meizu-magnetometer
+    class hal
+    user system
+    group system input

@@ -1,0 +1,6 @@
+service meizu-camera-provider /system/bin/hw/meizu.hardware.camera.provider@2.4-service
+    class hal
+    user cameraserver
+    group audio camera input drmrpc
+    ioprio rt 4
+    capabilities SYS_NICE

@@ -1,0 +1,6 @@
+/system/bin/hw/meizu\.hardware\.biometrics\.fingerprint@2\.1-service u:object_r:meizu_fingerprint_hal_exec:s0
+/system/bin/goodixfingerprintd u:object_r:meizu_goodix_daemon_exec:s0
+/system/bin/mcDriverDaemon u:object_r:meizu_mobicore_daemon_exec:s0
+/dev/goodix_fp u:object_r:meizu_goodix_device:s0
+/dev/mobicore(-user)? u:object_r:meizu_mobicore_device:s0
+/data/app/mcRegistry(/.*)? u:object_r:meizu_mobicore_data_file:s0

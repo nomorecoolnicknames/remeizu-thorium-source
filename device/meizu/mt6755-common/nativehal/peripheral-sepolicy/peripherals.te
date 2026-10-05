@@ -1,0 +1,5 @@
+type meizu_native_power_proc, fs_type, proc_type;
+allow hal_power_default meizu_native_power_proc:file rw_file_perms;
+type meizu_native_power_debugfs, fs_type, debugfs_type;
+allow hal_power_default debugfs:dir search;
+allow hal_power_default meizu_native_power_debugfs:file rw_file_perms;

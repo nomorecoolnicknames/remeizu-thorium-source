@@ -1,0 +1,15 @@
+type meizu_wmt_loader, domain;
+type meizu_wmt_loader_exec, exec_type, file_type;
+init_daemon_domain(meizu_wmt_loader)
+typeattribute meizu_wmt_loader coredomain;
+type meizu_wmt_launcher, domain;
+type meizu_wmt_launcher_exec, exec_type, file_type;
+init_daemon_domain(meizu_wmt_launcher)
+typeattribute meizu_wmt_launcher coredomain;
+
+# U10/U20 stock ownership places WMT transport under system and BT under bluetooth.
+type meizu_wmt_transport_device, dev_type;
+allow meizu_wmt_loader meizu_wmt_transport_device:chr_file rw_file_perms;
+allow meizu_wmt_launcher meizu_wmt_transport_device:chr_file rw_file_perms;
+allow hal_bluetooth_default meizu_wmt_transport_device:chr_file rw_file_perms;
+allow hal_wifi_default mtk_wmt_device:chr_file rw_file_perms;

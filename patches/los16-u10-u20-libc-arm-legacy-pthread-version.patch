@@ -1,0 +1,36 @@
+--- a/bionic/libc/libc.arm.map
++++ b/bionic/libc/libc.arm.map
+@@ -763,6 +763,7 @@
+     pthread_getcpuclockid;
+     pthread_getschedparam;
+     pthread_getspecific;
++    __pthread_gettid; # arm platform compatibility; absent from NDK map
+     pthread_gettid_np; # introduced=21
+     pthread_join;
+     pthread_key_create;
+@@ -1553,7 +1554,6 @@
+     __page_size; # arm x86 mips
+     __popcount_tab; # arm
+     __popcountsi2; # arm x86 mips
+-    __pthread_gettid; # arm x86 mips
+     __restore_core_regs; # arm
+     __sclose; # arm x86 mips
+     __sdidinit; # arm x86 mips
+--- a/bionic/libc/tools/genversion-scripts.py
++++ b/bionic/libc/tools/genversion-scripts.py
+@@ -54,6 +54,15 @@
+           with open(script, "r") as fin:
+             fout.write("# %s\n" % warning)
+             for line in fin:
++              # Own legacy ARM camera uses this already-implemented pthread_t
++              # forwarder with LIBC, whereas SDK28 originally versions it PRIVATE.
++              # Keep libc.map.txt private: gen_stub_libs.py filters version blocks,
++              # not individual platform-only symbol tags. Only platform ARM moves.
++              if script == libc_script and arch == "arm":
++                if line.strip() == "__pthread_gettid; # arm x86 mips":
++                  continue
++                if line.strip() == "pthread_gettid_np; # introduced=21":
++                  fout.write("    __pthread_gettid; # arm platform compatibility; absent from NDK map\n")
+               index = line.find("#")
+               if index != -1:
+                 tags = line[index+1:].split()

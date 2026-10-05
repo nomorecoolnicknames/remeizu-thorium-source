@@ -1,0 +1,35 @@
+type meizu_native_sensor_device, dev_type;
+allow hal_sensors_default meizu_native_sensor_device:chr_file rw_file_perms;
+allow hal_sensors_default input_device:dir r_dir_perms;
+allow hal_sensors_default input_device:chr_file r_file_perms;
+
+# Only the stock misc sensor controls get this writable sysfs label.
+type meizu_native_sensor_sysfs, fs_type, sysfs_type;
+allow hal_sensors_default meizu_native_sensor_sysfs:dir r_dir_perms;
+allow hal_sensors_default meizu_native_sensor_sysfs:file rw_file_perms;
+allow hal_sensors_default sysfs:lnk_file read;
+allow hal_sensors_default sysfs:dir search;
+allow hal_sensors_default sysfs_type:dir search;
+type meizu_native_sensor_identity_sysfs, fs_type, sysfs_type;
+allow hal_sensors_default meizu_native_sensor_identity_sysfs:file r_file_perms;
+
+# Exact own compass executable, selected by the board's pinned stock profile.
+type meizu_native_compass, domain;
+type meizu_native_compass_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(meizu_native_compass)
+type meizu_native_sensor_data_file, file_type, data_file_type;
+# Stock compass aliases in /data/misc retain the core-data classification.
+type meizu_native_sensor_core_data_file, file_type, data_file_type, core_data_file_type;
+allow meizu_native_compass meizu_native_sensor_device:chr_file rw_file_perms;
+allow meizu_native_compass meizu_native_sensor_sysfs:dir r_dir_perms;
+allow meizu_native_compass meizu_native_sensor_sysfs:file rw_file_perms;
+allow meizu_native_compass sysfs:dir search;
+allow meizu_native_compass sysfs:lnk_file read;
+allow meizu_native_compass sysfs_type:dir search;
+allow meizu_native_compass input_device:dir r_dir_perms;
+allow meizu_native_compass input_device:chr_file r_file_perms;
+allow meizu_native_compass system_data_file:dir search;
+allow meizu_native_compass vendor_data_file:dir search;
+allow meizu_native_compass { meizu_native_sensor_data_file meizu_native_sensor_core_data_file }:dir create_dir_perms;
+allow meizu_native_compass { meizu_native_sensor_data_file meizu_native_sensor_core_data_file }:file create_file_perms;
+allow meizu_native_compass { meizu_native_sensor_data_file meizu_native_sensor_core_data_file }:lnk_file read;

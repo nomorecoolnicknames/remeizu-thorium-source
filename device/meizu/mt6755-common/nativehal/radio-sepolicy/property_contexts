@@ -1,0 +1,8 @@
+sys.meizu.calibration.mounted u:object_r:meizu_calibration_ready_prop:s0
+service.nvram_init u:object_r:meizu_nvram_ready_prop:s0
+ctl.ril-daemon-mtk u:object_r:meizu_radio_control_prop:s0
+ctl.start$ril-daemon-mtk u:object_r:meizu_radio_control_prop:s0
+ctl.stop$ril-daemon-mtk u:object_r:meizu_radio_control_prop:s0
+ctl.gsm0710muxd u:object_r:meizu_radio_control_prop:s0
+ctl.start$gsm0710muxd u:object_r:meizu_radio_control_prop:s0
+ctl.stop$gsm0710muxd u:object_r:meizu_radio_control_prop:s0

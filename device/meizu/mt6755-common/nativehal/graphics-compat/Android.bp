@@ -1,0 +1,7 @@
+cc_library_shared {
+    name: "libmeizu_egl_legacy_compat",
+    srcs: ["EglQueryCompat.cpp"],
+    compile_multilib: "both",
+    shared_libs: ["libEGL"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}

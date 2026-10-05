@@ -1,0 +1,2 @@
+/system/bin/meizu-spm-loader u:object_r:meizu_spm_loader_exec:s0
+/dev/spm u:object_r:meizu_spm_device:s0

@@ -1,0 +1,314 @@
+--- a/frameworks/native/libs/ui/include/ui/GraphicBuffer.h
++++ b/frameworks/native/libs/ui/include/ui/GraphicBuffer.h
+@@ -134,7 +134,14 @@
+             uint32_t inLayerCount, uint32_t inUsage, uint32_t inStride,
+             native_handle_t* inHandle, bool keepOwnership);
+     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
+-            uint32_t inUsage, std::string requestorName = "<Unknown>");
++            uint32_t inUsage, std::string requestorName);
++
++    // Exact pre-Android7 signatures used by own U10/U20 camera allocation owners.
++    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
++            uint32_t inUsage);
++    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
++            uint32_t inUsage, uint32_t inStride, native_handle_t* inHandle,
++            bool keepOwnership);
+ 
+     // return status
+     status_t initCheck() const;
+@@ -236,9 +243,9 @@
+     GraphicBufferMapper& mBufferMapper;
+     ssize_t mInitCheck;
+ 
+-    // numbers of fds/ints in native_handle_t to flatten
+-    uint32_t mTransportNumFds;
+-    uint32_t mTransportNumInts;
++    // Preserve the old private wrapped-buffer slot width. Modern transport
++    // counts live in a sidecar; using two uint32_t here shifts the 32-bit ID.
++    uint8_t mLegacyPrivatePadding[sizeof(void*)];
+ 
+     uint64_t mId;
+ 
+@@ -247,16 +254,8 @@
+     // IGBP::setGenerationNumber), attempts to attach the buffer will fail.
+     uint32_t mGenerationNumber;
+ 
+-    // Stores a BufferHub handle that can be used to re-attach this GraphicBuffer back into a
+-    // BufferHub producer/consumer set. In terms of GraphicBuffer's relationship with BufferHub,
+-    // there are three different modes:
+-    // 1. Legacy mode: GraphicBuffer is not backed by BufferHub and mDetachedBufferHandle must be
+-    //    invalid.
+-    // 2. Detached mode: GraphicBuffer is backed by BufferHub, but not part of a producer/consumer
+-    //    set. In this mode, mDetachedBufferHandle must be valid.
+-    // 3. Attached mode: GraphicBuffer is backed by BufferHub and it's part of a producer/consumer
+-    //    set. In this mode, mDetachedBufferHandle must be invalid.
+-    std::unique_ptr<DetachedBufferHandle> mDetachedBufferHandle;
++    // BufferHub ownership lives in GraphicBufferSidecar, never past the legacy object.
++
+ };
+ 
+ }; // namespace android
+--- a/frameworks/native/libs/ui/GraphicBuffer.cpp
++++ b/frameworks/native/libs/ui/GraphicBuffer.cpp
+@@ -26,8 +26,13 @@
+ #include <ui/Gralloc2.h>
+ #include <ui/GraphicBufferAllocator.h>
+ #include <ui/GraphicBufferMapper.h>
++#include "GraphicBufferSidecar.h"
++#include <cstddef>
++#include <cstring>
+ 
+ namespace android {
++
++using BufferSidecar = GraphicBufferSidecar<GraphicBuffer, DetachedBufferHandle>;
+ 
+ // ===========================================================================
+ // Buffer and implementation of ANativeWindowBuffer
+@@ -48,6 +53,35 @@
+     : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
+       mInitCheck(NO_ERROR), mId(getUniqueId()), mGenerationNumber(0)
+ {
++    // Exact own old allocation: ARM64=232, ARM32=136. Verify every public
++    // native-buffer/refcount prefix and the private fields used by old clients.
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Winvalid-offsetof"
++#if defined(__LP64__)
++    static_assert(sizeof(GraphicBuffer) == 232, "Own ARM64 GraphicBuffer allocation");
++    static_assert(__builtin_offsetof(GraphicBuffer, mOwner) == 184, "owner");
++    static_assert(__builtin_offsetof(GraphicBuffer, mBufferMapper) == 192, "mapper");
++    static_assert(__builtin_offsetof(GraphicBuffer, mInitCheck) == 200, "status");
++    static_assert(__builtin_offsetof(GraphicBuffer, mLegacyPrivatePadding) == 208, "legacy private slot");
++    static_assert(__builtin_offsetof(GraphicBuffer, mId) == 216, "id");
++    static_assert(__builtin_offsetof(GraphicBuffer, mGenerationNumber) == 224, "generation");
++    static_assert(__builtin_offsetof(GraphicBuffer, width) == 72, "width");
++    static_assert(__builtin_offsetof(GraphicBuffer, usage_deprecated) == 88, "legacy usage");
++    static_assert(__builtin_offsetof(GraphicBuffer, handle) == 112, "native handle");
++#else
++    static_assert(sizeof(GraphicBuffer) == 136, "Own ARM32 GraphicBuffer allocation");
++    static_assert(__builtin_offsetof(GraphicBuffer, mOwner) == 104, "owner");
++    static_assert(__builtin_offsetof(GraphicBuffer, mBufferMapper) == 108, "mapper");
++    static_assert(__builtin_offsetof(GraphicBuffer, mInitCheck) == 112, "status");
++    static_assert(__builtin_offsetof(GraphicBuffer, mLegacyPrivatePadding) == 116, "legacy private slot");
++    static_assert(__builtin_offsetof(GraphicBuffer, mId) == 120, "id");
++    static_assert(__builtin_offsetof(GraphicBuffer, mGenerationNumber) == 128, "generation");
++    static_assert(__builtin_offsetof(GraphicBuffer, width) == 40, "width");
++    static_assert(__builtin_offsetof(GraphicBuffer, usage_deprecated) == 56, "legacy usage");
++    static_assert(__builtin_offsetof(GraphicBuffer, handle) == 68, "native handle");
++#endif
++#pragma clang diagnostic pop
++    memset(mLegacyPrivatePadding, 0, sizeof(mLegacyPrivatePadding));
+     width  =
+     height =
+     stride =
+@@ -58,6 +92,27 @@
+     handle = NULL;
+ }
+ 
++// Exact own legacy constructors use the real modern allocator/mapper owner.
++GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
++        PixelFormat inFormat, uint32_t inUsage)
++    : GraphicBuffer(inWidth, inHeight, inFormat, 1, static_cast<uint64_t>(inUsage),
++            "<Own MTK legacy>")
++{
++}
++
++GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
++        PixelFormat inFormat, uint32_t inUsage, uint32_t inStride,
++        native_handle_t* inHandle, bool keepOwnership)
++    : GraphicBuffer(inHandle, keepOwnership ? TAKE_HANDLE : WRAP_HANDLE,
++            inWidth, inHeight, inFormat, 1, static_cast<uint64_t>(inUsage), inStride)
++{
++    // Direct legacy wrapping also needs valid modern flatten transport counts.
++    if (handle) {
++        auto& state = BufferSidecar::state(this);
++        mBufferMapper.getTransportSize(handle, &state.transportNumFds, &state.transportNumInts);
++    }
++}
++
+ // deprecated
+ GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
+         PixelFormat inFormat, uint32_t inUsage, std::string requestorName)
+@@ -99,6 +154,7 @@
+     if (handle) {
+         free_handle();
+     }
++    BufferSidecar::forget(this);
+ }
+ 
+ void GraphicBuffer::free_handle()
+@@ -171,7 +227,7 @@
+             inUsage, &handle, &outStride, mId,
+             std::move(requestorName));
+     if (err == NO_ERROR) {
+-        mBufferMapper.getTransportSize(handle, &mTransportNumFds, &mTransportNumInts);
++        mBufferMapper.getTransportSize(handle, &BufferSidecar::state(this).transportNumFds, &BufferSidecar::state(this).transportNumInts);
+ 
+         width = static_cast<int>(inWidth);
+         height = static_cast<int>(inHeight);
+@@ -216,7 +272,7 @@
+         }
+ 
+         handle = importedHandle;
+-        mBufferMapper.getTransportSize(handle, &mTransportNumFds, &mTransportNumInts);
++        mBufferMapper.getTransportSize(handle, &BufferSidecar::state(this).transportNumFds, &BufferSidecar::state(this).transportNumInts);
+     }
+ 
+     ANativeWindowBuffer::handle = handle;
+@@ -328,11 +384,11 @@
+ }
+ 
+ size_t GraphicBuffer::getFlattenedSize() const {
+-    return static_cast<size_t>(13 + (handle ? mTransportNumInts : 0)) * sizeof(int);
++    return static_cast<size_t>(13 + (handle ? BufferSidecar::state(this).transportNumInts : 0)) * sizeof(int);
+ }
+ 
+ size_t GraphicBuffer::getFdCount() const {
+-    return static_cast<size_t>(handle ? mTransportNumFds : 0);
++    return static_cast<size_t>(handle ? BufferSidecar::state(this).transportNumFds : 0);
+ }
+ 
+ status_t GraphicBuffer::flatten(void*& buffer, size_t& size, int*& fds, size_t& count) const {
+@@ -358,18 +414,18 @@
+     buf[12] = int(usage >> 32); // high 32-bits
+ 
+     if (handle) {
+-        buf[10] = int32_t(mTransportNumFds);
+-        buf[11] = int32_t(mTransportNumInts);
+-        memcpy(fds, handle->data, static_cast<size_t>(mTransportNumFds) * sizeof(int));
++        buf[10] = int32_t(BufferSidecar::state(this).transportNumFds);
++        buf[11] = int32_t(BufferSidecar::state(this).transportNumInts);
++        memcpy(fds, handle->data, static_cast<size_t>(BufferSidecar::state(this).transportNumFds) * sizeof(int));
+         memcpy(buf + 13, handle->data + handle->numFds,
+-                static_cast<size_t>(mTransportNumInts) * sizeof(int));
++                static_cast<size_t>(BufferSidecar::state(this).transportNumInts) * sizeof(int));
+     }
+ 
+     buffer = static_cast<void*>(static_cast<uint8_t*>(buffer) + sizeNeeded);
+     size -= sizeNeeded;
+     if (handle) {
+-        fds += mTransportNumFds;
+-        count -= static_cast<size_t>(mTransportNumFds);
++        fds += BufferSidecar::state(this).transportNumFds;
++        count -= static_cast<size_t>(BufferSidecar::state(this).transportNumFds);
+     }
+ 
+     return NO_ERROR;
+@@ -480,7 +536,7 @@
+         native_handle_close(handle);
+         native_handle_delete(const_cast<native_handle_t*>(handle));
+         handle = importedHandle;
+-        mBufferMapper.getTransportSize(handle, &mTransportNumFds, &mTransportNumInts);
++        mBufferMapper.getTransportSize(handle, &BufferSidecar::state(this).transportNumFds, &BufferSidecar::state(this).transportNumInts);
+     }
+ 
+     buffer = static_cast<void const*>(static_cast<uint8_t const*>(buffer) + sizeNeeded);
+@@ -492,7 +548,7 @@
+ }
+ 
+ bool GraphicBuffer::isDetachedBuffer() const {
+-    return mDetachedBufferHandle && mDetachedBufferHandle->isValid();
++    return BufferSidecar::hasDetached(this);
+ }
+ 
+ status_t GraphicBuffer::setDetachedBufferHandle(std::unique_ptr<DetachedBufferHandle> channel) {
+@@ -501,12 +557,12 @@
+               "GraphicBuffer. Replacing the old one.");
+     }
+ 
+-    mDetachedBufferHandle = std::move(channel);
++    BufferSidecar::setDetached(this, std::move(channel));
+     return NO_ERROR;
+ }
+ 
+ std::unique_ptr<DetachedBufferHandle> GraphicBuffer::takeDetachedBufferHandle() {
+-    return std::move(mDetachedBufferHandle);
++    return BufferSidecar::takeDetached(this);
+ }
+ 
+ // ---------------------------------------------------------------------------
+--- /dev/null
++++ b/frameworks/native/libs/ui/GraphicBufferSidecar.h
+@@ -0,0 +1,83 @@
++// SPDX-License-Identifier: Apache-2.0
++#pragma once
++#include <cstdint>
++#include <memory>
++#include <mutex>
++#include <unordered_map>
++
++namespace android {
++// Keep modern transport and BufferHub ownership out of the fixed-size legacy
++// GraphicBuffer. Pointer keys live only as long as the actual buffer object.
++// Transport fields have the same caller synchronization requirement as the
++// original object members; map ownership and detached-handle changes are locked.
++template<class Buffer, class DetachedHandle>
++class GraphicBufferSidecar {
++public:
++    struct State {
++        uint32_t transportNumFds = 0;
++        uint32_t transportNumInts = 0;
++        std::unique_ptr<DetachedHandle> detached;
++    };
++
++    static State& state(const Buffer* buffer) {
++        auto& store = storage();
++        std::lock_guard<std::mutex> lock(store.mutex);
++        auto& entry = store.buffers[buffer];
++        if (!entry) entry.reset(new State());
++        return *entry;
++    }
++
++    static bool hasDetached(const Buffer* buffer) {
++        auto& store = storage();
++        std::lock_guard<std::mutex> lock(store.mutex);
++        const auto found = store.buffers.find(buffer);
++        return found != store.buffers.end() && found->second->detached &&
++                found->second->detached->isValid();
++    }
++
++    static void setDetached(const Buffer* buffer, std::unique_ptr<DetachedHandle> handle) {
++        // Destroy any previous handle after unlocking; channel destruction can
++        // reenter buffer code. This also preserves single ownership on replace.
++        std::unique_ptr<DetachedHandle> previous;
++        {
++            auto& store = storage();
++            std::lock_guard<std::mutex> lock(store.mutex);
++            auto& entry = store.buffers[buffer];
++            if (!entry) entry.reset(new State());
++            previous = std::move(entry->detached);
++            entry->detached = std::move(handle);
++        }
++    }
++
++    static std::unique_ptr<DetachedHandle> takeDetached(const Buffer* buffer) {
++        auto& store = storage();
++        std::lock_guard<std::mutex> lock(store.mutex);
++        const auto found = store.buffers.find(buffer);
++        return found == store.buffers.end() ? nullptr : std::move(found->second->detached);
++    }
++
++    static void forget(const Buffer* buffer) {
++        std::unique_ptr<State> previous;
++        {
++            auto& store = storage();
++            std::lock_guard<std::mutex> lock(store.mutex);
++            const auto found = store.buffers.find(buffer);
++            if (found == store.buffers.end()) return;
++            previous = std::move(found->second);
++            store.buffers.erase(found);
++        }
++    }
++
++private:
++    struct Storage {
++        std::mutex mutex;
++        std::unordered_map<const Buffer*, std::unique_ptr<State>> buffers;
++    };
++    static Storage& storage() {
++        // Deliberately process-lifetime storage, like the gralloc singletons.
++        // Actual buffer/handle state is still released by every buffer destructor.
++        static Storage* const store = new Storage();
++        return *store;
++    }
++};
++} // namespace android

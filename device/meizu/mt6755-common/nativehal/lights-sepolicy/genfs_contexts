@@ -1,0 +1,4 @@
+# Native mt65xx_leds_init registers this exact platform-device name and
+# led_classdev_register uses its device as the parent. The canonical hal_light
+# policy already grants access to sysfs_leds; label the physical MTK subtree.
+genfscon sysfs /devices/platform/leds-mt65xx/leds u:object_r:sysfs_leds:s0

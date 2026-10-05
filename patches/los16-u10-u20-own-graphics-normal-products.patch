@@ -1,0 +1,22 @@
+--- a/vendor/meizu/u10/Android.mk
++++ b/vendor/meizu/u10/Android.mk
+@@ -1,6 +1,6 @@
+-# DIAGNOSTIC: exact U10 own-stock inputs; ABI remains unverified.
++# Exact own U10 graphics inputs; runtime acceptance is separate.
+ LOCAL_PATH := $(call my-dir)
+-ifeq ($(TARGET_PRODUCT),lineage_u10_stockgraph)
++ifneq ($(filter $(TARGET_PRODUCT),lineage_u10_stockgraph lineage_u10),)
+ 
+ include $(CLEAR_VARS)
+ LOCAL_MODULE := u10_stock_lib_egl_libGLES_mali
+--- a/vendor/meizu/u20/Android.mk
++++ b/vendor/meizu/u20/Android.mk
+@@ -1,6 +1,6 @@
+-# DIAGNOSTIC: exact U20 own-stock inputs; ABI remains unverified.
++# Exact own U20 graphics inputs; runtime acceptance is separate.
+ LOCAL_PATH := $(call my-dir)
+-ifeq ($(TARGET_PRODUCT),lineage_u20_stockgraph)
++ifneq ($(filter $(TARGET_PRODUCT),lineage_u20_stockgraph lineage_u20),)
+ 
+ include $(CLEAR_VARS)
+ LOCAL_MODULE := u20_stock_lib_egl_libGLES_mali

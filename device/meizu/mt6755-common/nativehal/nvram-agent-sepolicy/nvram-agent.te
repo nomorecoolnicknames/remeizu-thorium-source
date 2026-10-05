@@ -1,0 +1,16 @@
+type meizu_nvram_agent_binder, domain, coredomain;
+type meizu_nvram_agent_binder_exec, exec_type, file_type;
+type meizu_nvram_agent_binder_service, service_manager_type;
+init_daemon_domain(meizu_nvram_agent_binder)
+binder_use(meizu_nvram_agent_binder)
+add_service(meizu_nvram_agent_binder, meizu_nvram_agent_binder_service)
+binder_call(meizu_camera_provider, meizu_nvram_agent_binder)
+allow meizu_camera_provider meizu_nvram_agent_binder_service:service_manager find;
+get_prop(meizu_nvram_agent_binder, meizu_calibration_ready_prop)
+get_prop(meizu_nvram_agent_binder, meizu_nvram_ready_prop)
+# Exact existing NV store ownership, shared with the admitted native NV daemon.
+allow meizu_nvram_agent_binder radio_data_file:dir create_dir_perms;
+allow meizu_nvram_agent_binder radio_data_file:file create_file_perms;
+allow meizu_nvram_agent_binder radio_data_file:lnk_file r_file_perms;
+allow meizu_nvram_agent_binder meizu_protect_data_file:dir r_dir_perms;
+allow meizu_nvram_agent_binder meizu_protect_data_file:file r_file_perms;

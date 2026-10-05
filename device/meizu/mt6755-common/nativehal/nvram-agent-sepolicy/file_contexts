@@ -1,0 +1,1 @@
+/system/bin/nvram_agent_binder u:object_r:meizu_nvram_agent_binder_exec:s0

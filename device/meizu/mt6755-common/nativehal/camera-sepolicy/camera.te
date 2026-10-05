@@ -1,0 +1,13 @@
+type meizu_camera_provider, domain, coredomain;
+type meizu_camera_provider_exec, exec_type, file_type;
+type meizu_camera_device, dev_type;
+init_daemon_domain(meizu_camera_provider)
+hal_server_domain(meizu_camera_provider, hal_camera)
+binder_use(meizu_camera_provider)
+binder_call(meizu_camera_provider, system_server)
+allow meizu_camera_provider sensorservice_service:service_manager find;
+allow meizu_camera_provider meizu_camera_device:chr_file rw_file_perms;
+allow meizu_camera_provider mtk_camera_device:chr_file rw_file_perms;
+allow meizu_camera_provider ion_device:chr_file rw_file_perms;
+allow meizu_camera_provider graphics_device:chr_file rw_file_perms;
+allow meizu_camera_provider video_device:chr_file rw_file_perms;

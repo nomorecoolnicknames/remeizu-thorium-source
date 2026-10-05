@@ -76,6 +76,14 @@ WIFI_DRIVER_FW_PATH_STA:=STA
 WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
+# The built-in WMT WLAN driver exposes power separately from STA/AP mode.
+# SDK28's unload path must send '0'; close() alone leaves WLAN powered.
+ifneq ($(filter lineage_u10 lineage_u20,$(TARGET_PRODUCT)),)
+WIFI_DRIVER_STATE_CTRL_PARAM := /dev/wmtWifi
+WIFI_DRIVER_STATE_ON := 1
+WIFI_DRIVER_STATE_OFF := 0
+endif
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true

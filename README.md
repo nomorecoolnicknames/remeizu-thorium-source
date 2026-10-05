@@ -5,18 +5,15 @@ MT6755**, targeting **LineageOS 16.0 / Android 9**. The common tree contains
 init configuration, compatibility libraries, overlays and framework patches;
 small device trees select the board, vendor inputs and kernel configuration.
 
-**Current milestone:** M3s, U10 and U20 have passed stock-backed product/dependency
-checks. Their custom-kernel ROMs and hardware operation are still in development.
-This repository contains device sources, not a complete Android checkout or a
-universal kernel for every Meizu phone.
+**Current milestone:** full Android 9 userdebug ROMs for U10 and U20 completed compilation and offline artifact validation on 5 October 2026. Boot and all hardware components remain untested for those exact kernel/userspace pairs. This repository contains device and integration sources; matching vendor inputs and platform patches remain necessary.
 
 ## Devices
 
 | Device | Platform | Product / source | State in this repository |
 |---|---|---|---|
 | M3s | MT6750 | [`lineage_m3s`](device/meizu/m3s) | Stock-backed graph product available; custom board port pending |
-| U10 | MT6750 | [`lineage_u10`](device/meizu/u10) | Stock-backed graph product available; custom board port pending |
-| U20 | MT6755 | [`lineage_u20`](device/meizu/u20) | Stock-backed graph product available; custom board port pending |
+| U10 | MT6750 | [`lineage_u10`](device/meizu/u10) | Native 3.18 kernel + full ROM compiled; physical operation untested |
+| U20 | MT6755 | [`lineage_u20`](device/meizu/u20) | Native 3.18 kernel + full ROM compiled; physical operation untested |
 | M6 | MT6750 | [`lineage_meizu_m6`](device/meizu/meizu_m6) | Shared configuration and M6-specific integration present |
 | M3 Note M681 | MT6755 | [`lineage_m681`](device/meizu/m681) | Shared configuration and M681-specific integration present |
 | M3 Note L681 | MT6755 | [`lineage_l681`](device/meizu/l681) | Thin product present; newer tested kernel work is maintained separately |
@@ -111,3 +108,25 @@ The normal `lineage_<device>` targets are separate from these graph products.
 including the CyanogenMod and MediaTek compatibility work retained in these
 sources. The common/thin-device layout was inspired by Mi-Thorium’s MSM8937
 unified device tree. Existing per-file copyright and license notices apply.
+
+## U10 and U20 native Android 9 integration
+
+The current U10/U20 source selection includes board-specific native Linux 3.18 bindings, independently owned peripheral services and compatibility code. A successfully compiled ROM does not establish working calls, cameras, charging, suspend or any other physical function.
+
+| Component | Source | Current evidence |
+|---|---|---|
+| Kernel / boot | U10/U20 `native-kernel.mk`; board fstab and init | Exact own-board kernel selected; full ZIP and boot validated; boot untested |
+| Display / GPU | `nativehal/graphics.mk`, EGL compatibility, external vendor gralloc/GPU | Packages and ABIs checked; display untested |
+| Wi-Fi / Bluetooth | `connectivity/`, board firmware inputs | Service/init integration compiled; RF operation untested |
+| Mobile network | `nativehal/radio/`, calibration readiness, RIL patches | Source services and proprietary modem integration compiled; calls/data/IMS untested |
+| Camera | `nativehal/camera-legacy/`, GraphicBuffer and SensorManager sidecars | Legacy service and ABI support compiled; photo/video untested |
+| Audio | `nativehal/audio.mk`, VoiceUnlock compatibility | HAL/service and stream-layout integration compiled; playback/recording untested |
+| Sensors / GNSS | `nativehal/legacy-impl/`, sensor services and GNSS bindings | Source/services compiled; individual sensor and location tests pending |
+| Fingerprint | `nativehal/fingerprint-legacy/` | Legacy HAL bridge compiled; enrollment/authentication untested |
+| Power / charging / thermal | `nativehal/power-legacy/`, SPM loader and thermal service | Source services compiled; suspend, battery units and temperature behavior untested |
+| Lights / peripheral nodes | `nativehal/light-contract/`, permissions and manifests | Source/init integration compiled; physical operation untested |
+| FM | `nativehal/fm-prerequisites.mk` | Prerequisite integration only; FM operation is not established |
+
+Matching kernel source is maintained in [U10 `u10-3.18`](https://github.com/ReMeizu/android_kernel_meizu_mt675x/tree/u10-3.18) and [U20 `u20-3.18`](https://github.com/ReMeizu/android_kernel_meizu_mt675x/tree/u20-3.18). The two boards retain distinct DTBs, panels, touch and modem configuration; sharing a chipset family does not make the boards interchangeable.
+
+The normal products are `lineage_u10-userdebug` and `lineage_u20-userdebug`. Supply the corresponding source-built kernel, native headers, board-specific vendor libraries and firmware, plus generated component selection profiles under `source-private/`. Those paths denote separately supplied build inputs; this repository includes no extracted vendor binary or kernel image. Platform source patches are in `patches/` and the common tree's `patches/`. Internal build controllers and evidence archives are not part of this source export.
