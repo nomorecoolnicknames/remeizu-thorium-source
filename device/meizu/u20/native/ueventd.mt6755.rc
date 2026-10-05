@@ -1,7 +1,6 @@
 import /ueventd.meizu-connectivity.rc
 
 # U20 stock ueventd.mt6755.rc:107/110, paired with the same stock kernel/graphics.
-# Other peripheral nodes/services are not onboarded by this graph checkpoint.
 /dev/mali 0666 system graphics
 /dev/ion 0666 system graphics
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram 0660 root system
