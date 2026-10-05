@@ -1,0 +1,2 @@
+add_lunch_combo lineage_m3note-userdebug
+add_lunch_combo lineage_m3note-eng

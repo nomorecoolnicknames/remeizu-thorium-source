@@ -1,0 +1,9 @@
+service forge_logcat /system/bin/logcat -b all -v threadtime -f /cache/forge-diag/logcat.txt -r 4096 -n 3
+    user root
+    group root log
+    seclabel u:r:su:s0
+    disabled
+
+on post-fs-data
+    mkdir /cache/forge-diag 0770 root log
+    start forge_logcat
