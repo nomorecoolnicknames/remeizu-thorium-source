@@ -21,6 +21,8 @@ The board profile is selected from device-tree compatible strings, bootloader pa
 
 ## Building
 
+The matching [Linux 4.4 source work](https://github.com/ReMeizu/android_kernel_meizu_mt675x/tree/m3note-4.4) is published at `30262b66d6e1097d99389b180f78048dee117087`. Its README lists unresolved touch, board-generation and vendor inputs; the public subset is not complete corresponding source or a standalone reproduction of the selected kernel.
+
 Use the matching LineageOS 16.0 platform and this common repository at the Android source root. Supply `vendor/meizu/m681`, the corresponding `vendor/meizu/m3note` board profiles, firmware, native kernel images and required platform compatibility patches. Binaries and restricted vendor inputs are not included. Kernel checksum gates retain the actual per-board expected inputs.
 
 ```sh
