@@ -35,6 +35,11 @@ AB_OTA_UPDATER := false
 BOARD_USES_RECOVERY_AS_BOOT := false
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 TARGET_COPY_OUT_VENDOR := system/vendor
+# VNDK: vendor processes get their own libbinder/libhidl instances (vendor namespace), as
+# in the M681 treble tree that booted. Without it android.hardware.audio.service aborted on
+
+# ProcessState, "Binder threadpool cannot be shrunk after starting".
+BOARD_VNDK_VERSION := current
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -128,4 +133,9 @@ endif
 include $(DEVICE_PATH)/BoardConfigProfiles.mk
 TARGET_RECOVERY_DEVICE_MODULES += m3note_probe
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+# vendor/lib{,64}/hw/fingerprint.default.so: A13 builds AOSP's demo HAL there and the
+# profile ships its placeholder at the same path (the Goodix N HAL is bind-mounted over
+
+# collision with this flag (device/meizu/m95/proprietary-files.txt:50-66).
+BUILD_BROKEN_DUP_RULES := true
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs

@@ -1,6 +1,30 @@
+# init.mt6755.usb.rc — Meizu M3 Note (m681), configfs USB gadget for adb on the
+
+# lineage-20-treble a39bd9e, init.mt6735.usb.rc).
+#
+# Device half of the configfs gadget: system/core init.usb.configfs.rc only
+# DRIVES an existing g1 (writes UDC, links functions); creating g1, ffs.adb and
+# the functionfs mount is the device's job.
+#
+
+# line of m681 has USB only through configfs (android_usb is off).  The UDC is
+# the mu3d gadget: drivers/misc/mediatek/mu3d/drv/musb_init.c:790 allocates the
+# platform device as MUSB_DRIVER_NAME = "musb-hdrc" (musb_core.h:97), the name
+# /sys/class/udc/ shows — the same controller name as on m5c.
+#
+# VID/PID: 2a45:201c, what LOS 16 on this unit enumerates with adb
+# (init.mt6755.usb.rc of the LOS 16 tree: sys.usb.vid 2A45, idProduct 201C for
+
+# Product: m681").
+#
+# Two A13 details (both from m5c, same system/core):
+#  - system/core/rootdir/init.usb.rc:27-28 does `setprop sys.usb.configfs 0`
+#    on init; the device overrides it in `on boot`.
+#  - the gadget is created on early-fs, so adb can come up even if mount_all
+#    fails.
 
 on early-init
-    # usb-shell 2026-08-29 (m5c LOS 16 on 4.9): musb ffs AIO wedges bulk-IN;
+
     # force the legacy r/w path.  adbd reads it once in usb_ffs_init().
     setprop sys.usb.ffs.aio_compat 1
 
@@ -16,6 +40,14 @@ on early-fs
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770
     write /config/usb_gadget/g1/configs/b.1/MaxPower 500
     mkdir /config/usb_gadget/g1/functions/ffs.adb
+    # system/core init.usb.configfs.rc links mtp.gs0 for "mtp"/"mtp,adb" and
+    # ptp.gs1 for "ptp"/"ptp,adb" but never creates them. Without them
+    # "File transfer" with debugging off left config b.1 empty and the UDC
+    # write failed (USB gone); with debugging on only adb came up
+
+    # (CONFIG_USB_CONFIGFS_F_MTP/F_PTP=y on the m681 4.9 line).
+    mkdir /config/usb_gadget/g1/functions/mtp.gs0
+    mkdir /config/usb_gadget/g1/functions/ptp.gs1
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000

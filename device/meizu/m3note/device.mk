@@ -79,10 +79,11 @@ PRODUCT_PACKAGES += hwcomposer.forge
 
 # Libraries the N blobs NEED that are not in the image otherwise (same closure as the
 # M681 treble tree: libcamera_client compat, tinyxml/tinycompress/alsautils for
-# audio.primary.mt6755). No libstdc++.vendor: without BOARD_VNDK_VERSION there are no
-# vendor variants and the vendor code sees /system/lib*/libstdc++.so directly.
+# audio.primary.mt6755, libstdc++.vendor for the 85 blobs that NEED libstdc++.so; with
+# BOARD_VNDK_VERSION the vendor namespace cannot see /system/lib*/libstdc++.so).
 PRODUCT_PACKAGES += \
     libcamera_client_vendor \
+    libstdc++.vendor \
     libtinyxml \
     libalsautils \
     libtinycompress
@@ -92,6 +93,18 @@ PRODUCT_PACKAGES += gralloc.default
 # Vibrator: AIDL service over the LED-class /sys/class/leds/vibrator (vibrator/,
 # kernel side m3note-components c3).
 PRODUCT_PACKAGES += android.hardware.vibrator-service.m3note
+
+# Fingerprint (Goodix GF516M + Trustonic 302c): the HIDL @2.0 service ported
+# from MX6 (device/meizu/m95/fingerprint), the N daemon/HAL/libgf_* as the
+# profile "derived" set, its init rc and the key layout. Kernel side: fp1
+# (m681-bat1k-comp 49e6b9412). The device structure is 272 bytes on m681 too
+# (disassembly of the 6.2.0.2A blob: malloc 0x110, notify@120,
+# set_active_group@224, authenticate@232), so the m95 static_asserts hold.
+PRODUCT_PACKAGES += android.hardware.biometrics.fingerprint@2.0-service.m3note
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.goodixfpd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.goodixfpd.rc \
+    $(LOCAL_PATH)/keylayout/fp-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/fp-keys.kl \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 # Feature declarations of the M3 Note (M681 treble tree list, both revisions have this
 # hardware; fingerprint left out until a fingerprint HAL exists), the TEE symlinks
@@ -134,8 +147,9 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster per revision (libvintf reads /vendor/etc/vintf/manifest_<sku>.xml instead of
 # manifest.xml; libinit sets ro.boot.product.vendor.sku to the verified board):
-# M681 declares the MobiCore keymaster 3.0, L681 and the unknown-board fallback
-# (manifest.xml) the AOSP software keymaster 4.0. On L681 A9 the M681 TEE keymaster did
+# both revisions now declare the AOSP software keymaster 4.0 (M681 manifest kept
+# separate for when MobiCore works on 4.9: u6 on m681 had keymaster 3.0 stuck on
+# "McDriverClient: No route to host" and keystore2 waiting for it). On L681 A9 the M681 TEE keymaster did
 # not work (A9 inventory 87c1fef); a declared HAL that never registers would block
 # keystore and the boot.
 PRODUCT_PACKAGES += android.hardware.keymaster@4.0-service

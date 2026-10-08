@@ -23,3 +23,7 @@ Use a matching LineageOS 20.0 platform with this directory at `device/meizu/m3no
 The current source product is `lineage_m3note-userdebug`. Matching platform integration and independently verified private build inputs are required before a complete build can be attempted. Android-generated OTA output is intermediate: the common package tooling must supply both own-DTB boots and verify target identity, boot geometry and readback. A successful compiler exit does not establish installation safety or working hardware.
 
 Android 9 and native Linux 4.4 are maintained separately on [lineage-16.0](https://github.com/nomorecoolnicknames/remeizu-thorium-source/tree/lineage-16.0/device/meizu/m3note). Original copyright and license notices are retained. Restricted vendor libraries and firmware are separate inputs.
+
+## Current integration
+
+The unified tree now selects per-board VNDK/keymaster configuration, starts the Trustonic daemon only when its device node exists, and contains a source fingerprint service with per-board bindings. Init creates the MTP/PTP gadget functions. Fingerprint enrollment, modem operation and complete two-revision hardware acceptance remain pending. Board profiles and derived vendor inputs are external; this public source includes no extracted firmware or proprietary archive. The guarded public installer still requires independently verified device inputs.

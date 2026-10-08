@@ -1,0 +1,11 @@
+# Goodix GF516M navigation keys (gf_spi_tee.c GF_IOC_INPUT_KEY_EVENT). On the
+# M3 Note only the tap=BACK path is compiled, as on MX6; the rest are the
+# #else branch, kept for reference.
+key 158   BACK
+key 172   HOME
+key 139   MENU
+key 103   DPAD_UP
+key 108   DPAD_DOWN
+key 105   DPAD_LEFT
+key 106   DPAD_RIGHT
+key 28    DPAD_CENTER

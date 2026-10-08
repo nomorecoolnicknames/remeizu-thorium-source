@@ -1,0 +1,20 @@
+# Goodix fingerprint daemon - Meizu M3 Note (m681/l681), from the MX6 (m95)
+# goodixfpd.rc that runs on A13. The three-stage chain is system_server ->
+# android.hardware.biometrics.fingerprint@2.0-service (vendor.fps_hal) ->
+# /vendor/lib64/hw/fingerprint.default.so (getService on the Goodix daemon) ->
+# this daemon, which publishes IGoodixFingerprintDaemon and issues the
+# GF_IOC_INPUT_KEY_EVENT ioctl on /dev/goodix_fp that turns a tap into BACK.
+# The N stack (daemon, HAL, libgoodixfingerprintd_binder) is the derived set:
+# stock Flyme 6.2.0.2A m681 with the N-only DT_NEEDED removed (profile spec
+# "derived"); libgf_hal/ca/algo are stock bytes; the TEE chain (libMcClient ->
+# /dev/mobicore-user -> mobicore) is the one keymaster@3.0 already uses.
+on post-fs-data
+    # Template/calibration store: /data/gf_data/{authenticate,base/finger_base,
+    # base/nav_base,consistency,enroll,navigation,test_sensor}/ are string
+    # literals in libgf_hal.so; libgf_hal makes the subdirs, init makes the root.
+    mkdir /data/gf_data 0700 system system
+
+service goodixfpd /vendor/bin/goodixfingerprintd
+    class main
+    user system
+    group system

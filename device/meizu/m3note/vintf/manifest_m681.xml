@@ -2,40 +2,7 @@
 <!-- Generated from manifest.xml: libvintf takes /vendor/etc/vintf/manifest_<sku>.xml
      INSTEAD of manifest.xml when ro.boot.product.vendor.sku is set (libinit sets it to
      the verified board). Keep the HAL lists in sync with manifest.xml. -->
-<!--
-  VINTF device manifest — Meizu M3 Note CN (m681), MT6755, full Treble.
 
-  2026-09-25: rewritten for the Treble switch (lineage_m681.mk,
-  PRODUCT_FULL_TREBLE_OVERRIDE := true).  PRODUCT_ENFORCE_VINTF_MANIFEST now
-  follows PRODUCT_FULL_TREBLE (build/make/core/config.mk:683-695), so this file
-  is checked against the framework compatibility matrix.
-
-  target-level 3 (FACT, reasoning of device/meizu/m95/manifest.xml, 2026-09-17):
-  Android 13 ships matrices 3..7 only (hardware/interfaces/
-  compatibility_matrices/); level 3 is the Android 9 matrix, the loosest one
-  left, and it is where a vendor built around N-era blobs belongs.
-
-  What is listed: one entry per HAL whose AOSP passthrough implementation and
-  service device.mk installs in /vendor, each wrapping the MT6755 blob named in
-  the comment.  The version map is m95's (same generation of N-era MTK blobs):
-  composer 2.1 via HWC2On1Adapter, mapper 2.1 via Gralloc0Hal, camera provider
-  2.4 legacy, audio 6.0 and 2.0 in one service.  Services that carry their own
-  VINTF fragment (wifi@1.0-service, gatekeeper@1.0-service.software,
-  drm@1.4-service.clearkey, health@2.1-service, wpa_supplicant) are NOT listed
-  here: the build merges those fragments in.
-
-  NOT listed on purpose:
-    android.hardware.radio — nothing registers IRadio yet: the RIL scheme of
-      m95 (lesson 9, librilmtk + librilimp) is not ported; declaring the HAL
-      before rild can answer for it would make telephony wait on a ghost.
-    android.hardware.vibrator — no vibrator driver in the 4.9 kernel yet; see
-      the note at the end of the file.
-    android.hardware.biometrics.fingerprint — the Goodix HAL
-      (lib64/hw/fingerprint.default.so) misses libgf_hal/libgf_ca/libgf_algo in
-      the vendor set (closure report, TREBLE_M681_L681_20260924.md).
-  Precedent for why this matters: the LOS16 tree once declared radio 1.2 while
-  rild registered 1.0 (M681_DAILY_DRIVER_STATUS.md:269-274).
--->
 <manifest version="1.0" type="device" target-level="3">
 
     <hal format="hidl">
@@ -150,11 +117,13 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <!-- keystore.mt6755.so -> libMcTeeKeymaster.so (Trustonic TEE) -->
+    <!-- Software keymaster (AOSP android.hardware.keymaster@4.0-service): L681, and any
+         board whose TEE is not proven. On L681 A9 the M681 MobiCore keymaster did not
+         work and a software keymaster ran (A9 inventory 87c1fef). -->
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
-        <version>3.0</version>
+        <version>4.0</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>

@@ -1,4 +1,8 @@
-/dev/block/mmcblk0p29 /system ext4 ro,barrier=1 wait,first_stage_mount
+# First-stage init waits for the partition by its uevent PARTNAME, so a raw
+
+# polling timeout: mmcblk0p29", InitFatalReboot). by-name as in the M681 treble tree,
+# whose first stage mounted on 4.9.
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system /system ext4 ro,barrier=1 wait,first_stage_mount
 /dev/block/mmcblk0p31 /data ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check
 /dev/block/mmcblk0p30 /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check
 /dev/block/mmcblk0p11 /protect_f ext4 ro,nosuid,nodev wait
