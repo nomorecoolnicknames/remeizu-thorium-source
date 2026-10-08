@@ -1,4 +1,22 @@
 #!/system/bin/sh
+# forge: bring telephony up after boot on m681.
+#
+# Workaround for two defects that are still open; both are documented in
+# docs/M681_DAILY_DRIVER_STATUS.md sections 11.240 and 11.241. Delete the
+# matching block here when its defect is fixed, do not leave it to rot.
+#
+#  1. rild deadlocks during its first start on AT channel contention
+#     ("E/AT: Occupied Thread: AT+CPIN? send on RIL_CMD_READER_3") and then
+#     sits idle for minutes. One restart clears it - but only if the modem is
+#     already up. v1 of this script restarted it 20 s after boot_completed,
+#     which is BEFORE gsm0710muxd has opened the AT channels, and the fresh
+#     rild parked exactly like the deadlocked one: two boots logged
+#     "sim.state= after 40 polls". So wait for the mux to exist first, and
+#     wait on states rather than on guessed delays.
+#  2. DcTracker builds no APN list (EF_ICCID unreadable -> no ICCID -> no
+#     active subscription) and feeds the modem AOSP's "this_is_an_invalid_apn"
+#     placeholder, which the network refuses, so the LTE attach never
+#     completes. Writing the real APN straight to the modem lets it through.
 
 LOG=/data/local/tmp/forge-ril-kick.log
 exec >>"$LOG" 2>&1
@@ -38,10 +56,6 @@ echo "dev/socket now: $(ls -ld /dev/socket)"
 echo "restarting ril-daemon-mtk (defect 1); muxd=$(getprop init.svc.gsm0710muxd)"
 setprop ctl.restart ril-daemon-mtk
 
-# gsm.sim.state is per slot, comma-separated (FACT l681: ",LOADED" with the
-# SIM in slot 2): any slot LOADED is enough.  The old exact match "LOADED"
-# never matched on dual-SIM and burned the full 5 min of polls every boot
-# (forge-ril-kick.log, 2026-10-01 and 2026-10-05).
 sim_any_loaded() { case ",$(getprop gsm.sim.state)," in *,LOADED,*) return 0 ;; esac; return 1; }
 wait_for sim_loaded 60 5 sim_any_loaded
 echo "sim.state=$(getprop gsm.sim.state) radio=$(getprop init.svc.ril-daemon-mtk)"
@@ -61,4 +75,18 @@ fi
 
 wait_for registered 40 5 sh -c '[ -n "$(getprop gsm.operator.numeric)" ] && [ "$(getprop gsm.operator.numeric)" != "000000" ]'
 echo "result: op=$(getprop gsm.operator.alpha) num=$(getprop gsm.operator.numeric) net=$(getprop gsm.network.type)"
+
+slot_needs_rild() {          # slot_needs_rild <n>: SIM present, state not LOADED
+    iccid=$(getprop ril.iccid.sim$1)
+    case "$iccid" in ''|N/A|n/a) return 1 ;; esac
+    st=$(getprop gsm.sim.state | cut -d, -f$1)
+    [ "$st" != LOADED ]
+}
+if [ -z "$(getprop gsm.version.baseband)" ] || slot_needs_rild 1 || slot_needs_rild 2; then
+    echo "defect 4: baseband='$(getprop gsm.version.baseband | cut -c1-30)' sim.state=$(getprop gsm.sim.state) -> one more restart of ril-daemon-mtk"
+    setprop ctl.restart ril-daemon-mtk
+    wait_for baseband 24 5 sh -c '[ -n "$(getprop gsm.version.baseband)" ]'
+    sleep 30
+    echo "after defect-4 restart: sim.state=$(getprop gsm.sim.state) op=$(getprop gsm.operator.alpha) baseband=$(getprop gsm.version.baseband | cut -c1-30)"
+fi
 echo "=== done"

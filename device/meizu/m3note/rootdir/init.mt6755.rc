@@ -90,7 +90,7 @@ on fs
     write /proc/bootprof "INIT:Mount_START"
     write /sys/kernel/debug/tracing/trace_marker "B|1|Mount"
     mount_all /fstab.mt6755
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/mmcblk0p31
+    exec u:r:fsck:s0 root root -- /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/mmcblk0p31
     write /sys/kernel/debug/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
 

@@ -47,17 +47,10 @@ camera.featurepipe.dumpvfb=0
 # "The platform supports IMS and VoLTE": read by the RIL before IMS_RILA_register.
 persist.mtk_ims_support=1
 persist.mtk_volte_support=1
-# "The user has turned VoLTE on": defaults to 0, and on 0 the RIL's imsInit sends
-# AT+EIMSVOLTE=0 to the modem itself. Measured on this device 2026-08-27: with it
-# unset rild sent that disable twice, and setting it stopped that and made rild
-# subscribe with AT+CIREG=2 instead.
 persist.mtk.volte.enable=1
 # The same answer again, for the Java half - ImsService gates turnOnIms on the
 # vendor-namespaced name, and unset it defaults to 0 and turns IMS back off.
 persist.vendor.mtk.volte.enable=1
-# Force our side of the VoLTE-available gate during bring-up. Does NOT force the
-# network on: the operator gate is measured separately and on MTS it answers yes
-# (+CIREPI: 1, nwimsvops=1, this device 2026-08-27).
 persist.dbg.volte_avail_ovr=1
 # ePDG off on purpose: with it on the vendor asks its own policy for permission
 # and the policy rejects the framework's IMS bearer request, after which the
@@ -72,3 +65,5 @@ log.tag.RIL=I
 
 ro.logd.filter=~! ~1000/! 1001
 ro.logd.size.radio=4M
+
+ro.hardware.hwcomposer=m3note

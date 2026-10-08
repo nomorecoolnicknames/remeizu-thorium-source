@@ -4,3 +4,6 @@
 # Dropped; m681 allow rules now target the base mtk_m4u_proc type.
 # LOS 16.0: re-add — the Pie base policy no longer labels /m4u.
 genfscon proc /m4u u:object_r:mtk_m4u_proc:s0
+genfscon proc /lk_env u:object_r:proc_lk_env:s0
+genfscon sysfs /devices/platform/leds-mt65xx u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/virtual/misc/m_ u:object_r:sysfs_sensor:s0

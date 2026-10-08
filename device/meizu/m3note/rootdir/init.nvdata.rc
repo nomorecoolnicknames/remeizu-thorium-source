@@ -27,13 +27,13 @@ on post-fs-data
     # MD_Type is a 4-byte APRDCL LID on this blob set. Early path is
     # read-only; writes are only allowed after NvRAMAgent reports Ready.
     setprop debug.m681.mdtype_fix.trigger post_fs_data_early
-    exec - root root -- /system/bin/sh /system/bin/m681_mdtype_fix.sh early
+    exec u:r:m3note_script:s0 root root -- /system/bin/sh /system/bin/m681_mdtype_fix.sh early
 
 # The MTK NVRAM daemon may repopulate /data/nvram on clean boot. Seed the
 # compatibility fstab again once it reports ready so legacy audio code can
 # still resolve the partition path it expects.
 on property:service.nvram_init=Ready
-    exec - root root -- /system/bin/sh /sbin/forge-nvram-fstab.sh
+    exec u:r:m3note_script:s0 root root -- /system/bin/sh /sbin/forge-nvram-fstab.sh
     restorecon /nvdata
     restorecon /data/nvram
     restorecon /custom
@@ -62,6 +62,7 @@ service m681_mdtype_fix /system/bin/sh /system/bin/m681_mdtype_fix.sh
     class late_start
     user root
     group root system radio
+    seclabel u:r:m3note_script:s0
     disabled
     oneshot
 

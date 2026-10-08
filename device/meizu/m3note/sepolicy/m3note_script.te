@@ -1,0 +1,47 @@
+type m3note_script, domain;
+domain_trans(init, shell_exec, m3note_script)
+
+# Stage A: the rules below are what the script sources show; the domain stays
+# permissive on userdebug/eng so that the rest of the system can go enforcing
+# while the remaining denials of these scripts are collected
+# (avc ... scontext=u:r:m3note_script:s0 ... permissive=1).  Stage B: add those
+# rules, drop this line, check both revisions boot with 0 denials here.
+userdebug_or_eng(`permissive m3note_script;')
+
+# Interpreter and the tools the scripts call (toybox/toolbox applets, log,
+# getprop/setprop, dd, restorecon ...).
+allow m3note_script { shell_exec toolbox_exec }:file rx_file_perms;
+allow m3note_script system_file:file { rx_file_perms execute_no_trans };
+allow m3note_script toolbox_exec:file execute_no_trans;
+allow m3note_script vendor_file:file r_file_perms;
+allow m3note_script rootfs:file r_file_perms;
+# No dac_override/dac_read_search: forbidden to almost every domain
+# (domain.te:1385/1393).  Files of system:system 0660 (nvdata, wifi) are reached
+# through the group list of the exec/service line ("group ... system wifi").
+allow m3note_script self:capability { chown fowner fsetid kill };
+allow m3note_script kmsg_device:chr_file w_file_perms;
+
+# Properties: read through the domain defaults; written by the scripts:
+#   debug.m681.* (all scripts), wlan.driver.status (m681_wifi_kick),
+#   ctl.restart ril-daemon-mtk (forge-ril-kick).
+set_prop(m3note_script, debug_prop)
+set_prop(m3note_script, wifi_prop)
+set_prop(m3note_script, ctl_restart_prop)
+get_prop(m3note_script, radio_prop)
+
+# m681_mdtype_fix: MD_Type in /nvdata (and /data/nvram), work files, restorecon.
+allow m3note_script nvdata_file:dir create_dir_perms;
+allow m3note_script nvdata_file:file { create_file_perms relabelfrom relabelto };
+
+# forge-wifi-conf: /data/misc/wifi/wpa_supplicant.conf from /system/etc/wifi.
+allow m3note_script wifi_data_file:dir rw_dir_perms;
+allow m3note_script wifi_data_file:file { create_file_perms relabelfrom relabelto };
+
+# forge-ril-kick: /dev/socket mode, AT command on /dev/radio/atci1.
+allow m3note_script socket_device:dir { getattr setattr };
+allow m3note_script radio_device:dir r_dir_perms;
+allow m3note_script radio_device:chr_file rw_file_perms;
+
+# m681_connectivity_autostart / m681_wifi_kick: WMT/BT nodes.
+allow m3note_script stpbt_device:chr_file { getattr setattr };
+allow m3note_script { stpwmt_device wmtWifi_device }:chr_file rw_file_perms;

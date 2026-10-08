@@ -1,4 +1,3 @@
-
 on post-fs-data
     # Sensor
     chmod 0660 /dev/hwmsensor
@@ -60,7 +59,7 @@ on post-fs-data
     chown system system /sys/class/misc/m_batch_misc/batchbatch
     chown system system /sys/class/misc/m_batch_misc/batchflush
 
-	chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
+        chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
     chmod 0660 /sys/class/misc/m_gyro_misc/gyroactive
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrodelay
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrobatch
@@ -199,7 +198,7 @@ on post-fs-data
     chown system system /sys/class/misc/m_glg_misc/glgflush
 
 
-service msensord /vendor/bin/msensord
+service msensord /vendor/meizu/l681/bin/msensord
     class main
     oneshot
     disabled

@@ -4,6 +4,7 @@ service forge-ril-kick /system/bin/sh /system/bin/forge-ril-kick.sh
     class late_start
     user root
     group root radio
+    seclabel u:r:m3note_script:s0
     oneshot
     disabled
 

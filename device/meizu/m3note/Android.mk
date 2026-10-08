@@ -1,9 +1,20 @@
-# Shared M3 Note module integration and vendor compatibility includes.
 LOCAL_PATH:= $(call my-dir)
 
 ifneq ($(filter m3note, $(TARGET_DEVICE)),)
 
+# l681 reuses three makefile sets that are gated on the DEVICE NAME and name
+# m681 but not l681.  Without the includes below every module they define is
+# silently absent for lineage_l681, and ckati stops on the first consumer
+# (e.g. "libreference-ril missing libril", "wpa_supplicant missing
+# lib_driver_cmd_mt66xx", "PRODUCT_PACKAGES mtk-ril: no such module").
+# Nothing outside this tree is edited; each include reproduces exactly what the
+# m681 product gets.  If one of those repos later adds l681 to its own filter,
+# the duplicate definition fails the parse loudly -- then delete the matching
+# include here.
 
+# 1. This tree's own subdirectory makefiles: nvram/ (m681_nvram_wifi_repair).
+#    Keep first, while LOCAL_PATH is still ours (m681 donor note: without it the
+#    module finder stops at this Android.mk and nvram/ silently vanishes).
 include $(call first-makefiles-under,$(LOCAL_PATH))
 
 MTK_SYMBOLS_GUI_ONLY := true
@@ -13,7 +24,9 @@ include vendor/mediatek/combo_loader/Android.mk
 include vendor/mediatek/wlan/wifi_hal/Android.mk
 include vendor/mediatek/ril/Android.mk
 
-include $(call first-makefiles-under,device/meizu/m3_meizu_m6-common)
+include device/meizu/m3_meizu_m6-common/flyme/res/Android.mk
+include device/meizu/m3_meizu_m6-common/libbt-vendor-mtk/Android.mk
+include device/meizu/m3_meizu_m6-common/libxlog/Android.mk
 $(shell mkdir -p $(PRODUCT_OUT)/obj/KERNEL_OBJ/usr)
 
 m3note_saved_target_device := $(TARGET_DEVICE)

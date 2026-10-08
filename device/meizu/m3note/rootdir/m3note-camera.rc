@@ -1,0 +1,3 @@
+on early-boot && property:persist.vendor.m3note.cam_arm=1
+    write /sys/module/pmic/parameters/forge_pmic_reg_scope 2
+    write /sys/module/kd_camera_hw/parameters/forge_cam_power 1

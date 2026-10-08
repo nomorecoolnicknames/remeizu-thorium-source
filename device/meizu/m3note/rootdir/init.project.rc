@@ -101,22 +101,22 @@ service fuse_usbotg /system/bin/true
 
 
 service atci_service /vendor/bin/atci_service
-	socket atci-service stream 660 radio system
-	socket atci-serv-fw stream 660 radio system
-	user root
+        socket atci-service stream 660 radio system
+        socket atci-serv-fw stream 660 radio system
+        user root
         disabled
-	group radio system
+        group radio system
 service atcid-daemon-u /vendor/bin/atcid
-	user system
-	group radio system media
-	disabled
-	oneshot
+        user system
+        group radio system media
+        disabled
+        oneshot
 
 service atcid-daemon-e /vendor/bin/atcid
-	user root
-	group radio system
-	disabled
-	oneshot
+        user root
+        group radio system
+        disabled
+        oneshot
 
 on early_property:ro.build.type=eng
     start atci_service
@@ -154,7 +154,7 @@ service m681pboot /system/bin/sh /system/bin/m681_postboot_recover.sh
     class late_start
     user root
     group root system
-    seclabel u:r:init:s0
+    seclabel u:r:m3note_script:s0
     disabled
     oneshot
 

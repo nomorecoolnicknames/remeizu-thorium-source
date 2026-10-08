@@ -1,0 +1,61 @@
+type mtk_mnld, domain;
+type mtk_mnld_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mnld)
+
+type mtk_agpsd, domain;
+type mtk_agpsd_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_agpsd)
+
+type mtk_wifi2agps, domain;
+type mtk_wifi2agps_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wifi2agps)
+
+type mtk_mtkmal, domain;
+type mtk_mtkmal_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mtkmal)
+
+type mtk_wmt_loader, domain;
+type mtk_wmt_loader_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wmt_loader)
+
+type mtk_wmt_launcher, domain;
+type mtk_wmt_launcher_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_wmt_launcher)
+
+type mtk_stp_dump, domain;
+type mtk_stp_dump_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_stp_dump)
+
+type mtk_spm_loader, domain;
+type mtk_spm_loader_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_spm_loader)
+
+type mtk_msensord, domain;
+type mtk_msensord_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_msensord)
+
+type mtk_akmd09911, domain;
+type mtk_akmd09911_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_akmd09911)
+
+type mtk_mped, domain;
+type mtk_mped_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mped)
+
+type mtk_muxreport, domain;
+type mtk_muxreport_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_muxreport)
+
+type mtk_epdg_wod, domain;
+type mtk_epdg_wod_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_epdg_wod)
+
+type mtk_mobicore, domain;
+type mtk_mobicore_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_mobicore)
+userdebug_or_eng(`permissive mtk_mobicore;')
+
+type mtk_pq, domain;
+type mtk_pq_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mtk_pq)
+userdebug_or_eng(`permissive mtk_pq;')

@@ -25,16 +25,6 @@ LINEAGE_BUILD := m3note
 # (the level this device shipped at) so Oreo-level tests are advisory only.
 PRODUCT_SHIPPING_API_LEVEL := 25
 
-# Semi-treble: blobs remain under /system/vendor (no separate vendor
-# partition). PRODUCT_FULL_TREBLE_OVERRIDE is false because the Nougat
-# HAL ABI is not full-Treble compliant; this silences the strict VINTF check.
-# Treble stage A (2026-08-24): the boot-image profile step is turned OFF.
-# profman SIGBUSes on this build host, deterministically: the exact failing
-# command reproduces by hand, all fifteen boot jars pass unzip -t, and it fails
-# identically with the output written elsewhere.  It is a host-tool fault, it
-# has nothing to do with the vendor partition being tested, and the profile is
-# an optimisation rather than a requirement.
-# TEMPORARY -- revisit before any build meant for daily use.
 PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := false
 
 PRODUCT_FULL_TREBLE_OVERRIDE := false
@@ -49,9 +39,7 @@ ifneq ($(filter userdebug eng,$(TARGET_BUILD_VARIANT)),)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
     ro.hardware.gralloc=mt6755 \
-    ro.hardware.hwcomposer=mt6755 \
     ro.hardware.camera=mt6755 \
-    ro.hardware.sensors=mt6755 \
     debug.sf.force_fbdev=0 \
     debug.sf.force_screen_on=0 \
     debug.sf.internal_fbdev_keep_on=0 \
@@ -138,9 +126,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES := $(filter-out \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
     ro.hardware.gralloc=mt6755 \
-    ro.hardware.hwcomposer=mt6755 \
     ro.hardware.camera=mt6755 \
-    ro.hardware.sensors=mt6755 \
     debug.sf.force_fbdev=0 \
     debug.sf.force_screen_on=0 \
     debug.sf.internal_fbdev_keep_on=0 \

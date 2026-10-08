@@ -2,6 +2,17 @@
 /dev/block/mmcblk0p7      u:object_r:nvdata_device:s0
 /dev/block/mmcblk0p11     u:object_r:protect_f_device:s0
 /dev/block/mmcblk0p12     u:object_r:protect_s_device:s0
+# AOSP block types for the raw partitions of fstab.mt6755 (4.4 has no by-name).
+# Without them the nodes are plain block_device, which fsck (tune2fs at "on fs"),
+# vold, uncrypt/recovery (BCB on misc) and the FRP service may not open in
+# enforcing.  Same numbering on m681 and l681 (common fstab, GPT standard).
+/dev/block/mmcblk0p1      u:object_r:recovery_block_device:s0
+/dev/block/mmcblk0p2      u:object_r:misc_block_device:s0
+/dev/block/mmcblk0p5      u:object_r:frp_block_device:s0
+/dev/block/mmcblk0p22     u:object_r:boot_block_device:s0
+/dev/block/mmcblk0p29     u:object_r:system_block_device:s0
+/dev/block/mmcblk0p30     u:object_r:cache_block_device:s0
+/dev/block/mmcblk0p31     u:object_r:userdata_block_device:s0
 /custom(/.*)?             u:object_r:custom_file:s0
 /nvcfg(/.*)?              u:object_r:nvcfg_file:s0
 /nvdata(/.*)?             u:object_r:nvdata_file:s0
@@ -42,21 +53,53 @@
 /system/bin/fuelgauged    u:object_r:fuelgauged_exec:s0
 /system/bin/fuelgauged_static u:object_r:fuelgauged_exec:s0
 /system/bin/batterywarning u:object_r:batterywarning_exec:s0
-/system/vendor/bin/batterywarning u:object_r:batterywarning_exec:s0
-/system/vendor/bin/ccci_fsd u:object_r:ccci_fsd_exec:s0
-/system/vendor/bin/ccci_mdinit u:object_r:ccci_mdinit_exec:s0
-/system/vendor/bin/ccci_rpcd u:object_r:ccci_rpcd_exec:s0
-/system/vendor/bin/emdlogger[0-9]+ u:object_r:emdlogger_exec:s0
-/system/vendor/bin/flashlessd u:object_r:flashlessd_exec:s0
-/system/vendor/bin/gsm0710muxd u:object_r:gsm0710muxd_exec:s0
-/system/vendor/bin/gsm0710muxdmd2 u:object_r:gsm0710muxdmd2_exec:s0
-/system/vendor/bin/nvram_daemon        u:object_r:nvram_daemon_exec:s0
-/system/vendor/bin/nvram_agent_binder u:object_r:nvram_agent_binder_exec:s0
-/system/vendor/bin/mdlogger u:object_r:mdlogger_exec:s0
-/system/vendor/bin/mtkrild u:object_r:mtkrild_exec:s0
-/system/vendor/bin/mtkrildmd2 u:object_r:mtkrildmd2_exec:s0
-/system/vendor/bin/permission_check u:object_r:permission_check_exec:s0
-/system/vendor/bin/rilproxy u:object_r:rilproxy_exec:s0
-/system/vendor/bin/statusd u:object_r:statusd_exec:s0
-/system/vendor/bin/terservice u:object_r:terservice_exec:s0
-/system/vendor/bin/viarild u:object_r:viarild_exec:s0
+/(vendor|system/vendor)/bin/batterywarning u:object_r:batterywarning_exec:s0
+/(vendor|system/vendor)/bin/ccci_fsd u:object_r:ccci_fsd_exec:s0
+/(vendor|system/vendor)/bin/ccci_mdinit u:object_r:ccci_mdinit_exec:s0
+/(vendor|system/vendor)/bin/ccci_rpcd u:object_r:ccci_rpcd_exec:s0
+/(vendor|system/vendor)/bin/emdlogger[0-9]+ u:object_r:emdlogger_exec:s0
+/(vendor|system/vendor)/bin/flashlessd u:object_r:flashlessd_exec:s0
+/(vendor|system/vendor)/bin/gsm0710muxd u:object_r:gsm0710muxd_exec:s0
+/(vendor|system/vendor)/bin/gsm0710muxdmd2 u:object_r:gsm0710muxdmd2_exec:s0
+/(vendor|system/vendor)/bin/nvram_daemon        u:object_r:nvram_daemon_exec:s0
+/(vendor|system/vendor)/bin/nvram_agent_binder u:object_r:nvram_agent_binder_exec:s0
+/(vendor|system/vendor)/bin/mdlogger u:object_r:mdlogger_exec:s0
+/(vendor|system/vendor)/bin/mtkrild u:object_r:mtkrild_exec:s0
+/(vendor|system/vendor)/bin/mtkrildmd2 u:object_r:mtkrildmd2_exec:s0
+/(vendor|system/vendor)/bin/permission_check u:object_r:permission_check_exec:s0
+/(vendor|system/vendor)/bin/rilproxy u:object_r:rilproxy_exec:s0
+/(vendor|system/vendor)/bin/statusd u:object_r:statusd_exec:s0
+/(vendor|system/vendor)/bin/terservice u:object_r:terservice_exec:s0
+/(vendor|system/vendor)/bin/viarild u:object_r:viarild_exec:s0
+
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio@2\.0-service\.mtk      u:object_r:hal_audio_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.bluetooth@1\.0-service\.mtk  u:object_r:hal_bluetooth_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service\.mtk   u:object_r:hal_vibrator_default_exec:s0
+
+/(vendor|system/vendor)/bin/mnld                     u:object_r:mtk_mnld_exec:s0
+/(vendor|system/vendor)/bin/mtk_agpsd                u:object_r:mtk_agpsd_exec:s0
+/(vendor|system/vendor)/bin/wifi2agps                u:object_r:mtk_wifi2agps_exec:s0
+/(vendor|system/vendor)/bin/mtkmal                   u:object_r:mtk_mtkmal_exec:s0
+/(vendor|system/vendor)/bin/wmt_loader               u:object_r:mtk_wmt_loader_exec:s0
+/(vendor|system/vendor)/bin/wmt_launcher             u:object_r:mtk_wmt_launcher_exec:s0
+/(vendor|system/vendor)/bin/stp_dump3                u:object_r:mtk_stp_dump_exec:s0
+/(vendor|system/vendor)/bin/spm_loader               u:object_r:mtk_spm_loader_exec:s0
+/(vendor|system/vendor)/bin/msensord                 u:object_r:mtk_msensord_exec:s0
+/(vendor|system/vendor)/bin/mcDriverDaemon           u:object_r:mtk_mobicore_exec:s0
+/(vendor|system/vendor)/bin/pq                       u:object_r:mtk_pq_exec:s0
+/(vendor|system/vendor)/bin/akmd09911                u:object_r:mtk_akmd09911_exec:s0
+/(vendor|system/vendor)/bin/MPED                     u:object_r:mtk_mped_exec:s0
+/(vendor|system/vendor)/bin/muxreport                u:object_r:mtk_muxreport_exec:s0
+/(vendor|system/vendor)/bin/epdg_wod                 u:object_r:mtk_epdg_wod_exec:s0
+# l681 profile binary bind-mounted over /vendor/bin/msensord (vendor/meizu/m3note
+# m3note-profile.rc): a bind mount keeps the SOURCE inode's label, so the
+# profile copy needs the same exec type or msensord would stay in init on l681.
+/(vendor|system/vendor)/meizu/l681/bin/msensord      u:object_r:mtk_msensord_exec:s0
+
+/dev/ttyC[0-9]*                                      u:object_r:ccci_device:s0
+/dev/radio(/.*)?                                     u:object_r:radio_device:s0
+/dev/hwmsensor                                       u:object_r:hwmsensor_device:s0
+/dev/socket/mal-mfi                                  u:object_r:mtk_mal_socket:s0
+/dev/socket/rild-mal                                 u:object_r:mtk_mal_socket:s0
+/data/agps_supl(/.*)?                                u:object_r:agps_data_file:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service\.mtk  u:object_r:hal_sensors_default_exec:s0

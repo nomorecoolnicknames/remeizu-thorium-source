@@ -37,7 +37,36 @@ TARGET_LD_SHIM_LIBS += \
     /vendor/lib/libmpe.sensorlistener.so|/vendor/lib/libmtkshim_sensor.so \
     /vendor/bin/mtk_agpsd|/vendor/lib/libmtkshim_icu.so
 
+# Camera: libfeatureio.so of the m681 set needs JpgEncHal::setEncSize(..., bool),
+# its libJpgEncPipe.so has only the 3-argument one (shims/jpgenc/jpgenc_shim.c).
+TARGET_LD_SHIM_LIBS += \
+    /vendor/lib/libfeatureio.so|/vendor/lib/libm3note_jpgenc_shim.so \
+    /vendor/lib64/libfeatureio.so|/vendor/lib64/libm3note_jpgenc_shim.so
+
+TARGET_LD_SHIM_LIBS += \
+    /vendor/lib/libskia.so|/vendor/lib/libm3note_icu56_shim.so \
+    /vendor/lib64/libskia.so|/vendor/lib64/libm3note_icu56_shim.so \
+    /vendor/lib/libJpgDecPipe.so|/vendor/lib/libm3note_dpfrag_shim.so \
+    /vendor/lib64/libJpgDecPipe.so|/vendor/lib64/libm3note_dpfrag_shim.so \
+    /vendor/lib/libeffecthal.base.so|/vendor/lib/libm3note_gbuf_shim.so \
+    /vendor/lib64/libeffecthal.base.so|/vendor/lib64/libm3note_gbuf_shim.so
+
+TARGET_LD_SHIM_LIBS += \
+    /vendor/lib/libdrmmtkutil.so|/vendor/lib/libmtkshim_icu.so \
+    /vendor/lib64/libdrmmtkutil.so|/vendor/lib64/libmtkshim_icu.so \
+    /vendor/lib/libcommonpawrapper.so|/vendor/lib/libmtkshim_icu.so \
+    /vendor/lib/libvmp_render.so|/vendor/lib/libmtkshim_gui.so \
+    /vendor/lib64/libvmp_render.so|/vendor/lib64/libmtkshim_gui.so \
+    /vendor/lib/libjni_lomoeffect.so|/vendor/lib/libm3note_gbuf_shim.so \
+    /vendor/lib64/libjni_lomoeffect.so|/vendor/lib64/libm3note_gbuf_shim.so \
+    /vendor/lib/libJpgEncPipe.so|/system/lib/libjpeg.so \
+    /vendor/lib64/libJpgEncPipe.so|/system/lib64/libjpeg.so \
+    /vendor/lib/libcam.utils.sensorlistener.so|/vendor/lib/libmtkshim_sensor.so \
+    /vendor/lib64/libcam.utils.sensorlistener.so|/vendor/lib64/libmtkshim_sensor.so
+
 TARGET_DEVICE := m3note
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := /vendor/bin/hw/rild=25
 TARGET_OTA_ASSERT_DEVICE := m3note,m681,l681,l681h,l91
 TARGET_VENDOR := meizu
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.mt6755
@@ -92,26 +121,6 @@ BOARD_KERNEL_CMDLINE := $(strip $(L681_KERNEL_CMDLINE_EXTRA) bootopt=64S3,32N2,6
 # frameworks vendor_available graph is made consistent.
 # BOARD_VNDK_VERSION := current
 
-# --- Treble stage A (2026-08-24): a REAL /vendor partition on custom(p3) ---
-# l681 note: the m681 measurements below are the donor's.  For l681, FACT:
-# custom is 512 MiB (scatter) and LOS 14.1 mounted it as /custom; its content
-# and its number (p3) are INFERENCE -- see rootdir/fstab.mt6755 and README.md.
-# p3 is 512 MiB and, measured on the device before this change, held 524 KiB of
-# Flyme leftovers out of 496 MiB -- it is free space, not a live partition.  A
-# raw gzipped backup of it is kept at
-# m681/backups/m681-custom-p3-20260824.img.gz (md5 2b7b4e0cdbc74e4d8256f01ed007b434).
-# /system/vendor measures 341 MiB, so it fits with ~170 MiB of headroom.
-#
-# TARGET_COPY_OUT_VENDOR is what makes the difference: unset it resolves to
-# "system/vendor" (build/make/core/envsetup.mk), which is why every blob has
-# been landing inside system.img.  Setting it to "vendor" both builds a
-# vendor.img and removes the ramdisk /vendor -> /system/vendor symlink.
-#
-# This is stage A ONLY: PRODUCT_FULL_TREBLE_OVERRIDE stays false and
-# PRODUCT_SHIPPING_API_LEVEL stays 25, so VNDK enforcement is NOT turned on.
-# VNDK is unreachable for this blob set and is not required for a vendor
-# partition -- PRODUCT_USE_VNDK is gated on the shipping API level, not on
-# Treble (build/make/core/config.mk).
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 536870912
@@ -131,20 +140,6 @@ AB_OTA_UPDATER := false
 # Split system/vendor build properties (Oreo requirement).
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-# SELinux policy version: the Pie default (30) is kept, deliberately.
-# The m681 donor note said "stock 3.10.72 kernel caps at policyvers 29".  That
-# was about the m681 STOCK 3.10 kernel.  For THIS kernel it is REJECTED:
-# FACT: the decompressed prebuilt-kernel/Image.gz-dtb (3.10.72+ #56) contains
-# the policydb_compat[] table byte-for-byte with 16 entries, versions 15..30
-# (table taken from l681-out/src/target/product/l681/obj/KERNEL_OBJ/security/
-# selinux/ss/policydb.o, .data @0x5300, 0xc0 bytes; searched in the image).
-# 30 = POLICYDB_VERSION_XPERMS_IOCTL, i.e. the allowxperm rules Pie emits load.
-# FACT, for completeness: the LOS 14.1 ramdisk that booted on #56 carried a
-# version-29 policy (header of its /sepolicy: f97cff8c "SE Linux" 29) -- that
-# shows 29 loads, not that 30 does not.
-# If boot stops at "SELinux: Could not load policy" (init reboots to bootloader
-# in Pie), pin POLICYVERS := 29 AND drop allowxperm, as the donor note says.
-# POLICYVERS := 29
 
 # Oreo sepolicy split: platform policy (system partition) goes in
 # BOARD_PLAT_SEPOLICY_DIRS; vendor policy goes in BOARD_SEPOLICY_DIRS.
@@ -153,15 +148,6 @@ BOARD_PLAT_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/plat
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy \
     $(DEVICE_PATH)/sepolicy/vendor
-# Boot geometry -- FACT, read from the ANDROID! header of the image that last
-# booted this unit (see the cmdline note above):
-#   kernel_addr 0x40080000  ramdisk_addr 0x45000000  second_addr 0x40f00000
-#   tags_addr   0x44000000  page_size 2048  name "" (empty)  header_version 0
-# base 0x40078000 + mkbootimg's default kernel_offset 0x8000 = 0x40080000, and
-# the three offsets below land ramdisk/second/tags on the same absolute
-# addresses.  Same numbers as the m681 donor EXCEPT --board: the donor passes
-# --board 1480869018, the booted l681 image has an EMPTY name field, so no
-# --board is given (inventing a board id is inventing an artifact).
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x04f88000 --second_offset 0x00e88000 --tags_offset 0x03f88000
@@ -179,6 +165,11 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/meizu/meizu_m6/kernel-3.18
 TARGET_KERNEL_CONFIG :=
+# Two kernels, one Image (a9-kernel, common 4.4): Image.gz-dtb-m681 and
+# Image.gz-dtb-l681 differ only in the appended board DTB.  The standard
+# boot.img carries the m681 one; build/tasks/m3note-boot-l681.mk builds
+# install/boot-l681.img from the same ramdisk/cmdline/geometry with the l681
+# one, and the OTA (releasetools.py) writes it on l681.
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt-kernel/Image.gz-dtb-m681
 M3NOTE_L681_KERNEL := $(DEVICE_PATH)/prebuilt-kernel/Image.gz-dtb-l681
 BOARD_KERNEL_IMAGE_NAME := kernel

@@ -1,6 +1,4 @@
 LOCAL_PATH := device/meizu/m3note
-# sepolicy slot of meizu_mt675x-common: the m681 and l681 slots are both empty
-# (README only, FACT 2026-10-05); m681 is the vendor set of both revisions.
 TARGET_MEIZU_MT675X_DEVICE := m681
 
 $(call inherit-product, device/meizu/mt6755-common/device-common.mk)
@@ -18,10 +16,12 @@ $(call inherit-product, vendor/meizu/m3note/m3note-vendor.mk)
 
 # Sensor rc of both revisions (/dev + sysfs perms of the MTK sensor stack,
 # msensord/akmd09911 services); see the file for the per-profile start.
-# cpufreq arming rc: prepared, off unless persist.vendor.m3note.cpufreq_arm=1.
+# cpufreq arming rc: on by default, opt-out persist.vendor.m3note.cpufreq_arm=0.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/m3note-sensors.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/m3note-sensors.rc \
-    $(LOCAL_PATH)/rootdir/m3note-cpufreq.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/m3note-cpufreq.rc
+    $(LOCAL_PATH)/rootdir/m3note-cpufreq.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/m3note-cpufreq.rc \
+    $(LOCAL_PATH)/rootdir/bin/m3note-cpufreq-arm.sh:$(TARGET_COPY_OUT_VENDOR)/bin/m3note-cpufreq-arm.sh \
+    $(LOCAL_PATH)/rootdir/m3note-camera.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/m3note-camera.rc
 
 # Panel -> revision list, one file for both readers: libinit_m3note
 # (/vendor/etc) and the OTA revision check (install/, see releasetools.py).
@@ -354,11 +354,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/forge-diag.rc:system/etc/init/forge-diag.rc \
     $(LOCAL_PATH)/rootdir/bin/m681_mdtype_fix.sh:system/bin/m681_mdtype_fix.sh \
     $(LOCAL_PATH)/rootdir/bin/m681_postboot_recover.sh:system/bin/m681_postboot_recover.sh
-# The m681 donor also copied libinvensense_hal / libmllite / libmplmpu into
-# system/lib64; not carried.  Their only consumer is m681's InvenSense
-# /vendor/lib64/hw/sensors.mt6755.so (DT_NEEDED), and FACT m681-vendor.mk:648-652
-# installs all three into /vendor/lib64, the first path its linker namespace
-# searches.
 
 PRODUCT_PACKAGES += \
     libfs_mgr \
@@ -594,17 +589,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     pm.dexopt.inactive=verify \
     pm.dexopt.shared=speed
 
-# Silence boot log spam from absent/unusable subsystems (cosmetic; reversible).
-# - keystore loads keystore.mt6755.so (Trustonic TEE keymaster1) which retries
-#   mcOpenDevice() against the #mcdaemon socket; this device's secure OS is
-#   MicroTrust TEEI, not Trustonic, so the MobiCore daemon never runs and the
-#   client emits ~200 lines of "connect() refused / No route to host" per boot.
-#   FACT: logcat pid=424 (keystore) -> McClient/McDriverClient/TeeSy*Client.
-#   These are expected (TEE genuinely absent); keystore falls back to the
-#   software keymaster. Silence the dead-TEE chatter, do not fix a non-bug.
-# - vndksupport logs ALOGD "Loading <hal> from current namespace instead of
-#   sphal namespace" for every vendor HAL dlopen; benign on this A-only
-#   semi-treble device that has no sphal linker namespace by design.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     log.tag.McClient=S \
     log.tag.McDriverClient=S \
@@ -612,10 +596,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     log.tag.TeeSyMcClient=S \
     log.tag.vndksupport=S
 
-# LOS 16.0: MTK omx (libMtkOmxFlacDec) needs the *additional* vendor seccomp
-# policy or android.hardware.media.omx@1.0-service hits pselect6 -> SIGSYS ->
-# crash_dump storm -> OOM/bootloop (device FACT from the 15.1 bring-up; the
-# allbaked boot ramdisk carried this file at /forge/mediacodec.policy).
 PRODUCT_COPY_FILES += \
     device/meizu/m3note/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
@@ -636,3 +616,22 @@ PRODUCT_COPY_FILES := $(filter-out %:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc,
     $(PRODUCT_COPY_FILES))
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rild-mtk-hidl.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc
+
+PRODUCT_PACKAGES_DEBUG += \
+    tinymix \
+    tinycap \
+    tinyplay
+
+# HWC1 wrapper (hwcwrap/): the m681 HWC blob never powers the panel down
+# (DispDevice::setPowerMode is an empty stub), so screen-off left the display
+# pipeline running.  The wrapper adds FBIOBLANK around the blob's
+# setPowerMode; selected by ro.hardware.hwcomposer=m3note (system.prop).
+PRODUCT_PACKAGES += \
+    hwcomposer.m3note
+
+# Camera ABI shims for the m681 N set (shims/*, BoardConfig TARGET_LD_SHIM_LIBS).
+PRODUCT_PACKAGES += \
+    libm3note_jpgenc_shim \
+    libm3note_icu56_shim \
+    libm3note_dpfrag_shim \
+    libm3note_gbuf_shim

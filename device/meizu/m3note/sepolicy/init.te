@@ -1,2 +1,8 @@
 allow init MTK_SMI_device:chr_file { getattr relabelfrom relabelto };
 allow init socket_device:sock_file { create setattr unlink };
+
+# --- init: tune2fs on /data at "on fs" (init.mt6755.rc, stock MTK line) --------
+# /system/bin/tune2fs is fsck_exec; Pie has no init -> fsck transition (only
+# vold), so without it the exec ran in init (permissive) and would fail under
+# enforcing.  The rc line now says "exec u:r:fsck:s0 ...".
+domain_trans(init, fsck_exec, fsck)

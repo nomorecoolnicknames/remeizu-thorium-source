@@ -32,3 +32,7 @@ mka bacon
 ```
 
 Keep boot verification enabled and verify the target revision before installation. Compiled images and host profile tests do not prove physical operation. Original copyright and license notices are retained; vendor libraries and firmware have separate terms.
+
+## Current Android 9 integration
+
+The updated unified M681/L681 configuration includes board-specific sensor service paths, legacy camera buffer/image/ICU compatibility shims, WLAN command compilation, graphics composition integration, and revised radio/power init wiring. Dedicated SELinux domains and filesystem labels reduce execution from the init domain; the current development configuration remains permissive. Both board profiles and their kernel DTBs remain distinct. These source changes do not establish working cameras, calls, deep sleep, enrollment or complete two-board hardware acceptance. External vendor inputs and source-built kernel images are required.
