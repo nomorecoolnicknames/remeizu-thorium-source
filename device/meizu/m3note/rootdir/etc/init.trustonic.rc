@@ -1,9 +1,3 @@
-# MobiCore (Trustonic) TEE daemon: keymaster/gatekeeper of the N set (keystore.mt6755.so
-# -> libMcTeeKeymaster.so, m3note_vendor_symlinks) talk to the secure world through it.
-# From the LOS 16 m681 tree (rootdir/init.trustonic.rc), cut to what Android 13 can run:
-# no /persist or /sbin/mcregistry-setup.sh. The M681 LOS 20 treble tree did not start it.
-# Its files come from the vendor profile (M681 set on both revisions since the L681
-
 on fs
     chmod 0600 /dev/mobicore
     chown system system /dev/mobicore
@@ -14,9 +8,6 @@ on fs
     export MC_AUTH_TOKEN_PATH /efs
     # mcDriverDaemon floods logcat with scheduler INFO lines on this build.
     setprop persist.sys.log_reject_level 5
-    # Start only when the kernel has a MobiCore driver: on the 4.9 bat1k kernel there
-    # is none, keymaster 3.0 then looped on "McDriverClient: No route to host" (u6 on
-
     exec -- /system/bin/sh -c "test -c /dev/mobicore && setprop vendor.m3note.mobicore 1"
 
 on property:vendor.m3note.mobicore=1
