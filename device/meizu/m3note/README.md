@@ -27,3 +27,9 @@ Android 9 and native Linux 4.4 are maintained separately on [lineage-16.0](https
 ## Current integration
 
 The unified tree now selects per-board VNDK/keymaster configuration, starts the Trustonic daemon only when its device node exists, and contains a source fingerprint service with per-board bindings. Init creates the MTP/PTP gadget functions. Fingerprint enrollment, modem operation and complete two-revision hardware acceptance remain pending. Board profiles and derived vendor inputs are external; this public source includes no extracted firmware or proprietary archive. The guarded public installer still requires independently verified device inputs.
+
+## Optional u7 packaging correction
+
+The source-only utility [`tools/drop_unused_dm.py`](../../../tools/drop_unused_dm.py) removes the exact malformed, unused operator DM daemon from a separately supplied u7 system image and its matching vendor-input metadata. It checks the pinned parent image, the daemon hash, the input manifest, the other board's profile, and a prior complete client audit before deriving new outputs. It does not flash a phone or establish hardware acceptance. This utility applies only to that reviewed parent and schema, not arbitrary ROMs.
+
+Run `python3 tools/drop_unused_dm.py --help` for the six required inputs: `--parent-system`, `--source-vendor`, `--source-spec`, `--client-audit`, `--output`, and `--scratch`. Output and scratch must be fresh directories unless the explicit interrupted-copy verification mode applies. The caller supplies lawfully obtained image/vendor data and their own audit; no such data is distributed here. Additional offline validation of the derived image and manifests remains necessary.
