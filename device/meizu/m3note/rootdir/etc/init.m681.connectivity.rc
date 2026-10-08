@@ -1,3 +1,24 @@
+# init.m681.connectivity.rc — MTK WMT (CONSYS Wi-Fi/BT/GPS) loaders, m681 LOS 20
+# Treble.  Lane flash-m681, 2026-09-29; services as in the LOS 16 m681 tree
+# (rootdir/init.connectivity.rc:73-88) and m95 (init.m95.connectivity.rc:79-89).
+#
+# wmt_loader probes the chip through /dev/wmtdetect and issues
+# COMBO_IOCTL_DO_MODULE_INIT, the only thing that creates /dev/stpwmt,
+# /dev/wmtWifi and /dev/stpbt (LOS 16 m681 FACT 2026-07-27); wmt_launcher stays
+# resident and feeds WMT_SOC.cfg / ROMv2 patches / WIFI_RAM_CODE_6755 from
+# /vendor/firmware (proprietary-files.txt:461-464).  Node permissions:
+# rootdir/etc/ueventd.mt6755.rc:34-49.
+#
+# NOT started at boot on purpose.  CONSYS power-on is not proven on the 4.9
+# kernel (kernel-m681-49 §26: no forge_conn_autopwr/psm there, pwron_stage and
+# forge_conn_emi are debug knobs that must not be written from an rc until the
+# power-up is shown on hardware), and on the LOS 16 lane the same start was
+# gated by a property for the same reason (debug.m681.wmt.start).  First runs
+# start it by hand, one step at a time:
+#   adb shell setprop vendor.m681.wmt.start 1
+#   dmesg | grep -E "FORGE_CONN|BTIF|WMT-DETECT|mtk_wmt_probe"; ls -l /dev/stpwmt /dev/wmtWifi /dev/stpbt
+# Once proven, the trigger becomes a boot-time one (after nvram, as in stock).
+# The N blobs have no liblog in DT_NEEDED: BoardConfig.mk TARGET_LD_SHIM_LIBS.
 service wmt_loader /vendor/bin/wmt_loader
     class core
     user root
@@ -12,5 +33,9 @@ service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
     disabled
 
 on property:vendor.m681.wmt.start=1
+    start wmt_loader
+    start wmt_launcher
+
+on property:sys.boot_completed=1 && property:persist.vendor.m681.wmt.autostart=1 && property:ro.vendor.meizu.profile=m681
     start wmt_loader
     start wmt_launcher
