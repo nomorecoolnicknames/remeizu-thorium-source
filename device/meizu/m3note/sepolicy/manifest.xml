@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<manifest version="1.0" type="device">
+
+<manifest version="1.0" type="device" target-level="1">
     <hal format="hidl">
         <name>android.hardware.graphics.composer</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.1</version>
         <interface>
             <name>IComposer</name>
@@ -58,7 +59,7 @@
     <hal format="hidl">
         <name>android.hardware.health</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>2.1</version>
         <interface>
             <name>IHealth</name>
             <instance>default</instance>
@@ -75,7 +76,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>3.0</version>
         <interface>
             <name>IKeymasterDevice</name>
@@ -122,12 +123,7 @@
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <!-- 1.0, not 1.2. Device evidence 2026-08-25: rild logs
-             "registerService: starting android::hardware::radio::V1_0::IRadio"
-             for both slots and RIL_register reports RIL version 13. Declaring
-             1.2 here made the framework look up an interface nothing serves.
-             b88ed1b claimed this "gates nothing today"; that was untested and
-             wrong. -->
+
         <version>1.0</version>
         <interface>
             <name>IRadio</name>
@@ -161,7 +157,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IPower</name>
@@ -170,7 +166,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.memtrack</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IMemtrack</name>
@@ -184,6 +180,19 @@
         <version>1.0</version>
         <interface>
             <name>IVibrator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.drm</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
             <instance>default</instance>
         </interface>
     </hal>

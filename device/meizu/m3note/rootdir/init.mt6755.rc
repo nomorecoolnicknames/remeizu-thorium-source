@@ -181,22 +181,38 @@ on post-fs-data
     # they can leave the LK bootlogo path. Some MTK paths can expose the real
     # primary framebuffer later as fb1+ instead of fb0.
     mkdir /dev/graphics 0755 root root
-    mknod /dev/graphics/fb0 c 29 0
-    mknod /dev/fb0 c 29 0
-    mknod /dev/graphics/fb1 c 29 1
-    mknod /dev/fb1 c 29 1
-    mknod /dev/graphics/fb2 c 29 2
-    mknod /dev/fb2 c 29 2
-    mknod /dev/graphics/fb3 c 29 3
-    mknod /dev/fb3 c 29 3
-    mknod /dev/graphics/fb4 c 29 4
-    mknod /dev/fb4 c 29 4
-    mknod /dev/graphics/fb5 c 29 5
-    mknod /dev/fb5 c 29 5
-    mknod /dev/graphics/fb6 c 29 6
-    mknod /dev/fb6 c 29 6
-    mknod /dev/graphics/fb7 c 29 7
-    mknod /dev/fb7 c 29 7
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb0 c 29 0
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb0 c 29 0
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb1 c 29 1
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb1 c 29 1
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb2 c 29 2
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb2 c 29 2
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb3 c 29 3
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb3 c 29 3
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb4 c 29 4
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb4 c 29 4
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb5 c 29 5
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb5 c 29 5
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb6 c 29 6
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb6 c 29 6
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/graphics/fb7 c 29 7
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/fb7 c 29 7
 
     # Match the working mt6755 bring-up device permissions for MTK display nodes.
     chmod 0660 /dev/graphics/fb0

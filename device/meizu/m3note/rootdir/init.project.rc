@@ -8,17 +8,22 @@ on init
 
     # MTK Wi-Fi/BT bring-up expects stock legacy STP/WMT char nodes even
     # when ueventd misses them on this rebase kernel.
-    mknod /dev/stpwmt c 190 0 0660 system system
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+    # mknod /dev/stpwmt c 190 0 0660 system system
     chmod 0660 /dev/stpwmt
     chown system system /dev/stpwmt
     restorecon /dev/stpwmt
 
-    mknod /dev/stpbt c 192 0 0660 bluetooth bluetooth
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+
+    # mknod /dev/stpbt c 192 0 0660 bluetooth bluetooth
     chmod 0660 /dev/stpbt
     chown bluetooth bluetooth /dev/stpbt
     restorecon /dev/stpbt
 
-    mknod /dev/wmtWifi c 153 0 0660 system system
+    # A11: init has no mknod builtin; on A9 (Pie) this line was a parse error and never ran. Kept off for A9 parity; ueventd creates the node.
+
+    # mknod /dev/wmtWifi c 153 0 0660 system system
     chmod 0660 /dev/wmtWifi
     chown system system /dev/wmtWifi
     restorecon /dev/wmtWifi
@@ -101,24 +106,25 @@ service fuse_usbotg /system/bin/true
 
 
 service atci_service /vendor/bin/atci_service
-	socket atci-service stream 660 radio system
-	socket atci-serv-fw stream 660 radio system
-	user root
+        socket atci-service stream 660 radio system
+        socket atci-serv-fw stream 660 radio system
+        user root
         disabled
-	group radio system
+        group radio system
 service atcid-daemon-u /vendor/bin/atcid
-	user system
-	group radio system media
-	disabled
-	oneshot
+        user system
+        group radio system media
+        disabled
+        oneshot
 
 service atcid-daemon-e /vendor/bin/atcid
-	user root
-	group radio system
-	disabled
-	oneshot
+        user root
+        group radio system
+        disabled
+        oneshot
 
-on early_property:ro.build.type=eng
+# A11: "early_property:" is not a trigger (parse error on A9 too, action never ran); eng only.
+on property:ro.build.type=eng
     start atci_service
     start atcid-daemon-e
 service audio-daemon /vendor/bin/audiocmdservice_atci

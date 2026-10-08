@@ -1,34 +1,3 @@
-/*
- * libinit_m3note -- revision profile of the common M3 Note Android 9 ROM.
- *
- * One system/vendor image runs on two boards: m681 (Wingtech wt6755_66_sz_l)
- * and l681 (Huaqin hq6755_66_b1a_l).  The kernel tells them apart by the board
- * DTB it boots with; its root "compatible" carries "meizu,m681" or
- * "meizu,l681" (FACT: arch/arm64/boot/dts/mediatek/{wt6755_66_sz_l,
- * hq6755_66_b1a_l}.dts of the 4.4 line).  vendor_load_properties() runs from
- * load_system_props ("on post-fs", after mount_all, before any class starts)
- * and publishes:
- *
- *   ro.vendor.meizu.profile  m681 | l681 | unknown
- *       m3note-profile.rc (vendor/meizu/m3note) bind-mounts the L681H modem,
- *       WMT patches and msensord over the m681 files on l681;
- *       m3note-sensors.rc starts msensord on l681.
- *   ro.hardware.sensors      l681 on l681 -> sensors.l681.so (L681H hwmsen HAL)
- *   ro.hardware.keystore     m681tee on m681 -> keystore.m681tee.so (Trustonic)
- *   ro.sf.hwrotation         m681 0, l681 180 (the values each revision was
- *                            verified with on Android 9)
- *
- * Second, independent source: the panel name LK writes into the kernel
- * command line (lcm=), mapped to a board by /vendor/etc/m3note-panels.tsv --
- * the same list the OTA installer reads (install/m3note-panels.tsv in this
- * tree has the FACT sources).  LK reads the panel itself, so this holds
- * whatever DTB was flashed.  Optional third: androidboot.meizu.board=
- * (ro.boot.meizu.board).  Every source that answers must agree; one answer
- * is enough.  No answer or a disagreement gives "unknown": no l681 file is
- * mounted, no TEE keystore is selected, sensors stay on the default HAL.
- * The reason is logged to the kernel log ("m3note-profile:").
- */
-
 #include <string>
 #include <utility>
 #include <vector>
@@ -100,7 +69,9 @@ std::string BoardFromCmdline(const std::string& cmdline, const PanelList& panels
         if (pos > 0 && cmdline[pos - 1] != ' ') { pos += 4; continue; }
         const size_t end = cmdline.find_first_of(" \n", pos);
         const std::string token = cmdline.substr(pos, end == std::string::npos ? std::string::npos : end - pos);
-        for (const auto& [panel, candidate] : panels) {
+        for (const auto& entry : panels) {  // C++14: no structured bindings (-Wc++17-extensions is -Werror here)
+            const std::string& panel = entry.first;
+            const std::string& candidate = entry.second;
             if (token.find(panel) == std::string::npos) continue;
             if (!board.empty() && board != candidate) return "";
             board = candidate;

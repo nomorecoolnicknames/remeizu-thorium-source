@@ -1,6 +1,4 @@
 LOCAL_PATH := device/meizu/m3note
-# sepolicy slot of meizu_mt675x-common: the m681 and l681 slots are both empty
-# (README only, FACT 2026-10-05); m681 is the vendor set of both revisions.
 TARGET_MEIZU_MT675X_DEVICE := m681
 
 $(call inherit-product, device/meizu/mt6755-common/device-common.mk)
@@ -306,10 +304,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     $(LOCAL_PATH)/media/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/rootdir/default.prop:root/default.prop \
     $(LOCAL_PATH)/rootdir/FWUpgradeInit.rc:root/FWUpgradeInit.rc \
-    $(LOCAL_PATH)/sepolicy/file_contexts:root/file_contexts \
     $(LOCAL_PATH)/rootdir/fstab.mt6755:root/fstab.mt6755 \
+    $(LOCAL_PATH)/rootdir/fstab.mt6755:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6755 \
+    $(LOCAL_PATH)/rootdir/fstab.mt6755:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6755 \
     $(LOCAL_PATH)/rootdir/init.aee.rc:root/init.aee.rc \
     $(LOCAL_PATH)/rootdir/init.c2k.rc:root/init.c2k.rc \
     $(LOCAL_PATH)/rootdir/init.common_svc.rc:root/init.common_svc.rc \
@@ -330,16 +328,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.ssd_nomuser.rc:root/init.ssd_nomuser.rc \
     $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
     $(LOCAL_PATH)/rootdir/init.trustonic.rc:root/init.trustonic.rc \
-    $(LOCAL_PATH)/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
     $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
     $(LOCAL_PATH)/rootdir/init.xlog.rc:root/init.xlog.rc \
-    $(LOCAL_PATH)/rootdir/init.zygote32.rc:root/init.zygote32.rc \
-    $(LOCAL_PATH)/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
-    $(LOCAL_PATH)/rootdir/property_contexts:root/property_contexts \
-    $(LOCAL_PATH)/rootdir/seapp_contexts:root/seapp_contexts \
-    $(LOCAL_PATH)/rootdir/service_contexts:root/service_contexts \
     $(LOCAL_PATH)/rootdir/ueventd.mt6755.rc:root/ueventd.mt6755.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/rootdir/bin/pstore-preserve.sh:root/sbin/pstore-preserve.sh \
     $(LOCAL_PATH)/rootdir/bin/forge-nvram-fstab.sh:root/sbin/forge-nvram-fstab.sh \
     $(LOCAL_PATH)/rootdir/bin/forge-wifi-conf.sh:root/sbin/forge-wifi-conf.sh \
@@ -354,11 +345,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/forge-diag.rc:system/etc/init/forge-diag.rc \
     $(LOCAL_PATH)/rootdir/bin/m681_mdtype_fix.sh:system/bin/m681_mdtype_fix.sh \
     $(LOCAL_PATH)/rootdir/bin/m681_postboot_recover.sh:system/bin/m681_postboot_recover.sh
-# The m681 donor also copied libinvensense_hal / libmllite / libmplmpu into
-# system/lib64; not carried.  Their only consumer is m681's InvenSense
-# /vendor/lib64/hw/sensors.mt6755.so (DT_NEEDED), and FACT m681-vendor.mk:648-652
-# installs all three into /vendor/lib64, the first path its linker namespace
-# searches.
 
 PRODUCT_PACKAGES += \
     libfs_mgr \
@@ -410,9 +396,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl \
     libmtkshim_gui \
     libmtkshim_ui \
@@ -421,11 +408,12 @@ PRODUCT_PACKAGES += \
 
 # Thermal / power / lights (m6:167–175)
 PRODUCT_PACKAGES += \
-    android.hardware.health@1.0-impl \
-    android.hardware.health@1.0-service \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
     android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
     power.default
 
 PRODUCT_PACKAGES += \
@@ -459,6 +447,8 @@ PRODUCT_PACKAGES += \
 # Keymaster/DRM (m6:261–264)
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
+    android.hardware.drm@1.3-service.clearkey \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
@@ -492,7 +482,7 @@ PRODUCT_PACKAGES += \
     libandroid_net
 
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # WLAN/BT (m6:99–111). libwifi-hal-mt66xx already above; rest from m6.
 PRODUCT_PACKAGES += \
@@ -521,12 +511,10 @@ PRODUCT_PACKAGES += \
 # (via legacy HIDL shims); the compatibility_matrix declares what the
 # framework requires.  Both files live under sepolicy/ in this tree.
 # ---------------------------------------------------------------------------
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sepolicy/manifest.xml:system/manifest.xml \
-    $(LOCAL_PATH)/sepolicy/compatibility_matrix.xml:system/compatibility_matrix.xml
+# A11: the device manifest goes to /vendor/etc/vintf/manifest.xml through
+# DEVICE_MANIFEST_FILE; the framework manifest and matrix are built by R itself.
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/sepolicy/manifest.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sepolicy/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
 
 # Oreo media_profiles renamed; keep the V1_0 suffix copy as well so
 # legacy codecs that probe the old path still find it.
@@ -560,6 +548,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=adb \
     persist.service.adb.enable=1 \
     persist.sys.adb.shell=/system/bin/sh
+# A11: root default.prop is gone; the key goes to /system/etc/prop.default
+# (PRODUCT_SYSTEM_DEFAULT_PROPERTIES), which second-stage init loads after the
+# first-stage mount.  R adbd still reads it (system/core/adb/daemon/usb_legacy.cpp:282).
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += sys.usb.ffs.aio_compat=1
 
 # v206 fix: libalsautils.so was MISSING from m681 (audioserver dlopen failed ->
 # AudioFlinger RecordThread SIGSEGV). Sourced from the meizu_m6 Nougat blobs
@@ -594,17 +586,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     pm.dexopt.inactive=verify \
     pm.dexopt.shared=speed
 
-# Silence boot log spam from absent/unusable subsystems (cosmetic; reversible).
-# - keystore loads keystore.mt6755.so (Trustonic TEE keymaster1) which retries
-#   mcOpenDevice() against the #mcdaemon socket; this device's secure OS is
-#   MicroTrust TEEI, not Trustonic, so the MobiCore daemon never runs and the
-#   client emits ~200 lines of "connect() refused / No route to host" per boot.
-#   FACT: logcat pid=424 (keystore) -> McClient/McDriverClient/TeeSy*Client.
-#   These are expected (TEE genuinely absent); keystore falls back to the
-#   software keymaster. Silence the dead-TEE chatter, do not fix a non-bug.
-# - vndksupport logs ALOGD "Loading <hal> from current namespace instead of
-#   sphal namespace" for every vendor HAL dlopen; benign on this A-only
-#   semi-treble device that has no sphal linker namespace by design.
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     log.tag.McClient=S \
     log.tag.McDriverClient=S \
@@ -612,10 +593,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     log.tag.TeeSyMcClient=S \
     log.tag.vndksupport=S
 
-# LOS 16.0: MTK omx (libMtkOmxFlacDec) needs the *additional* vendor seccomp
-# policy or android.hardware.media.omx@1.0-service hits pselect6 -> SIGSYS ->
-# crash_dump storm -> OOM/bootloop (device FACT from the 15.1 bring-up; the
-# allbaked boot ramdisk carried this file at /forge/mediacodec.policy).
 PRODUCT_COPY_FILES += \
     device/meizu/m3note/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
@@ -636,3 +613,18 @@ PRODUCT_COPY_FILES := $(filter-out %:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc,
     $(PRODUCT_COPY_FILES))
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rild-mtk-hidl.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc
+
+# A11: rootdir/default.prop is no longer copied to the root (R builds
+# /system/etc/prop.default itself).  Its keys that no makefile set are carried
+# here unchanged, so the property set of A9 is kept.
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.service.acm.enable=0 \
+    ro.allow.mock.location=0 \
+    ro.mtk_perf_fast_start_win=0 \
+    ro.mount.fs=EXT4 \
+    dalvik.vm.image-dex2oat-Xms=64m \
+    dalvik.vm.image-dex2oat-Xmx=64m \
+    dalvik.vm.dex2oat-Xms=64m \
+    dalvik.vm.dex2oat-Xmx=512m \
+    ro.dalvik.vm.native.bridge=0 \
+    ro.boot.opt_lte_support=1
